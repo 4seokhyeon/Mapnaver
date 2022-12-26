@@ -1,0 +1,122 @@
+{
+  "project_info": {
+    "project_number": "624496458033",
+    "firebase_url": "https://hospital-88a69-default-rtdb.firebaseio.com",
+    "project_id": "hospital-88a69",
+    "storage_bucket": "hospital-88a69.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624496458033:android:371b6c3eeb95a03f92d810",
+        "android_client_info": {
+          "package_name": "com.cloudtest.kakaomap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624496458033-meb9lbtljmmh0gomg79luop0pp6vq961.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.cloudtest.kakaomap",
+            "certificate_hash": "db8948c0409e0c687e755a2effbf223e5073f3af"
+          }
+        },
+        {
+          "client_id": "624496458033-g4l7domd56u66mjqs8b4jq4i79ohv37j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjy_c0_VSC74eqGBjm47H0GWi7QHcBQDY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "624496458033-g4l7domd56u66mjqs8b4jq4i79ohv37j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624496458033:android:1b4cfdc04efbf2b892d810",
+        "android_client_info": {
+          "package_name": "com.first.maptest"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624496458033-ckh82opuhagbf007hekoetqono3kc4uo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.first.maptest",
+            "certificate_hash": "db8948c0409e0c687e755a2effbf223e5073f3af"
+          }
+        },
+        {
+          "client_id": "624496458033-g4l7domd56u66mjqs8b4jq4i79ohv37j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjy_c0_VSC74eqGBjm47H0GWi7QHcBQDY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "624496458033-g4l7domd56u66mjqs8b4jq4i79ohv37j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:624496458033:android:b2fd93bab5d0e7fa92d810",
+        "android_client_info": {
+          "package_name": "com.medicle.hospital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "624496458033-3d7bc55d1d06emsqnt7nt65p6qg8e4fb.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.medicle.hospital",
+            "certificate_hash": "db8948c0409e0c687e755a2effbf223e5073f3af"
+          }
+        },
+        {
+          "client_id": "624496458033-g4l7domd56u66mjqs8b4jq4i79ohv37j.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjy_c0_VSC74eqGBjm47H0GWi7QHcBQDY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "624496458033-g4l7domd56u66mjqs8b4jq4i79ohv37j.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Maptest</string>
+    <string name="format_map_click" />
+    <string name="format_map_long_click" />
+</resources>
