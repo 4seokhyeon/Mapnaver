@@ -93,5 +93,3 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 }
-
-//최현지 바보같은놈 ㅋ 누가 확인좀 해ㅐ줘 젭알~ 다들 어디갔어 이 사람들아
