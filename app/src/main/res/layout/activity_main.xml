@@ -6,9 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <fragment android:layout_width="match_parent"
-        android:layout_height="match_parent"
+    <FrameLayout
         android:id="@+id/map"
-        android:name="com.naver.maps.map.MapFragment" />
+        android:name="com.naver.maps.map.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        tools:layout_editor_absoluteX="0dp"
+        android:layout_marginBottom="58dp">
+
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavi"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:background="#fff"
+            app:labelVisibilityMode="unlabeled"
+            app:layout_constraintBottom_toBottomOf="@+id/map"
+            app:menu="@menu/menu"
+            tools:ignore="MissingConstraints" />
+
+    </FrameLayout>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
