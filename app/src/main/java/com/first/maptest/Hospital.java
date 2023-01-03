@@ -1,5 +1,5 @@
 package com.first.maptest;
-
+//파이어베이스 클래스이ㅁ
 public class Hospital {
     private String profile;
     private String addr;
