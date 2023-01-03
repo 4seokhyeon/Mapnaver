@@ -4,52 +4,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="더보기 페이지"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="16dp" />
+        android:text="더보기페이지"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="리뷰관리"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
         android:id="@+id/review"
-        tools:ignore="MissingConstraints" />
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:text="리뷰관리"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="240dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="알림관리"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
         android:id="@+id/pop"
-        tools:ignore="MissingConstraints" />
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:text="알림관리"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="320dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="고객센터"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
         android:id="@+id/customer"
-        tools:ignore="MissingConstraints" />
-
-
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:text="고객센터"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="400dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="공지사항"
-        android:layout_gravity="center"
-        android:layout_margin="20dp"
         android:id="@+id/notice"
-        tools:ignore="MissingConstraints" />
-
-
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:text="공지사항"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="480dp" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

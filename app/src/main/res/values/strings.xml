@@ -2,4 +2,5 @@
     <string name="app_name">Maptest</string>
     <string name="format_map_click" />
     <string name="format_map_long_click" />
+    <string name="more">더보기 페이지</string>
 </resources>
