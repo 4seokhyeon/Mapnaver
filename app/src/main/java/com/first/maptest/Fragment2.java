@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-
+//예약 프래그 먼 한나가 해보렴 여기다가 자유롭게
 public class Fragment2 extends Fragment {
 
     private View view;

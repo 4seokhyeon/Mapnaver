@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-
+//리뷰(몰라)
 public class Fragment3 extends Fragment {
     private View view;
 

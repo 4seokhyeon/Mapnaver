@@ -23,7 +23,7 @@ import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.util.FusedLocationSource;
 import com.naver.maps.map.widget.LocationButtonView;
-
+//네이버 지도 프래그먼트 코드
 public class Fragment1 extends Fragment implements OnMapReadyCallback {
     private FragmentActivity mcontext;
     //지도 객체 변수

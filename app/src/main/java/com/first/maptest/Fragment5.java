@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-
+//더보기 탭 프래그먼트 최현지 멍청한놈아 왜 프로젝트를 지우고 난리?
 public class Fragment5 extends Fragment {
     private View view;
 
