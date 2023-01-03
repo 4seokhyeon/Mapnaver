@@ -1,5 +1,7 @@
 package com.first.maptest;
 
+//더보기탭
+
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +11,8 @@ import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+
+//버튼 누르면 화면전환 하는거 + 회원정보 나오는거 해야함
 
 public class Fragment5 extends Fragment {
     MainActivity activity;
@@ -37,31 +41,9 @@ public class Fragment5 extends Fragment {
         review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-               // review.setVisibility(View.VISIBLE);
                 activity.onFragmentChange(1);
             }
         });
-
-        /*pop.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                pop.setVisibility(View.VISIBLE);
-            }
-        });
-
-        customer.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                customer.setVisibility(View.VISIBLE);
-            }
-        });
-
-        notice.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                notice.setVisibility(View.VISIBLE);
-            }
-        });*/
 
         return rootView;
     }

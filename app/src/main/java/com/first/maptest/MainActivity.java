@@ -79,11 +79,11 @@ public class MainActivity extends AppCompatActivity  {
         fragment5 = new Fragment5();
         setFragment(0);
 
-        review = new review();
+        review = new review(); //더보기탭
 
     }
 
-        public void onFragmentChange (int fragmentNum){
+        public void onFragmentChange (int fragmentNum){ //더보기탭
             if (fragmentNum == 1) {
                 getSupportFragmentManager().beginTransaction().replace(androidx.core.R.id.action_container, review).commit();
             } else if (fragmentNum == 2) {
