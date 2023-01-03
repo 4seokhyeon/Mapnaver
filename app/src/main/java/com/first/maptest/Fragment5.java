@@ -28,14 +28,41 @@ public class Fragment5 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_5,container,false);
+
         Button review = rootView.findViewById(R.id.review);
+        Button pop = rootView.findViewById(R.id.pop);
+        Button customer = rootView.findViewById(R.id.customer);
+        Button notice = rootView.findViewById(R.id.notice);
+
         review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+               // review.setVisibility(View.VISIBLE);
                 activity.onFragmentChange(1);
             }
         });
-        return rootView;
 
+        /*pop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pop.setVisibility(View.VISIBLE);
+            }
+        });
+
+        customer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                customer.setVisibility(View.VISIBLE);
+            }
+        });
+
+        notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                notice.setVisibility(View.VISIBLE);
+            }
+        });*/
+
+        return rootView;
     }
 }

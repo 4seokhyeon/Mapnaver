@@ -2,5 +2,9 @@
     <string name="app_name">Maptest</string>
     <string name="format_map_click" />
     <string name="format_map_long_click" />
-    <string name="more">더보기 페이지</string>
+    <string name="더보기페이지">더보기 페이지</string>
+    <string name="리뷰관리">리뷰관리</string>
+    <string name="알림관리">알림관리</string>
+    <string name="고객센터">고객센터</string>
+    <string name="공지사항">공지사항</string>
 </resources>
