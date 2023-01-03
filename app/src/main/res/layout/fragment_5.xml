@@ -1,10 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/teal_700"/>
+        android:text="더보기페이지"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <Button
+        android:id="@+id/review"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:text="리뷰관리"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="240dp" />
+
+    <Button
+        android:id="@+id/pop"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:text="알림관리"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="320dp" />
+
+    <Button
+        android:id="@+id/customer"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:text="고객센터"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="400dp" />
+
+    <Button
+        android:id="@+id/notice"
+        android:layout_width="350dp"
+        android:layout_height="60dp"
+        android:layout_margin="20dp"
+        android:text="공지사항"
+        android:visibility="visible"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="30dp"
+        tools:layout_editor_absoluteY="480dp" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
