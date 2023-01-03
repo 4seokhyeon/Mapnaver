@@ -36,5 +36,6 @@ public class Fragment5 extends Fragment {
             }
         });
         return rootView;
+
     }
 }
