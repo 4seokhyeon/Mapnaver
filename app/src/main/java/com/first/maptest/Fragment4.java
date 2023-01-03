@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
-
+//즐겨찾기 및 리뷰, 캘린더
 public class Fragment4 extends Fragment {
     private View view;
 

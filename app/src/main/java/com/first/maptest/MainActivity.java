@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity  {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        //하단바 네비게이션 뷰 코드 and 스위치 문으로 각 프래그먼트를 연결
         bottomNavigationView=findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
