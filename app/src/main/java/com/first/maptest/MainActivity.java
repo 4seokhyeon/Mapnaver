@@ -2,6 +2,7 @@ package com.first.maptest;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -40,16 +41,18 @@ public class MainActivity extends AppCompatActivity  {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
 
+    review review;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //하단바 네비게이션 뷰 코드 and 스위치 문으로 각 프래그먼트를 연결
-        bottomNavigationView=findViewById(R.id.bottomNavi);
+
+        bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.item_fragment1:
                         setFragment(0);
                         break;
@@ -69,13 +72,25 @@ public class MainActivity extends AppCompatActivity  {
                 return true;
             }
         });
-        fragment1=new Fragment1();
-        fragment2=new Fragment2();
-        fragment3=new Fragment3();
-        fragment4=new Fragment4();
-        fragment5=new Fragment5();
+        fragment1 = new Fragment1();
+        fragment2 = new Fragment2();
+        fragment3 = new Fragment3();
+        fragment4 = new Fragment4();
+        fragment5 = new Fragment5();
         setFragment(0);
+
+        review = new review(); //더보기탭
+
     }
+
+        public void onFragmentChange (int fragmentNum){ //더보기탭
+            if (fragmentNum == 1) {
+                getSupportFragmentManager().beginTransaction().replace(androidx.core.R.id.action_container, review).commit();
+            } else if (fragmentNum == 2) {
+                getSupportFragmentManager().beginTransaction().replace(androidx.core.R.id.action_container, fragment5).commit();
+            }
+        }
+
    private void setFragment(int n){
         fm=getSupportFragmentManager();
         ft=fm.beginTransaction();
@@ -106,3 +121,4 @@ public class MainActivity extends AppCompatActivity  {
 }
 //최현지 디지셈
 //드디어 해냈다 야발
+//어렵누
