@@ -11,23 +11,16 @@ public class review extends Fragment {
 
     MainActivity activity;
 
+    public static review newInstance() {
+        return new review();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.review,container,false);
 
-        activity = (MainActivity) getActivity();
-
-        Button back = rootview.findViewById(R.id.back);
-
-        back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activity.onFragmentChange(2);
-            }
-        });
-
-        return rootview;
+        View view = inflater.inflate(R.layout.review,null);
+        return view;
 
     }
 }
