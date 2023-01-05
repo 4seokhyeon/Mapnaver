@@ -2,6 +2,7 @@ package com.first.maptest;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -24,7 +25,7 @@ import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.util.FusedLocationSource;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MainActivity extends AppCompatActivity  {
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private BottomNavigationView bottomNavigationView; //바텀 네비게이션뷰
@@ -40,84 +41,86 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
 
+    review review;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        bottomNavigationView=findViewById(R.id.bottomNavi);
-        fragment1=new Fragment1();
-        fragment2=new Fragment2();
-        fragment3=new Fragment3();
-        fragment4=new Fragment4();
-        fragment5=new Fragment5();
+        bottomNavigationView = findViewById(R.id.bottomNavi);
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.item_fragment1:
+                        setFragment(0);
+                        break;
+                    case R.id.item_fragment2:
+                        setFragment(1);
+                        break;
+                    case R.id.item_fragment3:
+                        setFragment(2);
+                        break;
+                    case R.id.item_fragment4:
+                        setFragment(3);
+                        break;
+                    case R.id.item_fragment5:
+                        setFragment(4);
+                        break;
+                }
+                return true;
+            }
+        });
+        fragment1 = new Fragment1();
+        fragment2 = new Fragment2();
+        fragment3 = new Fragment3();
+        fragment4 = new Fragment4();
+        fragment5 = new Fragment5();
+        setFragment(0);
 
-        locationSource =
-                new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
+        review = new review(); //더보기탭
 
-        CameraPosition cameraPosition = new CameraPosition(
-                new LatLng(35.1798159, 129.0750222), // 대상 지점
-                16, // 줌 레벨
-                20, // 기울임 각도
-                0 // 베어링 각도
-        );
+        //더보기탭 화면전환
+       /* FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.item_fragment5, Fragment5.newInstance()).commit();*/
 
-
-        NaverMapOptions options = new NaverMapOptions()
-                .camera(cameraPosition)
-                .mapType(NaverMap.MapType.Terrain)
-                .enabledLayerGroups(NaverMap.LAYER_GROUP_BUILDING)
-                .compassEnabled(true)
-                .scaleBarEnabled(true)
-                .locationButtonEnabled(true);
-
-        FragmentManager fm = getSupportFragmentManager();
-        MapFragment mapFragment = (MapFragment)fm.findFragmentById(R.id.map);
-        if (mapFragment == null) {
-            mapFragment = MapFragment.newInstance(options);
-            fm.beginTransaction().add(R.id.map, mapFragment).commit();
-        }
-        mapFragment.getMapAsync(this);
     }
 
-   /* private void setFragment(int n){
+   private void setFragment(int n){
         fm=getSupportFragmentManager();
         ft=fm.beginTransaction();
         switch (n){
             case 0:
-                ft.replace(R.id.map,);
+                ft.replace(R.id.mainfram,fragment1);
+                ft.commit();
+                break;
+            case 1:
+                ft.replace(R.id.mainfram,fragment2);
+                ft.commit();
+                break;
+            case 2:
+                ft.replace(R.id.mainfram,fragment3);
+                ft.commit();
+                break;
+            case 3:
+                ft.replace(R.id.mainfram,fragment4);
+                ft.commit();
+                break;
+            case 4:
+                ft.replace(R.id.mainfram,fragment5);
+                ft.commit();
+                break;
 
         }
+    }
+
+    /*public void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.item_fragment5, fragment).commit();
     }*/
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if (locationSource.onRequestPermissionsResult(
-                requestCode, permissions, grantResults)) {
-            return;
-        }
-        super.onRequestPermissionsResult(
-                requestCode, permissions, grantResults);
-    }
-
-    @SuppressLint("StringFormatInvalid")
-    @Override
-    public void onMapReady(@NonNull NaverMap naverMap) {
-        naverMap.setLocationSource(locationSource);
-        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-
-        naverMap.setOnMapClickListener((point, coord) ->
-                Toast.makeText(this, getString(R.string.format_map_click, coord.latitude, coord.longitude),
-                        Toast.LENGTH_SHORT).show());
-
-        naverMap.setOnMapLongClickListener((point, coord) ->
-                Toast.makeText(this, getString(R.string.format_map_long_click, coord.latitude, coord.longitude),
-                        Toast.LENGTH_SHORT).show());
-
-        UiSettings uiSettings = naverMap.getUiSettings();
-        uiSettings.setLocationButtonEnabled(true);
-
-    }
 }
 //최현지 디지셈
+//드디어 해냈다 야발
+//어렵누
