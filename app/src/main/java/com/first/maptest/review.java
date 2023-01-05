@@ -18,6 +18,9 @@ public class review extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.review,container,false);
+
+        activity = (MainActivity) getActivity();
 
         View view = inflater.inflate(R.layout.review,null);
         return view;

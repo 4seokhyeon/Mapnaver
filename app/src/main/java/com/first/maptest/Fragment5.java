@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 //버튼 누르면 화면전환 하는거 + 회원정보 나오는거 해야함
 
 public class Fragment5 extends Fragment {
+    MainActivity activity;
 
     public static Fragment5 newInstance() {
         return new Fragment5();
