@@ -92,12 +92,6 @@ public class MainActivity extends AppCompatActivity  {
         fragment5 = new Fragment5();
         setFragment(0);
 
-        review = new review(); //더보기탭
-
-        //더보기탭 화면전환
-       /* FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(R.id.item_fragment5, Fragment5.newInstance()).commit();*/
-
     }
 
    private void setFragment(int n){
@@ -105,34 +99,28 @@ public class MainActivity extends AppCompatActivity  {
         ft=fm.beginTransaction();
         switch (n){
             case 0:
-                ft.replace(R.id.mainfram,fragment1);
+                ft.replace(R.id.mainframe,fragment1);
                 ft.commit();
                 break;
             case 1:
-                ft.replace(R.id.mainfram,fragment2);
+                ft.replace(R.id.mainframe,fragment2);
                 ft.commit();
                 break;
             case 2:
-                ft.replace(R.id.mainfram,fragment3);
+                ft.replace(R.id.mainframe,fragment3);
                 ft.commit();
                 break;
             case 3:
-                ft.replace(R.id.mainfram,fragment4);
+                ft.replace(R.id.mainframe,fragment4);
                 ft.commit();
                 break;
             case 4:
-                ft.replace(R.id.mainfram,fragment5);
+                ft.replace(R.id.mainframe,fragment5);
                 ft.commit();
                 break;
 
         }
     }
-
-    /*public void replaceFragment(Fragment fragment){
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.item_fragment5, fragment).commit();
-    }*/
 }
 //최현지 디지셈
 //드디어 해냈다 야발
