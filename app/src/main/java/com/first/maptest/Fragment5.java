@@ -15,36 +15,24 @@ import androidx.fragment.app.Fragment;
 //버튼 누르면 화면전환 하는거 + 회원정보 나오는거 해야함
 
 public class Fragment5 extends Fragment {
-    MainActivity activity;
 
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        activity=(MainActivity) getActivity();
-    }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
+    public static Fragment5 newInstance() {
+        return new Fragment5();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_5,container,false);
+        View view = inflater.inflate(R.layout.fragment_5,null);
+        Button review = (Button) view.findViewById(R.id.review);
 
-        Button review = rootView.findViewById(R.id.review);
-        Button pop = rootView.findViewById(R.id.pop);
-        Button customer = rootView.findViewById(R.id.customer);
-        Button notice = rootView.findViewById(R.id.notice);
-
-        review.setOnClickListener(new View.OnClickListener() {
+        /*review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                activity.onFragmentChange(1);
+                ((MainActivity)getActivity()).replaceFragment(com.first.maptest.review.newInstance());
             }
-        });
+        });*/
 
-        return rootView;
+        return view;
     }
 }

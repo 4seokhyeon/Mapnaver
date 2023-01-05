@@ -81,15 +81,11 @@ public class MainActivity extends AppCompatActivity  {
 
         review = new review(); //더보기탭
 
-    }
+        //더보기탭 화면전환
+       /* FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.item_fragment5, Fragment5.newInstance()).commit();*/
 
-        public void onFragmentChange (int fragmentNum){ //더보기탭
-            if (fragmentNum == 1) {
-                getSupportFragmentManager().beginTransaction().replace(androidx.core.R.id.action_container, review).commit();
-            } else if (fragmentNum == 2) {
-                getSupportFragmentManager().beginTransaction().replace(androidx.core.R.id.action_container, fragment5).commit();
-            }
-        }
+    }
 
    private void setFragment(int n){
         fm=getSupportFragmentManager();
@@ -118,6 +114,12 @@ public class MainActivity extends AppCompatActivity  {
 
         }
     }
+
+    /*public void replaceFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.item_fragment5, fragment).commit();
+    }*/
 }
 //최현지 디지셈
 //드디어 해냈다 야발
