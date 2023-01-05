@@ -1,4 +1,4 @@
-package com.first.maptest;
+package com.first.maptest.fragment;
 
 /*import java.util.Calender*/;
 
@@ -20,6 +20,9 @@ import android.widget.TimePicker;
 
 
 import androidx.fragment.app.Fragment;
+
+import com.first.maptest.R;
+
 //예약 프래그 먼 한나가 해보렴 여기다가 자유롭게 할때 커밋 푸쉬 주석 생활화 하셔
 public class Fragment2 extends Fragment {
 

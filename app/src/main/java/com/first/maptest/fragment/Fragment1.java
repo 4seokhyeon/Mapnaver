@@ -1,7 +1,6 @@
-package com.first.maptest;
+package com.first.maptest.fragment;
 
 import android.Manifest;
-import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,24 +8,18 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.naver.maps.geometry.LatLng;
-import com.naver.maps.map.CameraPosition;
+import com.first.maptest.Listframent;
+import com.first.maptest.R;
 import com.naver.maps.map.LocationTrackingMode;
-import com.naver.maps.map.MapFragment;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
-import com.naver.maps.map.NaverMapOptions;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.util.FusedLocationSource;
-import com.naver.maps.map.widget.LocationButtonView;
+
 //네이버 지도 프래그먼트 코드
 public class Fragment1 extends Fragment implements OnMapReadyCallback {
 

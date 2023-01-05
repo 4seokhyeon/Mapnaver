@@ -1,4 +1,4 @@
-package com.first.maptest;
+package com.first.maptest.fragment;
 
 //더보기탭
 
@@ -12,6 +12,10 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
+import com.first.maptest.MainActivity;
+import com.first.maptest.R;
+import com.first.maptest.review;
 
 //버튼 누르면 화면전환 하는거 + 회원정보 나오는거 해야함
 
@@ -31,7 +35,7 @@ public class Fragment5 extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                review review  = new review();
+                com.first.maptest.review review  = new review();
                 transaction.replace(R.id.item_fragment5,review);
                 transaction.commit();
             }

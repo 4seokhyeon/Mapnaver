@@ -2,29 +2,22 @@ package com.first.maptest;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Toast;
 
+import com.first.maptest.fragment.Fragment1;
+import com.first.maptest.fragment.Fragment2;
+import com.first.maptest.fragment.Fragment3;
+import com.first.maptest.fragment.Fragment4;
+import com.first.maptest.fragment.Fragment5;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.naver.maps.geometry.LatLng;
-import com.naver.maps.map.CameraPosition;
-import com.naver.maps.map.LocationTrackingMode;
-import com.naver.maps.map.MapFragment;
-import com.naver.maps.map.NaverMap;
-import com.naver.maps.map.NaverMapOptions;
-import com.naver.maps.map.OnMapReadyCallback;
-import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.ArrayList;
