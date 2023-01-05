@@ -46,6 +46,7 @@ public class MainActivity extends AppCompatActivity  {
     private Fragment3 fragment3;
     private Fragment4 fragment4;
     private Fragment5 fragment5;
+    private Listframent listframent;
 
 
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity  {
 
     }
 
-   private void setFragment(int n){
+   public void setFragment(int n){
         fm=getSupportFragmentManager();
         ft=fm.beginTransaction();
         switch (n){
@@ -118,6 +119,7 @@ public class MainActivity extends AppCompatActivity  {
                 ft.replace(R.id.mainframe,fragment5);
                 ft.commit();
                 break;
+
 
         }
     }

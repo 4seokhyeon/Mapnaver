@@ -20,7 +20,7 @@ public class review extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootview = (ViewGroup)inflater.inflate(R.layout.review,container,false);
 
-        activity = (MainActivity) getActivity();
+        /*activity = (MainActivity) getActivity();*/
 
 
         view = inflater.inflate(R.layout.review, container, false);

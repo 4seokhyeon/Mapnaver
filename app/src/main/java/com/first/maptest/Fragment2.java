@@ -1,6 +1,6 @@
 package com.first.maptest;
 
-import java.util.Calender;
+/*import java.util.Calender*/;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

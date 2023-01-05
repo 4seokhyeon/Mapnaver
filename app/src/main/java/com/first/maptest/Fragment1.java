@@ -1,16 +1,20 @@
 package com.first.maptest;
 
 import android.Manifest;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.CameraPosition;
@@ -25,7 +29,7 @@ import com.naver.maps.map.util.FusedLocationSource;
 import com.naver.maps.map.widget.LocationButtonView;
 //네이버 지도 프래그먼트 코드
 public class Fragment1 extends Fragment implements OnMapReadyCallback {
-    private FragmentActivity mcontext;
+
     //지도 객체 변수
     private MapView mapView;
     private static NaverMap naverMap;
@@ -38,6 +42,7 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback {
 
     public Fragment1() { }
 
+
     public static Fragment1 newInstance()
     {
         Fragment1 fragment = new Fragment1();
@@ -45,8 +50,7 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
@@ -56,11 +60,26 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_1,
                 container, false);
+        Button listButton=rootView.findViewById(R.id.listButton);
 
         mapView = (MapView) rootView.findViewById(R.id.navermap);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
         locationSource= new FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE);
+
+        listButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction=getActivity().getSupportFragmentManager().beginTransaction();
+                Listframent listframent=new Listframent();
+                fragmentTransaction.replace(R.id.mainframe,listframent);
+                fragmentTransaction.commit();
+
+
+
+
+            }
+        });
 
         return rootView;
     }
@@ -70,7 +89,7 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback {
         Fragment1.naverMap =naverMap;
         naverMap.setLocationSource(locationSource);
         requestPermissions(PERMISSIONS,LOCATION_PERMISSION_REQUEST_CODE);
-        
+
         //ui 셋팅
         UiSettings uiSettings=naverMap.getUiSettings();
         uiSettings.setLocationButtonEnabled(true);

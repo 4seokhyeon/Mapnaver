@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -32,14 +33,14 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
         HospitalViewHolder holder=new HospitalViewHolder(view);
 
 
-        return null;
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(@NonNull HospitalAdapter.HospitalViewHolder holder, int position) {
-        Glide.with(holder.itemView)
+        /*Glide.with(holder.itemView)
                 .load(arrayList.get(position).getProfile())
-                .into(holder.iv_profile);
+                .into(holder.iv_profile);*/
         holder.tv_addr.setText(arrayList.get(position).getAddr());
         holder.tv_h_name.setText(arrayList.get(position).getH_name());
         holder.tv_h_type.setText(arrayList.get(position).getH_type());
@@ -53,7 +54,8 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
     }
 
     public class HospitalViewHolder extends RecyclerView.ViewHolder {
-        ImageView iv_profile;
+        LinearLayout listH;
+        //ImageView iv_profile;
         TextView tv_addr;
         TextView tv_h_name;
         TextView tv_h_type;
@@ -61,7 +63,8 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
 
         public HospitalViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.iv_profile=itemView.findViewById(R.id.iv_profile);
+           // this.iv_profile=itemView.findViewById(R.id.iv_profile);
+            this.listH=itemView.findViewById(R.id.listH);
             this.tv_addr=itemView.findViewById(R.id.tv_addr);
             this.tv_h_name=itemView.findViewById(R.id.tv_h_name);
             this.tv_h_type=itemView.findViewById(R.id.tv_h_type);
