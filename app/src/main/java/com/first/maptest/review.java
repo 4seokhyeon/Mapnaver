@@ -7,20 +7,32 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 public class review extends Fragment {
 
-    MainActivity activity;
 
-    public static review newInstance() {
-        return new review();
-    }
+    private View view;
+    private Button back;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.review,null);
-        return view;
 
+        view = inflater.inflate(R.layout.review, container, false);
+
+        back = view.findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                Fragment5 fragment5 = new Fragment5();
+                transaction.replace(R.id.review, fragment5);
+                transaction.commit();
+            }
+        });
+
+        return view;
     }
 }
