@@ -44,7 +44,7 @@ public class Listframent extends Fragment {
         arrayList=new ArrayList<>();
         fragmentManager=getActivity().getSupportFragmentManager();
         //여기 주석 풀지마 이 새 끼 뜰아 연결해놓은거라 냅둬라;
-        /*database=FirebaseDatabase.getInstance();
+      /*  database=FirebaseDatabase.getInstance();
         databaseReference=database.getReference("Host");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
