@@ -16,6 +16,7 @@ import com.first.maptest.Listframent;
 import com.first.maptest.MainActivity;
 import com.first.maptest.R;
 import com.first.maptest.moretab.customer;
+import com.first.maptest.moretab.my;
 import com.first.maptest.moretab.notice;
 import com.first.maptest.moretab.pop;
 import com.first.maptest.moretab.review;
@@ -37,6 +38,17 @@ public class Fragment5 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_5, container, false);
+
+        Button my = rootView.findViewById(R.id.my);
+        my.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                my my = new my();
+                fragmentTransaction.replace(R.id.mainframe, my);
+                fragmentTransaction.commit();
+            }
+        });
 
         Button review = rootView.findViewById(R.id.review);
         review.setOnClickListener(new View.OnClickListener() {
