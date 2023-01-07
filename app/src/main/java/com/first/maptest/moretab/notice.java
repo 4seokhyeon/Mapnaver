@@ -1,14 +1,16 @@
-package com.first.maptest;
+package com.first.maptest.moretab;
 
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-public class customer extends AppCompatActivity{
+import com.first.maptest.R;
+
+public class notice extends AppCompatActivity{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.customer);
+        setContentView(R.layout.notice);
 
     }
 }

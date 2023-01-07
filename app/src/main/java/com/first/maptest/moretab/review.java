@@ -1,4 +1,4 @@
-package com.first.maptest;
+package com.first.maptest.moretab;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,6 +9,7 @@ import android.widget.Button;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment5;
 
 public class review extends Fragment {

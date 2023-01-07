@@ -55,7 +55,7 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
 
     public class HospitalViewHolder extends RecyclerView.ViewHolder {
         LinearLayout listH;
-        //ImageView iv_profile;
+        //ImageView iv_profile; 나중에 병원 이미지 넣고 할 예정
         TextView tv_addr;
         TextView tv_h_name;
         TextView tv_h_type;
