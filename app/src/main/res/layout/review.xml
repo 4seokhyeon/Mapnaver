@@ -8,8 +8,8 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="374dp"
-        android:layout_height="73dp"
+        android:layout_width="318dp"
+        android:layout_height="81dp"
         android:layout_marginEnd="20dp"
         android:gravity="center"
         android:text="리뷰관리"
@@ -17,20 +17,19 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.165"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/back"
-        android:layout_width="147dp"
-        android:layout_height="109dp"
-        android:layout_marginEnd="228dp"
+        android:layout_width="102dp"
+        android:layout_height="53dp"
+        android:layout_marginEnd="244dp"
         android:text="뒤로가기"
-        android:textSize="30sp"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.432"
+        app:layout_constraintVertical_bias="0.094"
         tools:ignore="MissingConstraints" />
 
 

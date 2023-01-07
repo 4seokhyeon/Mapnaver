@@ -8,37 +8,80 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.first.maptest.Listframent;
 import com.first.maptest.MainActivity;
 import com.first.maptest.R;
+import com.first.maptest.moretab.customer;
+import com.first.maptest.moretab.notice;
+import com.first.maptest.moretab.pop;
 import com.first.maptest.moretab.review;
 
 //버튼 누르면 화면전환 하는거 + 회원정보 나오는거 해야함
 
 public class Fragment5 extends Fragment {
-    MainActivity activity;
+    public static Fragment5 newInstance()
+    {
+        return new Fragment5();
+    }
 
-    private View view;
-    private Button review;
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_5, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_5, container, false);
 
-        review = view.findViewById(R.id.review);
+        Button review = rootView.findViewById(R.id.review);
         review.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-                com.first.maptest.moretab.review review  = new review();
-                transaction.replace(R.id.item_fragment5,review);
-                transaction.commit();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                review review = new review();
+                fragmentTransaction.replace(R.id.mainframe, review);
+                fragmentTransaction.commit();
             }
         });
 
-        return view;
+        Button pop = rootView.findViewById(R.id.pop);
+        pop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                pop pop = new pop();
+                fragmentTransaction.replace(R.id.mainframe, pop);
+                fragmentTransaction.commit();
+            }
+        });
+
+        Button customer = rootView.findViewById(R.id.customer);
+        customer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                customer customer = new customer();
+                fragmentTransaction.replace(R.id.mainframe, customer);
+                fragmentTransaction.commit();
+            }
+        });
+
+        Button notice = rootView.findViewById(R.id.notice);
+        notice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                notice notice = new notice();
+                fragmentTransaction.replace(R.id.mainframe, notice);
+                fragmentTransaction.commit();
+            }
+        });
+
+        return rootView;
     }
 }
