@@ -24,7 +24,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.R;
-import com.first.maptest.moretab.my;
 import com.first.maptest.reserve;
 
 import java.util.zip.Inflater;
@@ -107,7 +106,7 @@ public class Fragment2 extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+   public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //예약버튼
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_2, container, false);

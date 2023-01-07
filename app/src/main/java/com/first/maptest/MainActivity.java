@@ -45,8 +45,6 @@ public class MainActivity extends AppCompatActivity  {
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
     private FusedLocationSource locationSource;
 
-    com.first.maptest.moretab.review review;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
