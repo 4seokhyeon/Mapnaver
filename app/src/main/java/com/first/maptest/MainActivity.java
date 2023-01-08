@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.first.maptest.fragment.Fragment1;
 import com.first.maptest.fragment.Fragment2;
@@ -22,7 +23,7 @@ import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
     //병원 목록 파이어베이스 부분
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -30,6 +31,8 @@ public class MainActivity extends AppCompatActivity  {
     private ArrayList<Hospital> arrayList;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference; //파이어 베이스 전역 변수 선언 부분
+
+    private long backBtnTime = 0;
 
     private BottomNavigationView bottomNavigationView; //바텀 네비게이션뷰
     private FragmentManager fm;
@@ -42,15 +45,11 @@ public class MainActivity extends AppCompatActivity  {
     private Listframent listframent;
 
 
-    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
-    private FusedLocationSource locationSource;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_main);
-
 
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
@@ -83,31 +82,46 @@ public class MainActivity extends AppCompatActivity  {
         fragment4 = new Fragment4();
         fragment5 = new Fragment5();
         setFragment(0);
+    }
+
+    @Override
+    public void onBackPressed() {
+        long curTime=System.currentTimeMillis();
+        long gapTime=curTime-backBtnTime;
+
+        if(0<=gapTime && 2000>=gapTime){
+            super.onBackPressed();
+        }
+        else{
+            backBtnTime=curTime;
+            Toast.makeText(this,"한번 더 누르면 종료됩니다.",Toast.LENGTH_SHORT).show();
+        }
+
 
     }
 
-   public void setFragment(int n){
-        fm=getSupportFragmentManager();
-        ft=fm.beginTransaction();
-        switch (n){
+    public void setFragment(int n) {
+        fm = getSupportFragmentManager();
+        ft = fm.beginTransaction();
+        switch (n) {
             case 0:
-                ft.replace(R.id.mainframe,fragment1);
+                ft.replace(R.id.mainframe, fragment1);
                 ft.commit();
                 break;
             case 1:
-                ft.replace(R.id.mainframe,fragment2);
+                ft.replace(R.id.mainframe, fragment2);
                 ft.commit();
                 break;
             case 2:
-                ft.replace(R.id.mainframe,fragment3);
+                ft.replace(R.id.mainframe, fragment3);
                 ft.commit();
                 break;
             case 3:
-                ft.replace(R.id.mainframe,fragment4);
+                ft.replace(R.id.mainframe, fragment4);
                 ft.commit();
                 break;
             case 4:
-                ft.replace(R.id.mainframe,fragment5);
+                ft.replace(R.id.mainframe, fragment5);
                 ft.commit();
                 break;
 

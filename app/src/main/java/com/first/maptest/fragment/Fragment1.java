@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.Listframent;
 import com.first.maptest.R;
+import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
@@ -82,6 +83,8 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback {
         Fragment1.naverMap =naverMap;
         naverMap.setLocationSource(locationSource);
         requestPermissions(PERMISSIONS,LOCATION_PERMISSION_REQUEST_CODE);
+
+        LatLng mapCenter = naverMap.getCameraPosition().target;
 
         //ui 셋팅
         UiSettings uiSettings=naverMap.getUiSettings();
