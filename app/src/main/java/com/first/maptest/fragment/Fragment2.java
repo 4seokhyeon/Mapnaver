@@ -37,14 +37,14 @@ public class Fragment2 extends Fragment {
     }
 
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
 
 
     @Override
-   public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         //예약버튼
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_2, container, false);

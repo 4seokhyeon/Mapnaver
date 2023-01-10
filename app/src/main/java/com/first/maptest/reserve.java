@@ -32,13 +32,6 @@ public class reserve extends Fragment {
 
     }
 
-    //폼
-    public void ButtonClick2(View v){
-        Intent intent = new Intent(Intent.ACTION_VIEW,
-                Uri.parse("https://naver.me/5OGvHS9D"));
-        startActivity(intent);
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -52,6 +45,16 @@ public class reserve extends Fragment {
                 Fragment2 fragment2 = new Fragment2();
                 fragmentTransaction.replace(R.id.mainframe, fragment2);
                 fragmentTransaction.commit();
+            }
+        });
+
+        Button button1 = rootView.findViewById(R.id.button1);
+        button1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW,
+                        Uri.parse("https://naver.me/5OGvHS9D"));
+                startActivity(intent);
             }
         });
 
