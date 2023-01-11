@@ -24,6 +24,14 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:scheme="http"
+                    android:host="google.com" />
+            </intent-filter>
 
             <meta-data
                 android:name="android.app.lib_name"
@@ -32,6 +40,18 @@
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
             android:value="g9b2voixpr" />
+        <activity
+            android:name=".LoginActivity">
+        </activity>
+        <activity
+            android:name=".MemberInfoActivity">
+        </activity>
+        <activity
+            android:name=".PasswordResetActivity">
+        </activity>
+        <activity
+            android:name=".SignUpActivity">
+        </activity>
     </application>
 
 </manifest>

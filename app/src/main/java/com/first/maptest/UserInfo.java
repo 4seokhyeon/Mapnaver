@@ -1,4 +1,4 @@
-package com.cloudtest.kakaomap;
+package com.first.maptest;
 
 public class UserInfo {
     private String name;

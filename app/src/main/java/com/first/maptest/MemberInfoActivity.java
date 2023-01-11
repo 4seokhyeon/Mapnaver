@@ -1,4 +1,4 @@
-package com.cloudtest.kakaomap;
+package com.first.maptest;
 
 import android.os.Bundle;
 import android.view.View;

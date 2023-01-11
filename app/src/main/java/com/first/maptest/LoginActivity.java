@@ -1,4 +1,4 @@
-package com.cloudtest.kakaomap;
+package com.first.maptest;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -32,7 +32,7 @@ public class LoginActivity extends AppCompatActivity {
     public void onStart() {
         super.onStart();
         // Check if user is signed in (non-null) and update UI accordingly.
-        FirebaseUser currentUser = mAuth.getCurrentUser();
+        //FirebaseUser currentUser = mAuth.getCurrentUser();
     }
     //뒤로가기 버튼을 눌렀을 때 꺼지게 함
    public void onBackPressed(){

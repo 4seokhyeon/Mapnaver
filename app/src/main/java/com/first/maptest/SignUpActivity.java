@@ -1,4 +1,4 @@
-package com.cloudtest.kakaomap;
+package com.first.maptest;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,7 +23,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-        findViewById(R.id.LoginButton).setOnClickListener(onClickListener);
+        findViewById(R.id.SignUpButton).setOnClickListener(onClickListener);
     }
 
     public void onStart() {
@@ -42,7 +42,7 @@ public class SignUpActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch(v.getId()){
-                case R.id.LoginButton:
+                case R.id.SignUpButton:
                     signUp();
                     break;
             }
