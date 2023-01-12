@@ -1,4 +1,4 @@
-package com.first.maptest.fragment;
+package com.first.maptest;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,17 +10,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.first.maptest.R;
-import com.first.maptest.mv;
-import com.first.maptest.hp;
+import com.first.maptest.fragment.Fragment3;
 
-//동행 서비스 탭
-public class Fragment3 extends Fragment {
+public class mv extends Fragment {
 
-    public static Fragment3 newInstance() {
-        return new Fragment3();
+    public static mv newInstance() {
+        return new mv();
     }
 
+    //이동지원탭 예약버튼
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,27 +27,26 @@ public class Fragment3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //예약버튼
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_3, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.mv, container, false);
 
-        Button mv = rootView.findViewById(R.id.mv);
-        mv.setOnClickListener(new View.OnClickListener() {
+        Button back = rootView.findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                mv mv = new mv();
-                fragmentTransaction.replace(R.id.mainframe, mv);
+                Fragment3 fragment3 = new Fragment3();
+                fragmentTransaction.replace(R.id.mainframe, fragment3);
                 fragmentTransaction.commit();
             }
         });
 
-        Button hp = rootView.findViewById(R.id.hp);
-        hp.setOnClickListener(new View.OnClickListener() {
+        Button r1 = rootView.findViewById(R.id.rv);
+        r1.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                hp hp = new hp();
-                fragmentTransaction.replace(R.id.mainframe, hp);
+                rv rv = new rv();
+                fragmentTransaction.replace(R.id.mainframe, rv);
                 fragmentTransaction.commit();
             }
         });

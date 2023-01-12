@@ -59,6 +59,7 @@ public class Fragment2 extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
         return rootView;
     }
 }

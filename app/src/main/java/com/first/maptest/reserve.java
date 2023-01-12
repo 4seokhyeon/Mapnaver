@@ -25,7 +25,7 @@ public class reserve extends Fragment {
         return new reserve();
     }
 
-    //예약버튼 화면전환
+    //예약탭 예약버튼
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
