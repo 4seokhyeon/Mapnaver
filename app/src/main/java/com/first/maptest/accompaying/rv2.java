@@ -1,7 +1,5 @@
-package com.first.maptest;
+package com.first.maptest.accompaying;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,14 +10,15 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment3;
 
-//이동지원 예약내역
-public class rv extends Fragment {
+//병원동행 예약내역
+public class rv2 extends Fragment {
 
-    public static rv newInstance()
+    public static rv2 newInstance()
     {
-        return new rv();
+        return new rv2();
     }
 
     @Override
@@ -30,7 +29,7 @@ public class rv extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.rv, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.rv2, container, false);
 
         //완료버튼
         Button cp = rootView.findViewById(R.id.cp);
@@ -43,6 +42,7 @@ public class rv extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
 
         return rootView;
     }

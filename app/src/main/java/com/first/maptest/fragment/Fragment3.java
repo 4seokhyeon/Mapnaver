@@ -11,8 +11,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.R;
-import com.first.maptest.mv;
-import com.first.maptest.hp;
+import com.first.maptest.accompaying.mv;
+import com.first.maptest.accompaying.hp;
 
 //동행 서비스 탭
 public class Fragment3 extends Fragment {
