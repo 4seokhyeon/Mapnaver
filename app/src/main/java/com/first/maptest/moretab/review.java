@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment5;
 
+//리뷰관리
 public class review extends Fragment {
 
     public static review newInstance()

@@ -14,7 +14,9 @@ import androidx.fragment.app.FragmentTransaction;
 import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment5;
 
+//알림설정
 public class pop extends Fragment {
+
     public static pop newInstance()
     {
         return new pop();

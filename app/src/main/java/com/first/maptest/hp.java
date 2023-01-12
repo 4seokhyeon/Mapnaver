@@ -12,12 +12,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.fragment.Fragment3;
 
+//병원동행
 public class hp extends Fragment {
+
     public static hp newInstance() {
         return new hp();
     }
 
-    //병원동행
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

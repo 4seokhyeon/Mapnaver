@@ -17,15 +17,14 @@ import com.first.maptest.fragment.Fragment2;
 import com.first.maptest.fragment.Fragment5;
 import com.first.maptest.moretab.review;
 
+//예약탭
 public class reserve extends Fragment {
-
 
     public static reserve newInstance()
     {
         return new reserve();
     }
 
-    //예약탭 예약버튼
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

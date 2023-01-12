@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.fragment.Fragment3;
 
+//이동지원 예약내역
 public class rv extends Fragment {
 
     public static rv newInstance()
@@ -21,7 +22,6 @@ public class rv extends Fragment {
         return new rv();
     }
 
-    //이동지원 예약내역
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

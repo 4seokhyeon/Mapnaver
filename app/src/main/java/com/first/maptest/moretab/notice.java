@@ -14,7 +14,9 @@ import androidx.fragment.app.FragmentTransaction;
 import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment5;
 
+//공지사항
 public class notice extends Fragment {
+
     public static notice newInstance()
     {
         return new notice();

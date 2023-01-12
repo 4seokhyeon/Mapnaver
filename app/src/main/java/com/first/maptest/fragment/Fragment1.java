@@ -36,7 +36,6 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback {
 
     public Fragment1() { }
 
-
     public static Fragment1 newInstance()
     {
         Fragment1 fragment = new Fragment1();
@@ -68,10 +67,6 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback {
                 Listframent listframent=new Listframent();
                 fragmentTransaction.replace(R.id.mainframe,listframent);
                 fragmentTransaction.commit();
-
-
-
-
             }
         });
 
@@ -90,8 +85,6 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback {
         UiSettings uiSettings=naverMap.getUiSettings();
         uiSettings.setLocationButtonEnabled(true);
         uiSettings.setZoomControlEnabled(false);
-
-
     }
 
     @Override
@@ -103,7 +96,6 @@ public class Fragment1 extends Fragment implements OnMapReadyCallback {
             }
             else {
                 naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-
             }
         }
 

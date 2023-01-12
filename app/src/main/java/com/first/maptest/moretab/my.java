@@ -13,6 +13,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment5;
 
+//회원정보
 public class my extends Fragment {
 
     public static my newInstance()

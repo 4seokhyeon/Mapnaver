@@ -44,13 +44,11 @@ public class MainActivity extends AppCompatActivity {
     private Fragment5 fragment5;
     private Listframent listframent;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
         setContentView(R.layout.activity_main);
-
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -96,8 +94,6 @@ public class MainActivity extends AppCompatActivity {
             backBtnTime=curTime;
             Toast.makeText(this,"한번 더 누르면 종료됩니다.",Toast.LENGTH_SHORT).show();
         }
-
-
     }
 
     public void setFragment(int n) {
@@ -124,8 +120,6 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.mainframe, fragment5);
                 ft.commit();
                 break;
-
-
         }
     }
 }

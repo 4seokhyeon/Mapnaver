@@ -11,7 +11,7 @@
         android:layout_height="81dp"
         android:layout_marginStart="20dp"
         android:gravity="center"
-        android:text="알림관리"
+        android:text="알림설정"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

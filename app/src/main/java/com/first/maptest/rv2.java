@@ -12,6 +12,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.fragment.Fragment3;
 
+//병원동행 예약내역
 public class rv2 extends Fragment {
 
     public static rv2 newInstance()
@@ -19,7 +20,6 @@ public class rv2 extends Fragment {
         return new rv2();
     }
 
-    //병원동행 예약내역
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

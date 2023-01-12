@@ -12,13 +12,13 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.fragment.Fragment3;
 
+//이동지원
 public class mv extends Fragment {
 
     public static mv newInstance() {
         return new mv();
     }
 
-    //이동지원
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

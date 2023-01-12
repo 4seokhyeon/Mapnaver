@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment5;
 
+//고객센터
 public class customer extends Fragment {
     public static customer newInstance()
     {
