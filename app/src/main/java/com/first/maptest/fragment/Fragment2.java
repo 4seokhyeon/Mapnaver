@@ -28,10 +28,9 @@ import com.first.maptest.reserve;
 
 import java.util.zip.Inflater;
 
-//예약 프래그 먼 한나가 해보렴 여기다가 자유롭게 할때 커밋 푸쉬 주석 생활화 하셔
+//예약 탭
 public class Fragment2 extends Fragment {
 
-    //예약버튼!
     public static Fragment2 newInstance() {
         return new Fragment2();
     }
@@ -47,9 +46,9 @@ public class Fragment2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //예약버튼
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_2, container, false);
 
+        //예약버튼
         Button reserve = rootView.findViewById(R.id.reserve);
         reserve.setOnClickListener(new View.OnClickListener() {
             @Override

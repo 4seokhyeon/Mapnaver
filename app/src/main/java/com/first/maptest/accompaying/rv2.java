@@ -20,7 +20,7 @@ public class rv2 extends Fragment {
         return new rv2();
     }
 
-    //병원동행 예약버튼
+    //병원동행 예약내역
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +31,7 @@ public class rv2 extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.rv2, container, false);
 
+        //완료버튼
         Button cp = rootView.findViewById(R.id.cp);
         cp.setOnClickListener(new View.OnClickListener() {
             @Override

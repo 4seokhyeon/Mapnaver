@@ -18,7 +18,7 @@ public class hp extends Fragment {
         return new hp();
     }
 
-    //병원동행탭 예약버튼
+    //병원동행
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +40,7 @@ public class hp extends Fragment {
             }
         });
 
+        //예약버튼
         Button r2 = rootView.findViewById(R.id.rv2);
         r2.setOnClickListener(new View.OnClickListener() {
             @Override

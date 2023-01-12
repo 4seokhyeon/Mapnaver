@@ -19,7 +19,7 @@ public class mv extends Fragment {
         return new mv();
     }
 
-    //이동지원탭 예약버튼
+    //이동지원
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +41,7 @@ public class mv extends Fragment {
             }
         });
 
+        //예약버튼
         Button r1 = rootView.findViewById(R.id.rv);
         r1.setOnClickListener(new View.OnClickListener() {
             @Override
