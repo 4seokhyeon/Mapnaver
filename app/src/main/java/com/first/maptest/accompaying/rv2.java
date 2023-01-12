@@ -1,4 +1,4 @@
-package com.first.maptest;
+package com.first.maptest.accompaying;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,14 +10,17 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment3;
 
-public class hp extends Fragment {
-    public static hp newInstance() {
-        return new hp();
+public class rv2 extends Fragment {
+
+    public static rv2 newInstance()
+    {
+        return new rv2();
     }
 
-    //병원동행탭 예약버튼
+    //병원동행 예약버튼
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,10 +29,10 @@ public class hp extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.hp, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.rv2, container, false);
 
-        Button back = rootView.findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
+        Button cp = rootView.findViewById(R.id.cp);
+        cp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -39,16 +42,6 @@ public class hp extends Fragment {
             }
         });
 
-        Button r2 = rootView.findViewById(R.id.rv2);
-        r2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                rv2 rv2 = new rv2();
-                fragmentTransaction.replace(R.id.mainframe, rv2);
-                fragmentTransaction.commit();
-            }
-        });
 
         return rootView;
     }

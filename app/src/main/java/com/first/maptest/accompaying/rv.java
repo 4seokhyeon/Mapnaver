@@ -1,7 +1,5 @@
-package com.first.maptest;
+package com.first.maptest.accompaying;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +10,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment3;
 
 public class rv extends Fragment {

@@ -19,7 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-
+//병원 리스트 클래스
 public class Listframent extends Fragment {
     private RecyclerView recyclerView;
     private ArrayList<Hospital>arrayList;
