@@ -21,7 +21,7 @@ public class rv extends Fragment {
         return new rv();
     }
 
-    //동행서비스탭 예약버튼
+    //이동지원 예약내역
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +32,7 @@ public class rv extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.rv, container, false);
 
+        //완료버튼
         Button cp = rootView.findViewById(R.id.cp);
         cp.setOnClickListener(new View.OnClickListener() {
             @Override

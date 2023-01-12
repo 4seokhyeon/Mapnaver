@@ -29,9 +29,9 @@ public class Fragment3 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        //예약버튼
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_3, container, false);
 
+        //이동지원
         Button mv = rootView.findViewById(R.id.mv);
         mv.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,6 +43,7 @@ public class Fragment3 extends Fragment {
             }
         });
 
+        //병원동행
         Button hp = rootView.findViewById(R.id.hp);
         hp.setOnClickListener(new View.OnClickListener() {
             @Override
