@@ -43,7 +43,7 @@ public class Listframent extends Fragment {
     private void initdata(){
         arrayList=new ArrayList<>();
         fragmentManager=getActivity().getSupportFragmentManager();
-        //여기 주석 풀지마 이 새 끼 뜰아 연결해놓은거라 냅둬라;
+        //여기 주석 풀지마
       /*  database=FirebaseDatabase.getInstance();
         databaseReference=database.getReference("Host");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
