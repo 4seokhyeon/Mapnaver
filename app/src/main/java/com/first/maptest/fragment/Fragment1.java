@@ -11,7 +11,9 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import java.util.List;
 
+import com.first.maptest.Hospital;
 import com.first.maptest.Listframent;
 import com.first.maptest.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,6 +30,8 @@ import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.Overlay;
 import com.naver.maps.map.util.FusedLocationSource;
 
+import java.util.ArrayList;
+
 //네이버 지도 프래그먼트 코드
 public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMapReadyCallback {
 
@@ -36,15 +40,19 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
 
     //final Geocoder geocoder = new Geocoder(this.getContext());
     //지도 객체 변수
+    private Geocoder geocoder;
     private MapView mapView;
     private static NaverMap naverMap;
     private FusedLocationSource locationSource;
     private InfoWindow infoWindow;
+    private List<Marker> markerList = new ArrayList<Marker>();
+    private boolean isCameraAnimated = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE=1000;
     private static final String[] PERMISSIONS={
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
     };
+    ArrayList<Hospital> hospital=new ArrayList<>();
 
     public Fragment1() { }
 
@@ -57,6 +65,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
 
@@ -94,10 +103,13 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
         Fragment1.naverMap =naverMap;
         naverMap.setLocationSource(locationSource);
         requestPermissions(PERMISSIONS,LOCATION_PERMISSION_REQUEST_CODE);
+        
         //ui 셋팅
         UiSettings uiSettings=naverMap.getUiSettings();
         uiSettings.setLocationButtonEnabled(true);
         uiSettings.setZoomControlEnabled(false);
+
+
 
 
 
