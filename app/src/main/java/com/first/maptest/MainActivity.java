@@ -20,11 +20,17 @@ import com.first.maptest.fragment.Fragment5;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.NaverMap;
+import com.naver.maps.map.overlay.Marker;
+import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
+
     //병원 목록 파이어베이스 부분
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
