@@ -177,6 +177,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
             }
-        }
+        } //이거 여기다가 선언하면 안될껄? 우리가 지도는 메인에 없고 프래그먼트 1에 있어서 이렇게 추가하면 아마 오류 날겨
     }*/
 }
