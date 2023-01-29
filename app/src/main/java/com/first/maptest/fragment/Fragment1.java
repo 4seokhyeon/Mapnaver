@@ -103,11 +103,13 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
         Fragment1.naverMap =naverMap;
         naverMap.setLocationSource(locationSource);
         requestPermissions(PERMISSIONS,LOCATION_PERMISSION_REQUEST_CODE);
-        
+
         //ui 셋팅
         UiSettings uiSettings=naverMap.getUiSettings();
         uiSettings.setLocationButtonEnabled(true);
         uiSettings.setZoomControlEnabled(false);
+
+
 
 
 
