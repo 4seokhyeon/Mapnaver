@@ -35,7 +35,7 @@ import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MainActivity extends AppCompatActivity {
 
 
     //병원 목록 파이어베이스 부분
@@ -57,15 +57,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     private Fragment4 fragment4;
     private Fragment5 fragment5;
     private Listframent listframent;
-
-    /*현재위치표시
-    private NaverMap mNaverMap;
-    private static final int PERMISSION_REQUEST_CODE = 1000;
-    private  static final String[] PERMISSION={
-            Manifest.permission.ACCESS_FINE_LOCATION,
-            Manifest.permission.ACCESS_COARSE_LOCATION
-    };
-    private FusedLocationSource mLocationSource;*/   // 이것도 필요없는 부분이지 프래그먼트 1일 우리 지도 표시해주는 부분이야
+    
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -111,15 +103,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     @Override
     public void onBackPressed() {
-        long curTime=System.currentTimeMillis();
-        long gapTime=curTime-backBtnTime;
+        long curTime = System.currentTimeMillis();
+        long gapTime = curTime - backBtnTime;
 
-        if(0<=gapTime && 2000>=gapTime){
+        if (0 <= gapTime && 2000 >= gapTime) {
             super.onBackPressed();
-        }
-        else{
-            backBtnTime=curTime;
-            Toast.makeText(this,"한번 더 누르면 종료됩니다.",Toast.LENGTH_SHORT).show();
+        } else {
+            backBtnTime = curTime;
+            Toast.makeText(this, "한번 더 누르면 종료됩니다.", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -150,33 +141,4 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 break;
         }
     }
-
-    @Override
-    public void onMapReady(@NonNull NaverMap naverMap) {
-        /*마커
-        Marker marker = new Marker();
-        marker.setPosition(new LatLng(37.5670135,126.9783740));
-        marker.setMap(naverMap);
-        marker.setWidth(100);
-        marker.setHeight(100);
-        marker.setIcon(OverlayImage.fromResource(R.drawable.mark));
-        marker.setCaptionText("금정역");
-        marker.setCaptionAligns(Align.Top);*/
-
-        /*현재위치표시
-        mNaverMap=naverMap;
-        mNaverMap.setLocationSource(mLocationSource);
-        ActivityCompat.requestPermissions(this,PERMISSION, PERMISSION_REQUEST_CODE);*/
-    }
-
-    /*현재위치표시
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if(requestCode == PERMISSION_REQUEST_CODE){
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-            }
-        } //이거 여기다가 선언하면 안될껄? 우리가 지도는 메인에 없고 프래그먼트 1에 있어서 이렇게 추가하면 아마 오류 날
-    }*/
 }
