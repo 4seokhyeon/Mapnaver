@@ -2,12 +2,15 @@ package com.first.maptest;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.Manifest;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -20,11 +23,21 @@ import com.first.maptest.fragment.Fragment5;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.LocationTrackingMode;
+import com.naver.maps.map.MapFragment;
+import com.naver.maps.map.NaverMap;
+import com.naver.maps.map.OnMapReadyCallback;
+import com.naver.maps.map.overlay.Align;
+import com.naver.maps.map.overlay.Marker;
+import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+
+
     //병원 목록 파이어베이스 부분
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
@@ -45,12 +58,24 @@ public class MainActivity extends AppCompatActivity {
     private Fragment5 fragment5;
     private Listframent listframent;
 
+    /*현재위치표시
+    private NaverMap mNaverMap;
+    private static final int PERMISSION_REQUEST_CODE = 1000;
+    private  static final String[] PERMISSION={
+            Manifest.permission.ACCESS_FINE_LOCATION,
+            Manifest.permission.ACCESS_COARSE_LOCATION
+    };
+    private FusedLocationSource mLocationSource;*/
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //세로모드고정
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
+
+        /*현재위치표시
+        mLocationSource = new FusedLocationSource(this,PERMISSION_REQUEST_CODE);*/
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -125,8 +150,33 @@ public class MainActivity extends AppCompatActivity {
                 break;
         }
     }
+
+    @Override
+    public void onMapReady(@NonNull NaverMap naverMap) {
+        /*마커
+        Marker marker = new Marker();
+        marker.setPosition(new LatLng(37.5670135,126.9783740));
+        marker.setMap(naverMap);
+        marker.setWidth(100);
+        marker.setHeight(100);
+        marker.setIcon(OverlayImage.fromResource(R.drawable.mark));
+        marker.setCaptionText("금정역");
+        marker.setCaptionAligns(Align.Top);*/
+
+        /*현재위치표시
+        mNaverMap=naverMap;
+        mNaverMap.setLocationSource(mLocationSource);
+        ActivityCompat.requestPermissions(this,PERMISSION, PERMISSION_REQUEST_CODE);*/
+    }
+
+    /*현재위치표시
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if(requestCode == PERMISSION_REQUEST_CODE){
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
+            }
+        }
+    }*/
 }
-//최현지 디지셈
-//드디어 해냈다 야발
-//어렵누
-//조용히해 이 사람아

@@ -30,9 +30,5 @@
             app:layout_constraintBottom_toBottomOf="@+id/map"
             app:menu="@menu/menu"
             tools:ignore="MissingConstraints" />
-
     </FrameLayout>
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>
