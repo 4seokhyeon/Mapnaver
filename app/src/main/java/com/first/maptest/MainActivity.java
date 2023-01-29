@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         /*현재위치표시
-        mLocationSource = new FusedLocationSource(this,PERMISSION_REQUEST_CODE);*/ //여기다 현재위치 표시 안해도 되지 프래그먼트 1에 보면 지도에 이미 현재 위치 표시 돼서 여기다가는 하지 마
+        mLocationSource = new FusedLocationSource(this,PERMISSION_REQUEST_CODE);*/
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
