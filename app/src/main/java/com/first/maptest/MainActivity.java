@@ -65,7 +65,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
     };
-    private FusedLocationSource mLocationSource;*/
+    private FusedLocationSource mLocationSource;*/   // 이것도 필요없는 부분이지 프래그먼트 1일 우리 지도 표시해주는 부분이야
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         setContentView(R.layout.activity_main);
 
         /*현재위치표시
-        mLocationSource = new FusedLocationSource(this,PERMISSION_REQUEST_CODE);*/
+        mLocationSource = new FusedLocationSource(this,PERMISSION_REQUEST_CODE);*/ //여기다 현재위치 표시 안해도 되지 프래그먼트 1에 보면 지도에 이미 현재 위치 표시 돼서 여기다가는 하지 마
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -177,6 +177,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 mNaverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
             }
-        } //이거 여기다가 선언하면 안될껄? 우리가 지도는 메인에 없고 프래그먼트 1에 있어서 이렇게 추가하면 아마 오류 날겨
+        } //이거 여기다가 선언하면 안될껄? 우리가 지도는 메인에 없고 프래그먼트 1에 있어서 이렇게 추가하면 아마 오류 날
     }*/
 }
