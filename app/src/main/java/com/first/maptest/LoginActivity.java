@@ -77,7 +77,7 @@ public class LoginActivity extends AppCompatActivity {
                                 //로그인에 성공한 경우 실행되는 화면을 지정(아래의 함수 사용)
                             } else {
                                 if(task.getException()!=null) {
-                                    startToast(task.getException().toString());
+                                    startToast("아이디 혹은 비밀번호를 잘못입력하였습니다.");
                                 }
                             }
                         }

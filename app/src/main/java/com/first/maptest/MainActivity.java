@@ -13,6 +13,7 @@ import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import com.first.maptest.fragment.Fragment1;
@@ -20,9 +21,16 @@ import com.first.maptest.fragment.Fragment2;
 import com.first.maptest.fragment.Fragment3;
 import com.first.maptest.fragment.Fragment4;
 import com.first.maptest.fragment.Fragment5;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.naver.maps.geometry.LatLng;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapFragment;
@@ -36,6 +44,7 @@ import com.naver.maps.map.util.FusedLocationSource;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
+
 
 
     //병원 목록 파이어베이스 부분
@@ -66,8 +75,37 @@ public class MainActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         setContentView(R.layout.activity_main);
 
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        findViewById(R.id.LogOutButton).setOnClickListener(onClickListener);
+
         /*현재위치표시
         mLocationSource = new FusedLocationSource(this,PERMISSION_REQUEST_CODE);*/
+
+        if(user==null){
+            MystartActivity(LoginActivity.class);
+            //메인 화면에서 로그인되어있지 않은 경우 회원가입창으로 넘어감
+        }else{
+            DocumentReference docRef = db.collection("Users").document(user.getUid());
+            docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DocumentSnapshot document = task.getResult();
+                        if(document != null){
+                            if (document.exists()) {
+
+                            } else {
+                                MystartActivity(MemberInfoActivity.class);
+                            }
+                        }
+                    } else {
+
+                    }
+                }
+            });
+        }
 
         bottomNavigationView = findViewById(R.id.bottomNavi);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -99,6 +137,25 @@ public class MainActivity extends AppCompatActivity {
         fragment4 = new Fragment4();
         fragment5 = new Fragment5();
         setFragment(0);
+    }
+
+    View.OnClickListener onClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch(v.getId()){
+                case R.id.LogOutButton:
+                    FirebaseAuth.getInstance().signOut();
+                    MystartActivity(LoginActivity.class);
+                    break;
+            }
+        }
+    };
+
+    private void MystartActivity(Class c){
+        Intent intent = new Intent(this, c);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        //뒤로가기 버튼을 눌렀을 경우 로그인창이나 회원가입 창이 안뜨고 바로 꺼지도록함.
+        startActivity(intent);
     }
 
     @Override
