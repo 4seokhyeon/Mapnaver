@@ -33,8 +33,9 @@ import com.naver.maps.map.util.FusedLocationSource;
 import java.util.ArrayList;
 
 //네이버 지도 프래그먼트 코드
-public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMapReadyCallback {
+public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMapReadyCallback{
 
+    private static final int ACCESS_LOCATION_PERMISSION_REQUEST_CODE = 100;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
 
@@ -65,6 +66,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
     }
 
@@ -99,17 +101,20 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
 
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
-
+        locationSource = new FusedLocationSource(this, ACCESS_LOCATION_PERMISSION_REQUEST_CODE);
+        naverMap.setLocationSource(locationSource);
         Fragment1.naverMap =naverMap;
         naverMap.setLocationSource(locationSource);
         requestPermissions(PERMISSIONS,LOCATION_PERMISSION_REQUEST_CODE);
-
         //ui 셋팅
         UiSettings uiSettings=naverMap.getUiSettings();
         uiSettings.setLocationButtonEnabled(true);
         uiSettings.setZoomControlEnabled(false);
 
-        LatLng mCenter = naverMap.getCameraPosition().target;
+
+
+        LatLng mapCenter = naverMap.getCameraPosition().target;
+
 
     }
 
@@ -137,7 +142,6 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
     }
     @Override
     public void onStart() {
-        String addr;
         super.onStart();
         mapView.onStart();
     }
