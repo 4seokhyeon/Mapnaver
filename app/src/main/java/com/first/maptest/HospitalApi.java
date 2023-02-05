@@ -1,5 +1,7 @@
 package com.first.maptest;
 
+import android.util.Log;
+
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -14,90 +16,44 @@ import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 
-public class HospitalApi {
-    String apiUrl = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/getHsptlMdcncLcinfoInqire";
-    String apiKey = "=GDhL22cwi46u1oRJt6eX4pqfXy0b0jSB8sF1eJszial+cYZZEdyiaY+xuOe6LjXp6BpXSvvtQ2tVOkee/A0kag==";
-
-    public ArrayList<HospitalData> getData() {
-        //return data와 관련된 부분
-        ArrayList<HospitalData> dataArr = new ArrayList<HospitalData>();
-
-        //네트워킹 작업은 메인스레드에서 처리하면 안된다. 따로 스레드를 만들어 처리하자
-        Thread t = new Thread() {
-            @Override
-            public void run() {
-                try {
-
-                    //url과 관련된 부분
-                    String fullurl = apiUrl + "=GDhL22cwi46u1oRJt6eX4pqfXy0b0jSB8sF1eJszial+cYZZEdyiaY+xuOe6LjXp6BpXSvvtQ2tVOkee/A0kag==" + apiKey + "&returnType=XML";
-                    URL url = new URL(fullurl);
-                    InputStream is = url.openStream();
-
-                    //xmlParser 생성
-                    XmlPullParserFactory xmlFactory = XmlPullParserFactory.newInstance();
-                    XmlPullParser parser = xmlFactory.newPullParser();
-                    parser.setInput(is,"utf-8");
-
-                    //xml과 관련된 변수들
-                    boolean WGS84_LON = false, WGS84_LAT = false;
-                    Double latitude = Double.valueOf("");
-                    Double longitude = Double.valueOf("");
-
-                    //본격적으로 파싱
-                    while(parser.getEventType() != XmlPullParser.END_DOCUMENT) {
-                        int type = parser.getEventType();
-                        HospitalData data = new HospitalData();
-
-                        //태그 확인
-                        if(type == XmlPullParser.START_TAG) {
-                            if (parser.getName().equals("col")) {
-                                if (parser.getAttributeValue(0).equals("위도"))
-                                    WGS84_LON = true;
-                                else if (parser.getAttributeValue(0).equals("경도"))
-                                    WGS84_LAT = true;
-                            }
-                        }
-                        //내용 확인
-                        else if(type == XmlPullParser.TEXT) {
-                            if (WGS84_LON) {
-                                latitude = Double.valueOf(parser.getText());
-                                WGS84_LON = false;
-                            } else if (WGS84_LAT) {
-                                longitude = Double.valueOf(parser.getText());
-                                WGS84_LAT = false;
-                            }
-
-                        }
-                        //내용 다 읽었으면 데이터 추가
-                        else if (type == XmlPullParser.END_TAG && parser.getName().equals("item")) {
-                            data.setLatitude(Double.valueOf(latitude));
-                            data.setLongitude(Double.valueOf(longitude));
-
-                            dataArr.add(data);
-                        }
-
-                        type = parser.next();
-                    }
-                } catch (MalformedURLException e) {
-                    e.printStackTrace();
-                } catch (XmlPullParserException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
-            }
-
-        };
+public class HospitalApi extends Thread {
+    @Override
+    public void run() {
         try {
-            t.start();
-            t.join();
-        } catch (InterruptedException e) {
+            /*URL*/
+            Log.e("test", "urlBuilder");
+            StringBuilder urlBuilder = new StringBuilder("http://apis.data.go.kr/B552657/HsptlAsembySearchService/getHsptlMdcncFullDown"); /*URL*/
+            urlBuilder.append("?" + URLEncoder.encode("serviceKey","UTF-8") + "=SPDSn%2FBJUGuyatbQ8AZUwNo1QheqcTgc2Ljmn7uE%2BuoVo3CfD1ceb57Lb%2FQE8Y3lhzGwq2%2F%2Becds93iK0kNTsg%3D%3D"); /*Service Key*/
+            urlBuilder.append("&" + URLEncoder.encode("pageNo","UTF-8") + "=" + URLEncoder.encode("1", "UTF-8")); /*페이지번호*/
+            urlBuilder.append("&" + URLEncoder.encode("numOfRows","UTF-8") + "=" + URLEncoder.encode("10", "UTF-8")); /*한 페이지 결과 수*/
+            URL url = new URL(urlBuilder.toString());
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("Content-type", "application/json");
+            System.out.println("Response code: " + conn.getResponseCode());
+            BufferedReader rd;
+            if (conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
+                rd = new BufferedReader(new InputStreamReader(conn.getInputStream(), "UTF-8"));
+            } else {
+                rd = new BufferedReader(new InputStreamReader(conn.getErrorStream(), "UTF-8"));
+            }
+            StringBuilder sb = new StringBuilder();
+            String line;
+            while ((line = rd.readLine()) != null) {
+                sb.append(line);
+            }
+            Log.e("test", sb.toString());
+            rd.close();
+            conn.disconnect();
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return dataArr;
     }
 }
+
+
+
 
 

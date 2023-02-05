@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import java.util.List;
 
 import com.first.maptest.Hospital;
+import com.first.maptest.HospitalApi;
 import com.first.maptest.Listframent;
 import com.first.maptest.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -34,7 +35,7 @@ import java.util.ArrayList;
 
 //네이버 지도 프래그먼트 코드
 public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMapReadyCallback{
-
+    private HospitalApi thread;
     private static final int ACCESS_LOCATION_PERMISSION_REQUEST_CODE = 100;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
@@ -66,9 +67,10 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
+        thread=new HospitalApi();
+        thread.start();
     }
+
 
 
     @Override
