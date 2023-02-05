@@ -32,7 +32,7 @@ public class mv extends Fragment {
     CalendarView calView;
     TimePicker tPicker;
     TextView tvYear, tvMonth, tvDay, tvHour, tvMinute;
-    //int selectYear, selectMonth, selectDay;
+    int selectYear, selectMonth, selectDay;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +55,21 @@ public class mv extends Fragment {
             }
         });
 
+        tvYear = (TextView) rootView.findViewById(R.id.tvYear);
+        tvMonth = (TextView) rootView.findViewById(R.id.tvMonth);
+        tvDay = (TextView) rootView.findViewById(R.id.tvDay);
+        tvHour =  (TextView) rootView.findViewById(R.id.tvHour);
+        tvMinute =  (TextView) rootView.findViewById(R.id.tvMinute);
+
+        calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                selectYear = year;
+                selectMonth = month+1;
+                selectDay = dayOfMonth;
+            }
+        });
+
         //예약버튼
         Button r1 = rootView.findViewById(R.id.rv);
         r1.setOnClickListener(new View.OnClickListener() {
@@ -69,14 +84,14 @@ public class mv extends Fragment {
                 java.util.Calendar curDate = java.util.Calendar.getInstance();
                 curDate.setTimeInMillis(calView.getDate());
 
+                tvYear.setText(Integer.toString(curDate.get(Calendar.YEAR)));
+                tvMonth.setText(Integer.toString(curDate.get(Calendar.MONTH)));
+                tvDay.setText(Integer.toString(curDate.get(Calendar.DATE)));
+                tvHour.setText(Integer.toString(tPicker.getHour()));
+                tvMinute.setText(Integer.toString(tPicker.getMinute()));
+
             }
         });
-
-        /*tvYear = (TextView) rootView.findViewById(R.id.tvYear);
-        tvMonth = (TextView) rootView.findViewById(R.id.tvMonth);
-        tvDay = (TextView) rootView.findViewById(R.id.tvDay);
-        tvHour =  (TextView) rootView.findViewById(R.id.tvHour);
-        tvMinute =  (TextView) rootView.findViewById(R.id.tvMinute);*/
 
         rdoCal = rootView.findViewById(R.id.rdoCal);
         rdoTime = rootView.findViewById(R.id.rdoTime);

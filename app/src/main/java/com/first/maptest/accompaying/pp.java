@@ -13,12 +13,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment3;
 
-//병원동행 예약내역
-public class rv2 extends Fragment {
+public class pp extends Fragment {
 
-    public static rv2 newInstance()
+    public static pp newInstance()
     {
-        return new rv2();
+        return new pp();
     }
 
     @Override
@@ -29,16 +28,16 @@ public class rv2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.rv2, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.pp, container, false);
 
-        //매니저
-        Button pp = rootView.findViewById(R.id.pp);
-        pp.setOnClickListener(new View.OnClickListener() {
+        //완료버튼
+        Button cp = rootView.findViewById(R.id.cp);
+        cp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                pp pp = new pp();
-                fragmentTransaction.replace(R.id.mainframe, pp);
+                Fragment3 fragment3 = new Fragment3();
+                fragmentTransaction.replace(R.id.mainframe, fragment3);
                 fragmentTransaction.commit();
             }
         });
