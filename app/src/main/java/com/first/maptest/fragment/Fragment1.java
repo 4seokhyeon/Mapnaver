@@ -3,6 +3,7 @@ package com.first.maptest.fragment;
 import android.Manifest;
 import android.location.Geocoder;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import java.util.List;
 
 import com.first.maptest.Hospital;
 import com.first.maptest.HospitalApi;
+import com.first.maptest.HospitalData;
 import com.first.maptest.Listframent;
 import com.first.maptest.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -67,9 +69,9 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        thread=new HospitalApi();
-        thread.start();
+
     }
+
 
 
 
@@ -79,6 +81,14 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_1,
                 container, false);
         Button listButton=rootView.findViewById(R.id.listButton);
+
+        HospitalApi apiData = new HospitalApi();
+        ArrayList<HospitalData> dataArr = apiData.getData();
+        Log.d("test",dataArr.get(1).getDutyName());
+        Log.d("test",dataArr.get(1).getDutyAddr());
+        Log.d("test",dataArr.get(1).getDutyTel1());
+        Log.d("test",String.valueOf(dataArr.get(1).getWGS84_LAT()));
+        Log.d("test",String.valueOf(dataArr.get(1).getWGS84_LON()));
 
         mapView = (MapView) rootView.findViewById(R.id.navermap);
         mapView.onCreate(savedInstanceState);

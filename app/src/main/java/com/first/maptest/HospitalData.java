@@ -19,10 +19,33 @@ public class HospitalData {
 
     Double WGS84_LON;
     Double WGS84_LAT;
+    String dutyAddr;
+    String dutyTel1;
 
-    public void setLatitude(Double valueOf) {
+    public String getDutyAddr() {
+        return dutyAddr;
     }
 
-    public void setLongitude(Double valueOf) {
+    public void setDutyAddr(String dutyAddr) {
+        this.dutyAddr = dutyAddr;
     }
+
+    public String getDutyTel1() {
+        return dutyTel1;
+    }
+
+    public void setDutyTel1(String dutyTel1) {
+        this.dutyTel1 = dutyTel1;
+    }
+
+    public String getDutyName() {
+        return dutyName;
+    }
+
+    public void setDutyName(String dutyName) {
+        this.dutyName = dutyName;
+    }
+
+    String dutyName;
+
 }
