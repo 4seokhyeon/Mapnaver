@@ -80,11 +80,11 @@ public class hp extends Fragment {
         dPicker = (DatePicker) rootView.findViewById(R.id.datePicker1);
         tPicker = (TimePicker) rootView.findViewById(R.id.timePicker1);
 
-        tvYear = (TextView) rootView.findViewById(R.id.tvYear);
+        /*tvYear = (TextView) rootView.findViewById(R.id.tvYear);
         tvMonth = (TextView) rootView.findViewById(R.id.tvMonth);
         tvDay = (TextView) rootView.findViewById(R.id.tvDay);
         tvHour =  (TextView) rootView.findViewById(R.id.tvHour);
-        tvMinute =  (TextView) rootView.findViewById(R.id.tvMinute);
+        tvMinute =  (TextView) rootView.findViewById(R.id.tvMinute);*/
 
         dPicker.setVisibility(View.INVISIBLE);
         tPicker.setVisibility(View.INVISIBLE);

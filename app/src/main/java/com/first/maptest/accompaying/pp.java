@@ -9,9 +9,12 @@ import android.widget.Button;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment3;
+
+import java.util.ArrayList;
 
 public class pp extends Fragment {
 
@@ -41,6 +44,7 @@ public class pp extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
 
 
         return rootView;
