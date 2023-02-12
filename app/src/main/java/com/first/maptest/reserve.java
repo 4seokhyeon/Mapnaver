@@ -1,21 +1,17 @@
 package com.first.maptest;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.fragment.Fragment2;
-import com.first.maptest.fragment.Fragment5;
-import com.first.maptest.moretab.review;
+import com.first.maptest.moretab.day;
 
 //예약탭
 public class reserve extends Fragment {
@@ -47,13 +43,14 @@ public class reserve extends Fragment {
             }
         });
 
-        Button button1 = rootView.findViewById(R.id.button1);
-        button1.setOnClickListener(new View.OnClickListener() {
+        Button day = rootView.findViewById(R.id.day);
+        day.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_VIEW,
-                        Uri.parse("https://naver.me/5OGvHS9D"));
-                startActivity(intent);
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                day day = new day();
+                fragmentTransaction.replace(R.id.mainframe, day);
+                fragmentTransaction.commit();
             }
         });
 

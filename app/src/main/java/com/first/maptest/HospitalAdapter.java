@@ -4,14 +4,11 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
-import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -44,6 +41,8 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
         holder.tv_addr.setText(arrayList.get(position).getAddr());
         holder.tv_h_name.setText(arrayList.get(position).getH_name());
         holder.tv_h_type.setText(arrayList.get(position).getH_type());
+
+
 
     }
 
