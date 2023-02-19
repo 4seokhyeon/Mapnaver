@@ -1,131 +1,115 @@
 package com.first.maptest.moretab;
 
-import android.graphics.Color;
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CalendarView;
-import android.widget.Chronometer;
+import android.widget.DatePicker;
 import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
-import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.R;
 
 
 public class day extends Fragment {
-    Chronometer chrono;
-    Button btnStart, btnEnd;
-    RadioButton rdoCal, rdoTime;
-    CalendarView calView;
-    TimePicker tPicker;
-    TextView tvYear, tvMonth, tvDay, tvHour, tvMinute;
-    int selectYear, selectMonth, selectDay;
 
-    public static void setOnClickListener(View.OnClickListener onClickListener) {
+    public static com.first.maptest.accompaying.mv newInstance() {
+        return new com.first.maptest.accompaying.mv();
     }
 
+    RadioButton rdoCal, rdoTime;
+    DatePicker dPicker;
+    TimePicker tPicker;
+    TextView tvYear, tvMonth, tvDay, tvHour, tvMinute;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
 
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState){
-            ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.day, container, false);
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.mv, container, false);
 
+        Button back = rootView.findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                reserve23 reserve23 = new reserve23();
+                fragmentTransaction.replace(R.id.mainframe, reserve23);
+                fragmentTransaction.commit();
+            }
+        });
 
+        //예약버튼
+        Button r1 = (Button) rootView.findViewById(R.id.rv);
+        r1.setOnClickListener(new View.OnClickListener() {
+            @SuppressLint("SetTextI18n")
+            @Override
+            public void onClick(View view) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                reserve3 reserve3 = new reserve3();
+                fragmentTransaction.replace(R.id.mainframe, reserve3);
+                fragmentTransaction.commit();
 
-            /*Button reserve2 = rootView.findViewById(R.id.reserve2);
-            reserve2.setOnClickListener(new View.OnClickListener() {
+                //mDatabase.child("users").child(userId).setValue(user);
 
-                @Override
-                public void onClick(View view) {
-                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                    reserve2 reserve2  = new reserve2();
-                    fragmentTransaction.replace(R.id.mainframe, reserve2);
-                    fragmentTransaction.commit();
+                String year = Integer.toString(dPicker.getYear());
+                String month = Integer.toString(1+dPicker.getMonth());
+                String day = Integer.toString(dPicker.getDayOfMonth());
+                String hour = Integer.toString(tPicker.getCurrentHour());
+                String minute = Integer.toString(tPicker.getCurrentMinute());
+                String message = (year+"년 "+month+"월 "+day+"일 "+hour+"시 "+minute+"분으로 예약되었습니다.");
 
-                    java.util.Calendar curDate = java.util.Calendar.getInstance();
-                    curDate.setTimeInMillis(calView.getDate());
+                Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
+            }
+        });
 
-                }
-            }); */
+        rdoCal = (RadioButton) rootView.findViewById(R.id.rdoCal);
+        rdoTime = (RadioButton) rootView.findViewById(R.id.rdoTime);
 
-            btnStart = rootView.findViewById(R.id.Start);
-            btnEnd = rootView.findViewById(R.id.reserve2);
+        dPicker = (DatePicker) rootView.findViewById(R.id.datePicker1);
+        tPicker = (TimePicker) rootView.findViewById(R.id.timePicker1);
 
-            chrono = rootView.findViewById(R.id.chronometer);
+        /*tvYear = (TextView) rootView.findViewById(R.id.tvYear);
+        tvMonth = (TextView) rootView.findViewById(R.id.tvMonth);
+        tvDay = (TextView) rootView.findViewById(R.id.tvDay);
+        tvHour =  (TextView) rootView.findViewById(R.id.tvHour);
+        tvMinute =  (TextView) rootView.findViewById(R.id.tvMinute);*/
 
-            rdoCal = rootView.findViewById(R.id.rdoCal);
-            rdoTime = rootView.findViewById(R.id.rdoTime);
+        dPicker.setVisibility(View.INVISIBLE);
+        tPicker.setVisibility(View.INVISIBLE);
 
-            tPicker = rootView.findViewById(R.id.timePicker1);
-            calView = rootView.findViewById(R.id.calendarView1);
-
-            tvYear = (TextView) rootView.findViewById(R.id.tvYear);
-            tvMonth = (TextView) rootView.findViewById(R.id.tvMonth);
-            tvDay = (TextView) rootView.findViewById(R.id.tvDay);
-            tvHour = (TextView) rootView.findViewById(R.id.tvHour);
-            tvMinute = (TextView) rootView.findViewById(R.id.tvMinute);
-
-            tPicker.setVisibility(View.INVISIBLE);
-            calView.setVisibility(View.INVISIBLE);
-
-            rdoCal.setOnClickListener(v -> {
+        rdoCal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dPicker.setVisibility(View.VISIBLE);
                 tPicker.setVisibility(View.INVISIBLE);
-                calView.setVisibility(View.VISIBLE);
-            });
+                rdoCal.setChecked(true);
+                rdoTime.setChecked(false);
+            }
+        });
 
-
-            rdoTime.setOnClickListener(v -> {
+        rdoTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dPicker.setVisibility(View.INVISIBLE);
                 tPicker.setVisibility(View.VISIBLE);
-                calView.setVisibility(View.INVISIBLE);
-            });
+                rdoCal.setChecked(false);
+                rdoTime.setChecked(true);
+            }
+        });
 
-            btnStart.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    chrono.setBase(SystemClock.elapsedRealtime());
-                    chrono.start();
-                    chrono.setTextColor(Color.RED);
-                }
-            });
-
-            btnEnd.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    chrono.stop();
-                    tvYear.setText(Integer.toString(selectYear));
-                    tvMonth.setText(Integer.toString(selectMonth));
-                    tvDay.setText(Integer.toString(selectDay));
-
-                    tvHour.setText(Integer.toString(tPicker.getCurrentHour()));
-                    tvMinute.setText(Integer.toString(tPicker.getCurrentMinute()));
-                    chrono.setTextColor(Color.BLUE);
-                }
-            });
-
-            calView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-                @Override
-                public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                    selectYear = year;
-                    selectMonth = month + 1;
-                    selectDay = dayOfMonth;
-                }
-            });
-
-
-            return rootView;
-
-
-        }
-
+        return rootView;
     }
+}
