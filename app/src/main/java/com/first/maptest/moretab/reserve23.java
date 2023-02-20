@@ -1,4 +1,4 @@
-package com.first.maptest;
+package com.first.maptest.moretab;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,50 +10,52 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.first.maptest.fragment.Fragment2;
-import com.first.maptest.moretab.reserve2;
+import com.first.maptest.R;
+import com.first.maptest.reserve;
 
-//예약탭
-public class reserve extends Fragment {
+public class reserve23 extends Fragment {
 
-    public static reserve newInstance()
+
+    public static reserve23 newInstance()
     {
-        return new reserve();
+        return new reserve23();
     }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.reserve, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.reserve23, container, false);
 
-        Button back = rootView.findViewById(R.id.back);
-        back.setOnClickListener(new View.OnClickListener() {
+        Button back2 = rootView.findViewById(R.id.back2);
+        back2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                Fragment2 fragment2 = new Fragment2();
-                fragmentTransaction.replace(R.id.mainframe, fragment2);
+                reserve2 reserve2 = new reserve2();
+                fragmentTransaction.replace(R.id.mainframe, reserve2);
                 fragmentTransaction.commit();
             }
         });
 
-        Button reserve2 = rootView.findViewById(R.id.reserve2);
-        reserve2.setOnClickListener(new View.OnClickListener() {
+        Button day = rootView.findViewById(R.id.day);
+        day.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                com.first.maptest.moretab.reserve2 reserve2 = new reserve2();
-                fragmentTransaction.replace(R.id.mainframe, reserve2);
+                day day = new day();
+                fragmentTransaction.replace(R.id.mainframe, day);
                 fragmentTransaction.commit();
             }
         });
 
         return rootView;
     }
+
+
 }
+
