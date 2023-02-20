@@ -12,6 +12,7 @@ import android.widget.Button;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+
 import java.util.List;
 
 import com.first.maptest.Hospital;
@@ -36,7 +37,7 @@ import com.naver.maps.map.util.FusedLocationSource;
 import java.util.ArrayList;
 
 //네이버 지도 프래그먼트 코드
-public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMapReadyCallback{
+public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMapReadyCallback {
     private HospitalApi thread;
     private static final int ACCESS_LOCATION_PERMISSION_REQUEST_CODE = 100;
     private FirebaseDatabase database;
@@ -51,17 +52,17 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
     private InfoWindow infoWindow;
     private List<Marker> markerList = new ArrayList<Marker>();
     private boolean isCameraAnimated = false;
-    private static final int LOCATION_PERMISSION_REQUEST_CODE=1000;
-    private static final String[] PERMISSIONS={
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1000;
+    private static final String[] PERMISSIONS = {
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
     };
-    ArrayList<Hospital> hospital=new ArrayList<>();
+    ArrayList<Hospital> hospital = new ArrayList<>();
 
-    public Fragment1() { }
+    public Fragment1() {
+    }
 
-    public static Fragment1 newInstance()
-    {
+    public static Fragment1 newInstance() {
         Fragment1 fragment = new Fragment1();
         return fragment;
     }
@@ -72,38 +73,28 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
 
     }
 
-
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_1,
                 container, false);
-        Button listButton=rootView.findViewById(R.id.listButton);
+        Button listButton = rootView.findViewById(R.id.listButton);
 
-        HospitalApi apiData = new HospitalApi();
-        ArrayList<HospitalData> dataArr = apiData.getData();
-        Log.d("test",dataArr.get(1).getDutyName());
-        Log.d("test",dataArr.get(1).getDutyAddr());
-        Log.d("test",dataArr.get(1).getDutyTel1());
-        Log.d("test",String.valueOf(dataArr.get(1).getWGS84_LAT()));
-        Log.d("test",String.valueOf(dataArr.get(1).getWGS84_LON()));
 
         mapView = (MapView) rootView.findViewById(R.id.navermap);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
-        locationSource= new FusedLocationSource(this,LOCATION_PERMISSION_REQUEST_CODE);
+        locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
 
-        database=FirebaseDatabase.getInstance();
-        databaseReference=database.getReference("Host");
+        database = FirebaseDatabase.getInstance();
+        databaseReference = database.getReference("Host");
 
         listButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction=getActivity().getSupportFragmentManager().beginTransaction();
-                Listframent listframent=new Listframent();
-                fragmentTransaction.replace(R.id.mainframe,listframent);
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                Listframent listframent = new Listframent();
+                fragmentTransaction.replace(R.id.mainframe, listframent);
                 fragmentTransaction.commit();
             }
         });
@@ -115,76 +106,99 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,OnMap
     public void onMapReady(@NonNull NaverMap naverMap) {
         locationSource = new FusedLocationSource(this, ACCESS_LOCATION_PERMISSION_REQUEST_CODE);
         naverMap.setLocationSource(locationSource);
-        Fragment1.naverMap =naverMap;
+        Fragment1.naverMap = naverMap;
         naverMap.setLocationSource(locationSource);
-        requestPermissions(PERMISSIONS,LOCATION_PERMISSION_REQUEST_CODE);
+        requestPermissions(PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE);
+
+        // 현재 위치를 찾는 LocationSource 객체를 생성한다.
+        FusedLocationSource locationSource = new FusedLocationSource(this, 100);
+
+
         //ui 셋팅
-        UiSettings uiSettings=naverMap.getUiSettings();
+        UiSettings uiSettings = naverMap.getUiSettings();
         uiSettings.setLocationButtonEnabled(true);
         uiSettings.setZoomControlEnabled(false);
-
-
+        naverMap.getUiSettings().setZoomControlEnabled(true);
 
         LatLng mapCenter = naverMap.getCameraPosition().target;
+
+        HospitalApi apiData = new HospitalApi();
+        ArrayList<HospitalData> dataArr = apiData.getData();
+        Log.d("test", dataArr.get(0).getDutyName());
+        Log.d("test", dataArr.get(0).getDutyAddr());
+        Log.d("test", dataArr.get(0).getDutyTel1());
+        Log.d("test", String.valueOf(dataArr.get(0).getWGS84_LAT()));
+        Log.d("test", String.valueOf(dataArr.get(0).getWGS84_LON()));
+        // 각 병원 정보에 대해 마커 추가
+        for (HospitalData data : dataArr) {
+            Marker marker = new Marker();
+            marker.setPosition(new LatLng(data.getWGS84_LAT(), data.getWGS84_LON()));
+            marker.setMap(naverMap);
+        }
 
 
     }
 
     @Override
     public boolean onClick(@NonNull Overlay overlay) {
-        Marker marker=(Marker) overlay;
+        Marker marker = (Marker) overlay;
         infoWindow.open(marker);
 
         return false;
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode,@NonNull String[] permissions,@NonNull int[] grantResults) {
-        if(locationSource.onRequestPermissionsResult(requestCode,permissions,grantResults)){
-            if(!locationSource.isActivated()){
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (locationSource.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
+            if (!locationSource.isActivated()) {
                 naverMap.setLocationTrackingMode(LocationTrackingMode.None);
                 return;
-            }
-            else {
+            } else {
                 naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
             }
         }
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
+
     @Override
     public void onStart() {
         super.onStart();
         mapView.onStart();
     }
+
     @Override
-    public void onResume(){
+    public void onResume() {
         super.onResume();
         mapView.onResume();
     }
 
     @Override
-    public void onPause(){
+    public void onPause() {
         super.onPause();
         mapView.onPause();
     }
+
     @Override
-    public void onSaveInstanceState(Bundle outState){
+    public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         mapView.onSaveInstanceState(outState);
     }
+
     @Override
-    public void onStop(){
+    public void onStop() {
         super.onStop();
         mapView.onStop();
     }
+
     @Override
-    public void onDestroyView(){
+    public void onDestroyView() {
         super.onDestroyView();
         mapView.onDestroy();
     }
+
     @Override
-    public void onLowMemory(){
+    public void onLowMemory() {
         super.onLowMemory();
         mapView.onLowMemory();
     }

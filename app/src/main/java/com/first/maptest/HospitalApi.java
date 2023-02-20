@@ -17,10 +17,11 @@ import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class HospitalApi {
-    String apiUrl = "http://apis.data.go.kr/B552657/HsptlAsembySearchService/getHsptlMdcncFullDown";
+    String apiUrl = "https://apis.data.go.kr/B552657/HsptlAsembySearchService/getHsptlMdcncListInfoInqire";
     String apiKey = "SPDSn%2FBJUGuyatbQ8AZUwNo1QheqcTgc2Ljmn7uE%2BuoVo3CfD1ceb57Lb%2FQE8Y3lhzGwq2%2F%2Becds93iK0kNTsg%3D%3D";
-
-    public ArrayList<HospitalData> getData() {
+    String q0="천안시";
+    String q1="서북구";
+    public ArrayList<HospitalData> getData(/*String q0,String q1*/) {
         //return data와 관련된 부분
         ArrayList<HospitalData> dataArr = new ArrayList<HospitalData>();
 
@@ -31,60 +32,60 @@ public class HospitalApi {
                 try {
 
                     //url과 관련된 부분
-                    String fullurl = apiUrl + "?serviceKey=" + apiKey + "&returnType=XML";
+                    String fullurl = apiUrl + "?serviceKey=" + apiKey + "&Q0="+q0+/*"&Q1="+q1+*/"&pageNo=1&numOfRows=75000&returnType=XML";
                     URL url = new URL(fullurl);
                     InputStream is = url.openStream();
 
                     //xmlParser 생성
                     XmlPullParserFactory xmlFactory = XmlPullParserFactory.newInstance();
                     XmlPullParser parser = xmlFactory.newPullParser();
-                    parser.setInput(is,"utf-8");
+                    parser.setInput(is, "utf-8");
 
                     //xml과 관련된 변수들
-                    boolean bName = false, bLat = false, bLong = false,bAddr=false, bTell=false;
-                    String name = "", latitude = "", longitude = "",addr="",tell="";
+                    boolean bName = false, bLat = false, bLong = false, bAddr = false, bTell = false;
+                    String name = "", latitude = "", longitude = "", addr = "", tell = "";
 
                     //본격적으로 파싱
-                    while(parser.getEventType() != XmlPullParser.END_DOCUMENT) {
+                    while (parser.getEventType() != XmlPullParser.END_DOCUMENT) {
                         int type = parser.getEventType();
-                        HospitalData  data = new HospitalData ();
+                        HospitalData data = new HospitalData();
 
                         //태그 확인
-                        if(type == XmlPullParser.START_TAG) {
+                        if (type == XmlPullParser.START_TAG) {
 
-                                if (parser.getName().equals("dutyAddr"))
-                                    bAddr = true;
-                                else if(parser.getName().equals("dutyName"))
-                                    bName = true;
-                                else if(parser.getName().equals("dutyTel1"))
-                                    bTell = true;
-                                else if (parser.getName().equals("wgs84Lat"))
-                                    bLat = true;
-                                else if (parser.getName().equals("wgs84Lon"))
-                                    bLong = true;
+                            if (parser.getName().equals("dutyAddr"))
+                                bAddr = true;
+                            else if (parser.getName().equals("dutyName"))
+                                bName = true;
+                            else if (parser.getName().equals("dutyTel1"))
+                                bTell = true;
+                            else if (parser.getName().equals("wgs84Lat"))
+                                bLat = true;
+                            else if (parser.getName().equals("wgs84Lon"))
+                                bLong = true;
 
                         }
                         //내용 확인
-                        else if(type == XmlPullParser.TEXT) {
-                             if (bAddr) {
+                        else if (type == XmlPullParser.TEXT) {
+                            if (bAddr) {
                                 addr = parser.getText();
+
                                 bAddr = false;
-                            }
-                            else if (bName) {
+                            } else if (bName) {
                                 name = parser.getText();
                                 bName = false;
-                            }
-                            else if (bTell) {
+                            } else if (bTell) {
                                 tell = parser.getText();
                                 bTell = false;
-                            }
-                            else if (bLat) {
+                            } else if (bLat) {
                                 latitude = parser.getText();
                                 bLat = false;
                             } else if (bLong) {
                                 longitude = parser.getText();
                                 bLong = false;
                             }
+
+
                         }
                         //내용 다 읽었으면 데이터 추가
                         else if (type == XmlPullParser.END_TAG && parser.getName().equals("item")) {
@@ -96,10 +97,13 @@ public class HospitalApi {
 
 
                             dataArr.add(data);
+
+
                         }
 
                         type = parser.next();
                     }
+
                 } catch (MalformedURLException e) {
                     e.printStackTrace();
                 } catch (XmlPullParserException e) {
