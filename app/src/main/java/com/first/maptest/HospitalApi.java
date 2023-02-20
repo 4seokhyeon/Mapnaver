@@ -25,7 +25,7 @@ public class HospitalApi {
         //return data와 관련된 부분
         ArrayList<HospitalData> dataArr = new ArrayList<HospitalData>();
 
-        //네트워킹 작업은 메인스레드에서 처리하면 안된다. 따로 스레드를 만들어 처리하자
+        //네트워킹 작업은 메인스레드에서 처리하면 안된다. 따로 스레드를 만들어 처리하자d
         Thread t = new Thread() {
             @Override
             public void run() {

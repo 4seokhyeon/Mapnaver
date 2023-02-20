@@ -110,7 +110,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
         naverMap.setLocationSource(locationSource);
         requestPermissions(PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE);
 
-        // 현재 위치를 찾는 LocationSource 객체를 생성한다.
+        // 현재 위치를 찾는 LocationSource 객체를 생성한다.d
         FusedLocationSource locationSource = new FusedLocationSource(this, 100);
 
 
