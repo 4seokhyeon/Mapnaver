@@ -29,6 +29,7 @@ import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
 import com.naver.maps.map.UiSettings;
+import com.naver.maps.map.overlay.CircleOverlay;
 import com.naver.maps.map.overlay.InfoWindow;
 import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.Overlay;
@@ -113,6 +114,18 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
         // 현재 위치를 찾는 LocationSource 객체를 생성한다.d
         FusedLocationSource locationSource = new FusedLocationSource(this, 100);
 
+       /* 3LatLng myLocation = new LatLng(37.206996, 127.0333083);
+        Marker myMarker = new Marker();
+        myMarker.setPosition(myLocation);
+        myMarker.setMap(naverMap);*/
+
+/*// 2. 반경을 나타낼 원 객체 생성
+        CircleOverlay circle = new CircleOverlay();
+        circle.setCenter(myLocation);
+        circle.setRadius(5000); // 5km 반경
+
+// 3. 반경 원 객체 지도에 추가
+        circle.setMap(naverMap);*/
 
         //ui 셋팅
         UiSettings uiSettings = naverMap.getUiSettings();
