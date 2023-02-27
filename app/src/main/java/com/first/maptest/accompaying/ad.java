@@ -13,12 +13,10 @@ import androidx.fragment.app.FragmentTransaction;
 import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment3;
 
-//이동지원 예약
-public class rv extends Fragment {
+public class ad extends Fragment {
 
-    public static rv newInstance()
-    {
-        return new rv();
+    public static ad newInstance() {
+        return new ad();
     }
 
     @Override
@@ -29,16 +27,16 @@ public class rv extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.rv, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.ad, container, false);
 
         //완료버튼
-        Button cp = rootView.findViewById(R.id.cp);
-        cp.setOnClickListener(new View.OnClickListener() {
+        Button ad = rootView.findViewById(R.id.ad);
+        ad.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                ad ad = new ad();
-                fragmentTransaction.replace(R.id.mainframe, ad);
+                done1 done1 = new done1();
+                fragmentTransaction.replace(R.id.mainframe, done1);
                 fragmentTransaction.commit();
             }
         });

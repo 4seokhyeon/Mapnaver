@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -68,5 +69,7 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
             this.tv_h_name=itemView.findViewById(R.id.tv_h_name);
             this.tv_h_type=itemView.findViewById(R.id.tv_h_type);
         }
+
     }
+
 }

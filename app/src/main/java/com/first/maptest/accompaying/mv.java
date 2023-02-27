@@ -92,10 +92,11 @@ public class mv extends Fragment {
         tvHour =  (TextView) rootView.findViewById(R.id.tvHour);
         tvMinute =  (TextView) rootView.findViewById(R.id.tvMinute);*/
 
-        dPicker.setVisibility(View.INVISIBLE);
+        dPicker.setVisibility(View.VISIBLE);
+        rdoCal.setChecked(true);
         tPicker.setVisibility(View.INVISIBLE);
 
-        rdoCal.setOnClickListener(new View.OnClickListener() {
+        /*rdoCal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dPicker.setVisibility(View.VISIBLE);
@@ -103,7 +104,7 @@ public class mv extends Fragment {
                 rdoCal.setChecked(true);
                 rdoTime.setChecked(false);
             }
-        });
+        });*/
 
         rdoTime.setOnClickListener(new View.OnClickListener() {
             @Override
