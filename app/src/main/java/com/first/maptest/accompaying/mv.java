@@ -20,11 +20,22 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment3;
+import com.first.maptest.moretab.MvInfo;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.Calendar;
 
 //이동지원
 public class mv extends Fragment {
+
+    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
+    private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
     public static mv newInstance() {
         return new mv();
@@ -33,7 +44,6 @@ public class mv extends Fragment {
     RadioButton rdoCal, rdoTime;
     DatePicker dPicker;
     TimePicker tPicker;
-    TextView tvYear, tvMonth, tvDay, tvHour, tvMinute;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -76,7 +86,45 @@ public class mv extends Fragment {
                 String minute = Integer.toString(tPicker.getCurrentMinute());
                 String message = (year+"년 "+month+"월 "+day+"일 "+hour+"시 "+minute+"분으로 예약되었습니다.");
 
+                String date = (year+"년 "+month+"월 "+day+"일");
+                String time = (hour+" : "+minute);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("date",date);
+                bundle.putString("time",time);
+                rv.setArguments(bundle);
+
                 Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
+
+
+                /*if(date.length()>0&&time.length()>0){
+                    FirebaseUser mv = FirebaseAuth.getInstance().getCurrentUser();
+                    //user = 회원의 고유 id라고 생각하면됨 _ 파이어베이스에서 회원을 식별하기 위함.
+                    FirebaseFirestore db = FirebaseFirestore.getInstance();
+                    //Firestore의 인스턴스 초기화
+
+                    MvInfo mvinfo = new MvInfo(date, time);
+                    if(mv != null){
+                        db.collection("MV").document(mv.getUid()).set(mvinfo)
+                                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                    @Override
+                                    public void onSuccess(Void aVoid) {
+                                        //startToast("예약내역 전달에 성공했습니다.");
+                                        //finish();
+                                    }
+                                })
+                                .addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(@NonNull Exception e) {
+                                       // startToast("예약내역 전달에 실패했습니다.");
+                                    }
+                                });
+                    }
+
+
+                }else{
+                    //startToast("예약 해주세요.");
+                }*/
             }
         });
 
@@ -86,25 +134,9 @@ public class mv extends Fragment {
         dPicker = (DatePicker) rootView.findViewById(R.id.datePicker1);
         tPicker = (TimePicker) rootView.findViewById(R.id.timePicker1);
 
-        /*tvYear = (TextView) rootView.findViewById(R.id.tvYear);
-        tvMonth = (TextView) rootView.findViewById(R.id.tvMonth);
-        tvDay = (TextView) rootView.findViewById(R.id.tvDay);
-        tvHour =  (TextView) rootView.findViewById(R.id.tvHour);
-        tvMinute =  (TextView) rootView.findViewById(R.id.tvMinute);*/
-
         dPicker.setVisibility(View.VISIBLE);
         rdoCal.setChecked(true);
         tPicker.setVisibility(View.INVISIBLE);
-
-        /*rdoCal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dPicker.setVisibility(View.VISIBLE);
-                tPicker.setVisibility(View.INVISIBLE);
-                rdoCal.setChecked(true);
-                rdoTime.setChecked(false);
-            }
-        });*/
 
         rdoTime.setOnClickListener(new View.OnClickListener() {
             @Override
