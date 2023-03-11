@@ -21,6 +21,7 @@ public class reserve2 extends Fragment {
         super.onCreate(savedInstanceState);
     }
 
+    //뒤로
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -37,17 +38,62 @@ public class reserve2 extends Fragment {
             }
         });
 
+        //정보 입력 후 다음 페이지
         Button reserve23 = rootView.findViewById(R.id.reserve23);
         reserve23.setOnClickListener(new View.OnClickListener() {
+            private View dialogView;
+
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 com.first.maptest.moretab.reserve23 reserve23 = new reserve23();
                 fragmentTransaction.replace(R.id.mainframe, reserve23);
                 fragmentTransaction.commit();
+
+
+                //dialog1.xml 파일 인플레이트
+                /* dialogView = (View) View.inflate(reserve2.this, R.layout.dialog, null);
+                //alertDialog.Builder 생성
+                AlertDialog.Builder dlg = new AlertDialog.Builder(reserve2.this);
+                dlg.setTitle("예약자 정보 입력");
+                dlg.setIcon(R.drawable.ic_menu_allfriends);
+                dlg.setView(dialogView); //인플레이트한 것을 대화상자로 사용
+
+                //setPositiveButton
+                dlg.setPositiveButton("확인",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                EditText dlgEdtName = (EditText) dialogView.findViewById(R.id.dlgEdt1);
+                                EditText dlgEdtPhone = (EditText) dialogView.findViewById(R.id.dlgEdt2);
+
+                                 tvName.setText(dlgEdtName.getText().toString());
+                                tvPhone.setText(dlgEdtPhone.getText().toString());
+                                Toast.makeText(getApplicationContext(),"예약자 정보 확인했습니다.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
+
+                dlg.setNegativeButton("취소",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText(getActivity().getApplicationContext(),"취소했습니다.",
+                                        Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                dlg.show(); */ //가장 중요! dialog창 보이기
             }
+
         });
-        /*
+
+        return rootView;
+    }
+
+}
+
+
+/*
         Button reserve23 = (Button) rootView.findViewById(R.id.reserve23);
         reserve23.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,28 +104,3 @@ public class reserve2 extends Fragment {
                 fragmentTransaction.commit();
             }
         }); */
-
-        return rootView;
-    }
-    /*
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_2, container, false);
-
-        //예약버튼
-        Button reserve = rootView.findViewById(R.id.reserve);
-        reserve.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                com.first.maptest.reserve reserve = new reserve();
-                fragmentTransaction.replace(R.id.mainframe, reserve);
-                fragmentTransaction.commit();
-            }
-        });
-
-
-        return rootView;
-    }*/
-}

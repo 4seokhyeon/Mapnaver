@@ -21,6 +21,8 @@ import com.first.maptest.R;
 
 public class day extends Fragment {
 
+    public static Object dayContext;
+
     public static com.first.maptest.accompaying.mv newInstance() {
         return new com.first.maptest.accompaying.mv();
     }
@@ -38,7 +40,7 @@ public class day extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.mv, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.day, container, false);
 
         Button back = rootView.findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +72,15 @@ public class day extends Fragment {
                 String hour = Integer.toString(tPicker.getCurrentHour());
                 String minute = Integer.toString(tPicker.getCurrentMinute());
                 String message = (year+"년 "+month+"월 "+day+"일 "+hour+"시 "+minute+"분으로 예약되었습니다.");
+
+                /*String date = (year+"년 "+month+"월 "+day+"일");
+                String time = (hour+" : "+minute);
+
+                Bundle bundle = new Bundle();
+                bundle.putString("date",date);
+                bundle.putString("time",time);
+                confirm.setArguments(bundle); */
+
 
                 Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
             }
