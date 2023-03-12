@@ -23,8 +23,11 @@ import com.first.maptest.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraUpdate;
 import com.naver.maps.map.LocationTrackingMode;
+import com.naver.maps.map.MapFragment;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
 import com.naver.maps.map.OnMapReadyCallback;
@@ -43,6 +46,9 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
     private static final int ACCESS_LOCATION_PERMISSION_REQUEST_CODE = 100;
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
+    private FirebaseFirestore db;
+
+
 
     //final Geocoder geocoder = new Geocoder(this.getContext());
     //지도 객체 변수
@@ -66,11 +72,13 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
     public static Fragment1 newInstance() {
         Fragment1 fragment = new Fragment1();
         return fragment;
+
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
 
     }
 
@@ -80,8 +88,6 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_1,
                 container, false);
         Button listButton = rootView.findViewById(R.id.listButton);
-
-
         mapView = (MapView) rootView.findViewById(R.id.navermap);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
@@ -101,39 +107,31 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
         });
 
         return rootView;
+
+
     }
 
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
+       
         locationSource = new FusedLocationSource(this, ACCESS_LOCATION_PERMISSION_REQUEST_CODE);
         naverMap.setLocationSource(locationSource);
         Fragment1.naverMap = naverMap;
         naverMap.setLocationSource(locationSource);
         requestPermissions(PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE);
 
-        // 현재 위치를 찾는 LocationSource 객체를 생성한다.d
-        FusedLocationSource locationSource = new FusedLocationSource(this, 100);
-
-       /* 3LatLng myLocation = new LatLng(37.206996, 127.0333083);
-        Marker myMarker = new Marker();
-        myMarker.setPosition(myLocation);
-        myMarker.setMap(naverMap);*/
-
-/*// 2. 반경을 나타낼 원 객체 생성
-        CircleOverlay circle = new CircleOverlay();
-        circle.setCenter(myLocation);
-        circle.setRadius(5000); // 5km 반경
-
-// 3. 반경 원 객체 지도에 추가
-        circle.setMap(naverMap);*/
 
         //ui 셋팅
         UiSettings uiSettings = naverMap.getUiSettings();
         uiSettings.setLocationButtonEnabled(true);
         uiSettings.setZoomControlEnabled(false);
         naverMap.getUiSettings().setZoomControlEnabled(true);
+        naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
 
-        LatLng mapCenter = naverMap.getCameraPosition().target;
+       /* // 천안 지역 좌표 설정
+        LatLng cheonan = new LatLng(36.8075, 127.148);
+        CameraUpdate cameraUpdate = CameraUpdate.scrollTo(cheonan);
+        naverMap.moveCamera(cameraUpdate);*/
 
         HospitalApi apiData = new HospitalApi();
         ArrayList<HospitalData> dataArr = apiData.getData();
@@ -150,7 +148,11 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
         }
 
 
+
+
     }
+
+
 
     @Override
     public boolean onClick(@NonNull Overlay overlay) {

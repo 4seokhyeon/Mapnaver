@@ -80,9 +80,6 @@ public class MainActivity extends AppCompatActivity {
 
         findViewById(R.id.LogOutButton).setOnClickListener(onClickListener);
 
-        /*현재위치표시
-        mLocationSource = new FusedLocationSource(this,PERMISSION_REQUEST_CODE);*/
-
         if(user==null){
             MystartActivity(LoginActivity.class);
             //메인 화면에서 로그인되어있지 않은 경우 회원가입창으로 넘어감

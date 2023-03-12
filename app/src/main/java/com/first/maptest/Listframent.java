@@ -44,15 +44,14 @@ public class Listframent extends Fragment {
         arrayList=new ArrayList<>();
         fragmentManager=getActivity().getSupportFragmentManager();
         //여기 주석 풀지마
-      /*  database=FirebaseDatabase.getInstance();
-        databaseReference=database.getReference("Host");
+        database=FirebaseDatabase.getInstance();
+        databaseReference=database.getReference("host_addr");
         databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot1) {
                 arrayList.clear();
                 for(DataSnapshot snapshot : snapshot1.getChildren()){  //데이터 전부를 가져오는 부분 hospital 주소확인후 넣는 방식으로 지오로 위도 경도 확인후 비교하여 범위 내에 있을경우 arraylist에 추가 하게끔 아니면 다른 arraylist를 만들어서
-                주소를 비교한 리스트만 넣고
-                hospital 어댑터의 arraylist를 새로만든 리스트로 변경
+
                     Hospital hospital=snapshot.getValue(Hospital.class);
                     arrayList.add(hospital);
                 }
@@ -63,9 +62,9 @@ public class Listframent extends Fragment {
             public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });*/
+        });
 
-        arrayList.add(new Hospital("서울","한방병원","주소"));
+        //arrayList.add(new Hospital("서울","한방병원","주소"));
         adapter=new HospitalAdapter(arrayList,getContext());
         layoutManager=new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);

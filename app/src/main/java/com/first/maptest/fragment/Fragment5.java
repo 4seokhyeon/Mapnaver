@@ -30,6 +30,7 @@ public class Fragment5 extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
     }
 
     @Override
@@ -46,7 +47,12 @@ public class Fragment5 extends Fragment {
                 fragmentTransaction.replace(R.id.mainframe, my);
                 fragmentTransaction.commit();
             }
+
         });
+
+
+
+
 
         Button review = rootView.findViewById(R.id.review);
         review.setOnClickListener(new View.OnClickListener() {
