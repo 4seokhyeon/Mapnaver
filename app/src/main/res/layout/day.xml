@@ -80,7 +80,9 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints"
         android:orientation="horizontal">
+
     </LinearLayout>
+
 
     <RadioButton
         android:id="@+id/rdoCal"
@@ -102,4 +104,5 @@
         android:text="시간 설정"
         app:layout_constraintStart_toEndOf="@+id/back"
         app:layout_constraintTop_toBottomOf="@+id/back" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

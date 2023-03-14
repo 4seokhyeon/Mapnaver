@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -30,7 +29,7 @@ public class day extends Fragment {
     RadioButton rdoCal, rdoTime;
     DatePicker dPicker;
     TimePicker tPicker;
-    TextView tvYear, tvMonth, tvDay, tvHour, tvMinute;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -54,15 +53,12 @@ public class day extends Fragment {
         });
 
         //예약버튼
-        Button r1 = (Button) rootView.findViewById(R.id.rv);
-        r1.setOnClickListener(new View.OnClickListener() {
+        Button rv = (Button) rootView.findViewById(R.id.rv);
+        rv.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                reserve3 reserve3 = new reserve3();
-                fragmentTransaction.replace(R.id.mainframe, reserve3);
-                fragmentTransaction.commit();
+
 
                 //mDatabase.child("users").child(userId).setValue(user);
 
@@ -73,13 +69,32 @@ public class day extends Fragment {
                 String minute = Integer.toString(tPicker.getCurrentMinute());
                 String message = (year+"년 "+month+"월 "+day+"일 "+hour+"시 "+minute+"분으로 예약되었습니다.");
 
-                /*String date = (year+"년 "+month+"월 "+day+"일");
+                String date = (year+"년 "+month+"월 "+day+"일");
+                String time = (hour+"시 "+minute+"분");
+
+                Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
+
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                reserve3 reserve3 = new reserve3();
+                Bundle bundle = new Bundle();
+                bundle.putString("date",date);
+                bundle.putString("time",time);
+                reserve3.setArguments(bundle);
+                fragmentTransaction.replace(R.id.mainframe, reserve3);
+                fragmentTransaction.commit();
+
+
+              /*  String date = (year+"년 "+month+"월 "+day+"일");
                 String time = (hour+" : "+minute);
+
 
                 Bundle bundle = new Bundle();
                 bundle.putString("date",date);
                 bundle.putString("time",time);
-                confirm.setArguments(bundle); */
+                reserve3.setArguments(bundle);
+
+                fragmentTransaction.replace(R.id.mainframe,reserve3);
+                fragmentTransaction.commit(); */
 
 
                 Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
@@ -96,10 +111,11 @@ public class day extends Fragment {
         tvMonth = (TextView) rootView.findViewById(R.id.tvMonth);
         tvDay = (TextView) rootView.findViewById(R.id.tvDay);
         tvHour =  (TextView) rootView.findViewById(R.id.tvHour);
-        tvMinute =  (TextView) rootView.findViewById(R.id.tvMinute);*/
+        tvMinute =  (TextView) rootView.findViewById(R.id.tvMinute); */
 
         dPicker.setVisibility(View.INVISIBLE);
         tPicker.setVisibility(View.INVISIBLE);
+
 
         rdoCal.setOnClickListener(new View.OnClickListener() {
             @Override

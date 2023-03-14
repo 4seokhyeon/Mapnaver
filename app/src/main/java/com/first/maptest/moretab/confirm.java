@@ -19,11 +19,14 @@ public class confirm extends Fragment {
 
     TextView tvYear3, tvMonth3, tvDay3, tvHour3, tvMinute3;
     Button btnConfirm;
+    private View tv_date;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
     }
 
 
@@ -32,28 +35,23 @@ public class confirm extends Fragment {
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.confirm, container, false);
 
+/*
+        tv_date = rootView.findViewById(R.id.tv_date);
 
+        if(getArguments()!=null){
+            String date = getArguments().getString("date");
+            String time = getArguments().getString("time");
 
-        /*setContentView(R.layout.confirm);
+        }
+
+        setContentView(R.layout.confirm);
         setTitle("레스토랑 자리 예약 확정");
-
-
-
+        */
 
         //예약 날 정보
         //이전 day 변수들
-        tvYear3 = (TextView) rootView.findViewById(R.id.tvYear3);
-        tvMonth3 = (TextView) rootView.findViewById(R.id.tvMonth3);
-        tvDay3 = (TextView) rootView.findViewById(R.id.tvDay3);
-        tvHour3 = (TextView) rootView.findViewById(R.id.tvHour3);
-        tvMinute3 = (TextView) rootView.findViewById(R.id.tvMinute3);
 
-        tvYear3.setText(((day)day.dayContext).tvYear.getText());
-        tvMonth3.setText(((day)day.dayContext).tvMonth.getText());
-        tvDay3.setText(((day)day.dayContext).tvDay.getText());
-        tvHour3.setText(((day)day.dayContext).tvHour.getText());
-        tvMinute3.setText(((day)day.dayContext).tvMinute.getText());
-        */
+
         //메인 액티비티로 이동해 정보 수정 가능 back기능
         Button btnReturn = rootView.findViewById(R.id.BtnReturnToTable);
         btnReturn.setOnClickListener(new View.OnClickListener() {
@@ -121,6 +119,7 @@ public class confirm extends Fragment {
                 startActivity(intent);//다음 액티비티 화면에 출력
             }
         }); */
+
 
         return rootView;
     }
