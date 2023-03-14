@@ -88,7 +88,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_1,
                 container, false);
         Button listButton = rootView.findViewById(R.id.listButton);
-        mapView = (MapView) rootView.findViewById(R.id.navermap);
+        mapView = rootView.findViewById(R.id.navermap);
         mapView.onCreate(savedInstanceState);
         mapView.getMapAsync(this);
         locationSource = new FusedLocationSource(this, LOCATION_PERMISSION_REQUEST_CODE);
@@ -113,9 +113,6 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
 
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
-       
-        locationSource = new FusedLocationSource(this, ACCESS_LOCATION_PERMISSION_REQUEST_CODE);
-        naverMap.setLocationSource(locationSource);
         Fragment1.naverMap = naverMap;
         naverMap.setLocationSource(locationSource);
         requestPermissions(PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE);
