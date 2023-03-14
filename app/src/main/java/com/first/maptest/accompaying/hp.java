@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.DatePicker;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -39,7 +40,8 @@ public class hp extends Fragment {
         return new hp();
     }
 
-    RadioButton rdoCal, rdoTime;
+    RadioButton rdoCal, rdoTime, cdBtn, male, female, age1, age2, age3;
+    RadioGroup gender, age;
     DatePicker dPicker;
     TimePicker tPicker;
 
@@ -64,6 +66,7 @@ public class hp extends Fragment {
             }
         });
 
+
         //예약버튼
         Button r2 = rootView.findViewById(R.id.rv2);
         r2.setOnClickListener(new View.OnClickListener() {
@@ -75,26 +78,41 @@ public class hp extends Fragment {
                 fragmentTransaction.commit();
 
                 String year = Integer.toString(dPicker.getYear());
-                String month = Integer.toString(1+dPicker.getMonth());
+                String month = Integer.toString(1 + dPicker.getMonth());
                 String day = Integer.toString(dPicker.getDayOfMonth());
                 String hour = Integer.toString(tPicker.getCurrentHour());
                 String minute = Integer.toString(tPicker.getCurrentMinute());
-                String message = (year+"년 "+month+"월 "+day+"일 "+hour+"시 "+minute+"분으로 예약되었습니다.");
+                String message = (year + "년 " + month + "월 " + day + "일 " + hour + "시 " + minute + "분으로 예약되었습니다.");
+
+                String gender = null;
+                if (male.isChecked()) {
+                    gender = male.getText().toString();
+                } else if (female.isChecked()) {
+                    gender = female.getText().toString();
+                }
+
+                String age = null;
+                if(age1.isChecked()){
+                    age = age1.getText().toString();
+                } else if(age2.isChecked()){
+                    age = age2.getText().toString();
+                } else if(age3.isChecked()){
+                    age = age3.getText().toString();
+                }
 
                 Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
 
                 String date = (year+"년 "+month+"월 "+day+"일");
                 String time = (hour+" : "+minute);
 
-                Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
 
-                if(date.length()>0&&time.length()>0){
+                if(date.length()>0&&time.length()>0&&gender.length()>0&&age.length()>0){
                     FirebaseUser hp = FirebaseAuth.getInstance().getCurrentUser();
                     //user = 회원의 고유 id라고 생각하면됨 _ 파이어베이스에서 회원을 식별하기 위함.
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     //Firestore의 인스턴스 초기화
 
-                    HpInfo hpinfo = new HpInfo(date, time);
+                    HpInfo hpinfo = new HpInfo(date, time, gender, age);
                     if(hp != null){
                         db.collection("Hp").document(hp.getUid()).set(hpinfo)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -120,19 +138,33 @@ public class hp extends Fragment {
         rdoCal = (RadioButton) rootView.findViewById(R.id.rdoCal);
         rdoTime = (RadioButton) rootView.findViewById(R.id.rdoTime);
 
+        cdBtn = (RadioButton) rootView.findViewById(R.id.cdBtn);
+        gender = (RadioGroup) rootView.findViewById(R.id.gender);
+        male = (RadioButton) rootView.findViewById(R.id.male);
+        female = (RadioButton) rootView.findViewById(R.id.female);
+        age = (RadioGroup) rootView.findViewById(R.id.age);
+        age1 = (RadioButton) rootView.findViewById(R.id.age1);
+        age2 = (RadioButton) rootView.findViewById(R.id.age2);
+        age3 = (RadioButton) rootView.findViewById(R.id.age3);
+
         dPicker = (DatePicker) rootView.findViewById(R.id.datePicker1);
         tPicker = (TimePicker) rootView.findViewById(R.id.timePicker1);
 
         dPicker.setVisibility(View.INVISIBLE);
         tPicker.setVisibility(View.INVISIBLE);
+        gender.setVisibility(View.INVISIBLE);
+        age.setVisibility(View.INVISIBLE);
 
         rdoCal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 dPicker.setVisibility(View.VISIBLE);
                 tPicker.setVisibility(View.INVISIBLE);
+                gender.setVisibility(View.INVISIBLE);
+                age.setVisibility(View.INVISIBLE);
                 rdoCal.setChecked(true);
                 rdoTime.setChecked(false);
+                cdBtn.setChecked(false);
             }
         });
 
@@ -141,8 +173,24 @@ public class hp extends Fragment {
             public void onClick(View view) {
                 dPicker.setVisibility(View.INVISIBLE);
                 tPicker.setVisibility(View.VISIBLE);
+                gender.setVisibility(View.INVISIBLE);
+                age.setVisibility(View.INVISIBLE);
                 rdoCal.setChecked(false);
                 rdoTime.setChecked(true);
+                cdBtn.setChecked(false);
+            }
+        });
+
+        cdBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dPicker.setVisibility(View.INVISIBLE);
+                tPicker.setVisibility(View.INVISIBLE);
+                gender.setVisibility(View.VISIBLE);
+                age.setVisibility(View.VISIBLE);
+                rdoCal.setChecked(false);
+                rdoTime.setChecked(false);
+                cdBtn.setChecked(true);
             }
         });
 

@@ -33,27 +33,31 @@
         app:layout_constraintVertical_bias="0.973" />
 
     <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/gender"
+        android:layout_width="148dp"
+        android:layout_height="208dp"
+        android:layout_marginStart="17dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/timePicker1"
+        app:layout_constraintStart_toStartOf="@+id/timePicker1"
+        app:layout_constraintTop_toTopOf="@+id/datePicker1"
         tools:ignore="MissingConstraints">
-    </RadioGroup>
 
-    <TimePicker
-        android:id="@+id/timePicker1"
-        android:layout_width="364dp"
-        android:layout_height="311dp"
-        android:timePickerMode="spinner"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        <RadioButton
+            android:id="@+id/male"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="남자"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/female"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="여자"></RadioButton>
+
+    </RadioGroup>
 
     <DatePicker
         android:id="@+id/datePicker1"
@@ -68,6 +72,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rdoTime"
         tools:ignore="MissingConstraints" />
+
+    <TimePicker
+        android:id="@+id/timePicker1"
+        android:layout_width="364dp"
+        android:layout_height="311dp"
+        android:timePickerMode="spinner"
+        app:layout_constraintBottom_toTopOf="@+id/rv2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <RadioGroup
+        android:id="@+id/age"
+        android:layout_width="179dp"
+        android:layout_height="208dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="@+id/timePicker1"
+        app:layout_constraintEnd_toEndOf="@+id/timePicker1"
+        app:layout_constraintStart_toEndOf="@+id/gender"
+        app:layout_constraintTop_toTopOf="@+id/timePicker1"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/age1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="20대 중반~30대 초반"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/age2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="30대 중반~40대 초반"></RadioButton>
+
+        <RadioButton
+            android:id="@+id/age3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="40대 중반~50대 초반"></RadioButton>
+
+    </RadioGroup>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
@@ -99,8 +148,19 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="8dp"
         android:text="시간 설정"
-        app:layout_constraintStart_toEndOf="@+id/back"
+        app:layout_constraintStart_toEndOf="@+id/rdoCal"
         app:layout_constraintTop_toBottomOf="@+id/back" />
+
+    <RadioButton
+        android:id="@+id/cdBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="61dp"
+        android:text="조건 선택"
+        app:layout_constraintStart_toEndOf="@+id/rdoTime"
+        app:layout_constraintTop_toTopOf="@+id/back"
+        tools:ignore="MissingConstraints" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
