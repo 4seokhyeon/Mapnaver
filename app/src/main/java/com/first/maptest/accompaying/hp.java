@@ -1,7 +1,10 @@
 package com.first.maptest.accompaying;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,22 +22,34 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.first.maptest.MnInfo;
 import com.first.maptest.R;
 import com.first.maptest.UserInfo;
 import com.first.maptest.fragment.Fragment3;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.database.core.Tag;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
+
+import java.util.Random;
 
 //병원동행
 public class hp extends Fragment {
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     public static hp newInstance() {
         return new hp();
@@ -65,7 +80,6 @@ public class hp extends Fragment {
                 fragmentTransaction.commit();
             }
         });
-
 
         //예약버튼
         Button r2 = rootView.findViewById(R.id.rv2);
@@ -105,6 +119,15 @@ public class hp extends Fragment {
                 String date = (year+"년 "+month+"월 "+day+"일");
                 String time = (hour+" : "+minute);
 
+                String[] str = {"사석현","이상엽","최현지","박한나","아무개"};
+
+                Random rd = new Random();
+                int r = rd.nextInt(str.length);
+                String ps = str[r];
+
+                Bundle bundle = new Bundle();
+                bundle.putString("ps",ps);
+                rv2.setArguments(bundle);
 
                 if(date.length()>0&&time.length()>0&&gender.length()>0&&age.length()>0){
                     FirebaseUser hp = FirebaseAuth.getInstance().getCurrentUser();
@@ -132,7 +155,9 @@ public class hp extends Fragment {
                 }else{
                     //startToast("회원정보를 입력해주세요.");
                 }
+
             }
+
         });
 
         rdoCal = (RadioButton) rootView.findViewById(R.id.rdoCal);

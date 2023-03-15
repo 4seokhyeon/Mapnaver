@@ -94,7 +94,6 @@ public class rv extends Fragment {
                                 });
                     }
 
-
                 }else{
                     //startToast("예약 해주세요.");
                 }
