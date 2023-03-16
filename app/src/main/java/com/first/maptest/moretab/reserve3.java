@@ -7,20 +7,27 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.R;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 
 public class reserve3 extends Fragment {
 
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     String date;
     String time, name, number, input;
@@ -75,6 +82,33 @@ public class reserve3 extends Fragment {
             tv_name1.setText(name);
             tv_number1.setText(number);
             tv_input1.setText(input);
+
+            if(date.length()>0&&time.length()>0&&name.length()>0&&number.length()>0&&input.length()>0){
+                FirebaseUser reserve3 = FirebaseAuth.getInstance().getCurrentUser();
+                //user = 회원의 고유 id라고 생각하면됨 _ 파이어베이스에서 회원을 식별하기 위함.
+                FirebaseFirestore db = FirebaseFirestore.getInstance();
+                //Firestore의 인스턴스 초기화
+
+                confirmdata confirmdata = new confirmdata(date, time, name, number, input);
+                if(reserve3 != null){
+                    db.collection("confirm").document(reserve3.getUid()).set(confirmdata)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    //startToast("회원정보 등록에 성공했습니다.");
+                                    //finish();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    //startToast("회원정보 등록에 실패했습니다.");
+                                }
+                            });
+                }
+            }else{
+                //startToast("회원정보를 입력해주세요.");
+            }
         }
 
         Button back1 = rootView.findViewById(R.id.back1);
