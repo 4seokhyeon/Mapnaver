@@ -11,9 +11,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.R;
-import com.first.maptest.reserve;
 
 public class reserve23 extends Fragment {
+
+    String name,number,input;
 
 
     public static reserve23 newInstance()
@@ -30,6 +31,15 @@ public class reserve23 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.reserve23, container, false);
+
+
+
+        if(getArguments()!=null){
+            name = getArguments().getString("name");
+            number = getArguments().getString("number");
+            input = getArguments().getString("input");
+        }
+
 
         Button back2 = rootView.findViewById(R.id.back2);
         back2.setOnClickListener(new View.OnClickListener() {
@@ -48,6 +58,11 @@ public class reserve23 extends Fragment {
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 day day = new day();
+                Bundle bundle = new Bundle();
+                bundle.putString("name",name);
+                bundle.putString("number",number);
+                bundle.putString("input",input);
+                day.setArguments(bundle);
                 fragmentTransaction.replace(R.id.mainframe, day);
                 fragmentTransaction.commit();
             }

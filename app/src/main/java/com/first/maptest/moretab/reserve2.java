@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -15,11 +16,20 @@ import com.first.maptest.reserve;
 
 public class reserve2 extends Fragment {
 
+    public static reserve2 newInstance(){
+        return new reserve2();
+    }
+
+
+    EditText edtname, edtnumber, edtinput;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
     }
+
 
     //뒤로
     @Override
@@ -35,6 +45,8 @@ public class reserve2 extends Fragment {
                 reserve reserve = new reserve();
                 fragmentTransaction.replace(R.id.mainframe, reserve);
                 fragmentTransaction.commit();
+
+
             }
         });
 
@@ -45,8 +57,26 @@ public class reserve2 extends Fragment {
 
             @Override
             public void onClick(View v) {
+
+
+                edtname = rootView.findViewById(R.id.edtname);
+                edtnumber = rootView.findViewById(R.id.edtnumber);
+                edtinput = rootView.findViewById(R.id.edtinput);
+
+                String name = edtname.getText().toString();
+                String number = edtnumber.getText().toString();
+                String input = edtinput.getText().toString();
+                /*String message = (name+number+input+"분으로 예약되었습니다.");
+
+                Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show(); */
+
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 com.first.maptest.moretab.reserve23 reserve23 = new reserve23();
+                Bundle bundle = new Bundle();
+                bundle.putString("name",name);
+                bundle.putString("number",number);
+                bundle.putString("input",input);
+                reserve23.setArguments(bundle);
                 fragmentTransaction.replace(R.id.mainframe, reserve23);
                 fragmentTransaction.commit();
 
@@ -86,6 +116,7 @@ public class reserve2 extends Fragment {
             }
 
         });
+
 
         return rootView;
     }

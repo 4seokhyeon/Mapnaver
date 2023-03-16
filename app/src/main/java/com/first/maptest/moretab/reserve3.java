@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.R;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -22,8 +23,10 @@ public class reserve3 extends Fragment {
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
 
     String date;
-    String time;
+    String time, name, number, input;
     TextView tv_date, tv_time;
+    TextView tv_name1, tv_number1,tv_input1;
+    private DataSnapshot mDatabase;
 
     /*private TextView content;
     private EditText input;
@@ -33,6 +36,7 @@ public class reserve3 extends Fragment {
 
      */
 
+
     public static reserve3 newInstance()
     {
         return new reserve3();
@@ -41,7 +45,7 @@ public class reserve3 extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
 
     }
 
@@ -54,12 +58,23 @@ public class reserve3 extends Fragment {
 
         tv_date = (TextView) rootView.findViewById(R.id.tv_date);
         tv_time = (TextView) rootView.findViewById(R.id.tv_time);
+        tv_name1 = (TextView) rootView.findViewById(R.id.tv_name1);
+        tv_number1 = (TextView) rootView.findViewById(R.id.tv_number1);
+        tv_input1 = (TextView) rootView.findViewById(R.id.tv_input1);
+
 
         if(getArguments()!=null){
             date = getArguments().getString("date");
             time = getArguments().getString("time");
+            name = getArguments().getString("name");
+            number = getArguments().getString("number");
+            input = getArguments().getString("input");
+
             tv_date.setText(date);
             tv_time.setText(time);
+            tv_name1.setText(name);
+            tv_number1.setText(number);
+            tv_input1.setText(input);
         }
 
         Button back1 = rootView.findViewById(R.id.back1);
@@ -87,23 +102,21 @@ public class reserve3 extends Fragment {
         });
 
 
+/*
+        mDatabase.child("users").child(name).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (!task.isSuccessful()) {
+                    Log.e("firebase", "Error getting data", task.getException());
+                }
+                else {
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+                }
+            }
+        }); */
 
         return rootView;
     }
 
-    /* EditText input;
-    Button next;
-    private Activity rootView;
-
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-    }
-
-    private void setContentView(int activity_main) {
-    } */
-
-
 }
+

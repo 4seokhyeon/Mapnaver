@@ -1,6 +1,150 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:background="#F6BB43"
+        android:gravity="center"
+        android:text="좌석 예약이 완료되었습니다."
+        android:textColor="#ffffff"
+        android:textSize="20dp" />
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="79dp"
+        android:gravity="center"
+        android:text="저희 레스토랑에 예약해주셔서 감사합니다."
+        android:textColor="#F6BB43"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tvName3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F6BB43"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="예약자" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F6BB43"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="님,"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tvYear4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F6BB43"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="0000" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F6BB43"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="년" />
+
+        <TextView
+            android:id="@+id/tvMonth4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F6BB43"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="00" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F6BB43"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="월" />
+
+        <TextView
+            android:id="@+id/tvDay4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F6BB43"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="00" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F6BB43"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="일" />
+
+        <TextView
+            android:id="@+id/tvHour4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F6BB43"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="00" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F6BB43"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="시" />
+
+        <TextView
+            android:id="@+id/tvMinute4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F6BB43"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="00" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#F6BB43"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:text="분에 뵙겠습니다~" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="91dp"
+        android:gravity="center"
+        android:text="감사합니다^^"
+        android:textColor="#F6BB43"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+</LinearLayout>
