@@ -80,6 +80,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
         super.onCreate(savedInstanceState);
 
 
+
     }
 
     @Override
@@ -117,18 +118,12 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
         naverMap.setLocationSource(locationSource);
         requestPermissions(PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE);
 
-
         //ui 셋팅
         UiSettings uiSettings = naverMap.getUiSettings();
         uiSettings.setLocationButtonEnabled(true);
         uiSettings.setZoomControlEnabled(false);
         naverMap.getUiSettings().setZoomControlEnabled(true);
         naverMap.setLocationTrackingMode(LocationTrackingMode.Follow);
-
-       /* // 천안 지역 좌표 설정
-        LatLng cheonan = new LatLng(36.8075, 127.148);
-        CameraUpdate cameraUpdate = CameraUpdate.scrollTo(cheonan);
-        naverMap.moveCamera(cameraUpdate);*/
 
         HospitalApi apiData = new HospitalApi();
         ArrayList<HospitalData> dataArr = apiData.getData();
@@ -142,12 +137,13 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
             Marker marker = new Marker();
             marker.setPosition(new LatLng(data.getWGS84_LAT(), data.getWGS84_LON()));
             marker.setMap(naverMap);
+
+
         }
 
-
-
-
     }
+
+
 
 
 
@@ -155,6 +151,8 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
     public boolean onClick(@NonNull Overlay overlay) {
         Marker marker = (Marker) overlay;
         infoWindow.open(marker);
+
+
 
         return false;
     }
