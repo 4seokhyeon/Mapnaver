@@ -1,6 +1,9 @@
 package com.first.maptest.fragment;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.graphics.PointF;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
@@ -72,15 +75,11 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
     public static Fragment1 newInstance() {
         Fragment1 fragment = new Fragment1();
         return fragment;
-
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-
     }
 
     @Override
@@ -106,10 +105,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
                 fragmentTransaction.commit();
             }
         });
-
         return rootView;
-
-
     }
 
     @Override
@@ -137,12 +133,42 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
             Marker marker = new Marker();
             marker.setPosition(new LatLng(data.getWGS84_LAT(), data.getWGS84_LON()));
             marker.setMap(naverMap);
-
-
         }
+        naverMap.setOnMapClickListener(new NaverMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(@NonNull PointF pointF, @NonNull LatLng latLng) {
 
+            }
+
+            MapView mapView1 = mapView;
+
+            public boolean onMarkerClick(@NonNull Marker marker, @NonNull MapView mapView) {
+                // 마커의 위치를 기반으로 해당 병원 데이터 찾기
+                HospitalData hospitalData = null;
+                for (HospitalData data : dataArr) {
+                    if (data.getWGS84_LAT() == marker.getPosition().latitude &&
+                            data.getWGS84_LON() == marker.getPosition().longitude) {
+                        hospitalData = data;
+                        break;
+                    }
+                }
+                // 해당 병원 데이터가 있을 경우 AlertDialog로 표시
+                if (hospitalData != null) {
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+                    builder.setTitle(hospitalData.getDutyName() + " 정보")
+                            .setMessage("주소: " + hospitalData.getDutyAddr() + "\n전화번호: " + hospitalData.getDutyTel1())
+                            .setPositiveButton("닫기", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.dismiss();
+                                }
+                            });
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                }
+                return true;
+            }
+        });
     }
-
 
 
 
