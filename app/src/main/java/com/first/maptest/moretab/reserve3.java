@@ -32,7 +32,7 @@ public class reserve3 extends Fragment {
     String date;
     String time, name, number, input;
     TextView tv_date, tv_time;
-    TextView tv_name1, tv_number1,tv_input1;
+    TextView tv_name1, tv_number1, tv_input1;
     private DataSnapshot mDatabase;
 
     /*private TextView content;
@@ -52,8 +52,6 @@ public class reserve3 extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
 
@@ -123,13 +121,18 @@ public class reserve3 extends Fragment {
         });
 
 
-        Button confirm = rootView.findViewById(R.id.confirm);
-        confirm.setOnClickListener(new View.OnClickListener() {
+        Button end = rootView.findViewById(R.id.end);
+        end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                confirm confirm = new confirm();
-                fragmentTransaction.replace(R.id.mainframe, confirm);
+                end end = new end();
+                Bundle bundle = new Bundle();
+                bundle.putString("date",date);
+                bundle.putString("time",time);
+                bundle.putString("name",name);
+                end.setArguments(bundle);
+                fragmentTransaction.replace(R.id.mainframe, end);
                 fragmentTransaction.commit();
 
             }

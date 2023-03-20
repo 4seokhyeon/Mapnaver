@@ -63,6 +63,11 @@ public class reserve2 extends Fragment {
                 edtnumber = rootView.findViewById(R.id.edtnumber);
                 edtinput = rootView.findViewById(R.id.edtinput);
 
+                /*
+                //연락처 입력시 하이픈(-) 자동입력
+                edtnumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
+                */
+
                 String name = edtname.getText().toString();
                 String number = edtnumber.getText().toString();
                 String input = edtinput.getText().toString();
