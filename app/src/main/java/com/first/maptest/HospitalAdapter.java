@@ -73,16 +73,16 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
             this.tv_h_name=itemView.findViewById(R.id.tv_h_name);
             this.tv_h_type=itemView.findViewById(R.id.tv_h_type);
 
-            /*Button rs = itemView.findViewById(R.id.rs);
+            Button rs = itemView.findViewById(R.id.rs);
             rs.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    FragmentTransaction fragmentTransaction = ((MainActivity) context).getSupportFragmentManager().beginTransaction();
                     reserve2 reserve2 = new reserve2();
                     fragmentTransaction.replace(R.id.mainframe, reserve2);
                     fragmentTransaction.commit();
                 }
-            });*/
+            });
         }
 
     }

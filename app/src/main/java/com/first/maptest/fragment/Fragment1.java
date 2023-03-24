@@ -134,7 +134,9 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
             Marker marker = new Marker();
             marker.setPosition(new LatLng(data.getWGS84_LAT(), data.getWGS84_LON()));
             marker.setMap(naverMap);
+            marker.setOnClickListener(this);
         }
+
         naverMap.setOnMapClickListener(new NaverMap.OnMapClickListener() {
             @Override
             public void onMapClick(@NonNull PointF pointF, @NonNull LatLng latLng) {
@@ -156,11 +158,16 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
                 // 해당 병원 데이터가 있을 경우 AlertDialog로 표시
                 if (hospitalData != null) {
                     AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
-                    builder.setTitle(hospitalData.getDutyName() + " 정보")
-                            .setMessage("주소: " + hospitalData.getDutyAddr() + "\n전화번호: " + hospitalData.getDutyTel1())
-                            .setPositiveButton("닫기", new DialogInterface.OnClickListener() {
+                    builder.setTitle(hospitalData.getDutyName())
+                            .setMessage(hospitalData.getDutyAddr())
+                            .setPositiveButton("전화 걸기", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    dialog.dismiss();
+                                    // 전화 걸기
+                                }
+                            })
+                            .setNegativeButton("닫기", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // 닫기
                                 }
                             });
                     AlertDialog alertDialog = builder.create();
