@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -50,8 +51,6 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
     private FirebaseDatabase database;
     private DatabaseReference databaseReference;
     private FirebaseFirestore db;
-
-
 
     //final Geocoder geocoder = new Geocoder(this.getContext());
     //지도 객체 변수
@@ -110,6 +109,8 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
 
     @Override
     public void onMapReady(@NonNull NaverMap naverMap) {
+        infoWindow = new InfoWindow();
+
         Fragment1.naverMap = naverMap;
         naverMap.setLocationSource(locationSource);
         requestPermissions(PERMISSIONS, LOCATION_PERMISSION_REQUEST_CODE);
@@ -140,9 +141,9 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
 
             }
 
-            MapView mapView1 = mapView;
+           MapView mapView1 = mapView;
 
-            public boolean onMarkerClick(@NonNull Marker marker, @NonNull MapView mapView) {
+            /*public boolean onMarkerClick(@NonNull Marker marker, @NonNull MapView mapView) {
                 // 마커의 위치를 기반으로 해당 병원 데이터 찾기
                 HospitalData hospitalData = null;
                 for (HospitalData data : dataArr) {
@@ -166,20 +167,25 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
                     alertDialog.show();
                 }
                 return true;
-            }
+            }*/
         });
     }
 
-
-
-
     @Override
     public boolean onClick(@NonNull Overlay overlay) {
-        Marker marker = (Marker) overlay;
-        infoWindow.open(marker);
+       /* Marker marker = (Marker) overlay;
+        infoWindow.open(marker);*/
 
-
-
+        if(overlay instanceof Marker){
+            Marker marker = (Marker) overlay;
+            if(marker.getInfoWindow()!=null){
+                infoWindow.close();
+                Toast.makeText(this.getActivity().getApplicationContext(), "InfoWindow Close", Toast.LENGTH_SHORT).show();
+            }else{
+                infoWindow.open(marker);
+                Toast.makeText(this.getActivity().getApplicationContext(), "InfoWindow Open", Toast.LENGTH_SHORT).show();
+            }return true;
+        }
         return false;
     }
 

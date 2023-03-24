@@ -43,7 +43,7 @@ public class reserve extends Fragment {
             }
         });
 
-        Button reserve2 = rootView.findViewById(R.id.reserve2);
+        /*Button reserve2 = rootView.findViewById(R.id.reserve2);
         reserve2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -52,7 +52,7 @@ public class reserve extends Fragment {
                 fragmentTransaction.replace(R.id.mainframe, reserve2);
                 fragmentTransaction.commit();
             }
-        });
+        });*/
 
         return rootView;
     }

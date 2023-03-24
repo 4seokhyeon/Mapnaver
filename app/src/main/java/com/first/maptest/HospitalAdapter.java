@@ -5,11 +5,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.first.maptest.moretab.reserve2;
 
 import java.util.ArrayList;
 
@@ -68,6 +72,17 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
             this.tv_addr=itemView.findViewById(R.id.tv_addr);
             this.tv_h_name=itemView.findViewById(R.id.tv_h_name);
             this.tv_h_type=itemView.findViewById(R.id.tv_h_type);
+
+            /*Button rs = itemView.findViewById(R.id.rs);
+            rs.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                    reserve2 reserve2 = new reserve2();
+                    fragmentTransaction.replace(R.id.mainframe, reserve2);
+                    fragmentTransaction.commit();
+                }
+            });*/
         }
 
     }

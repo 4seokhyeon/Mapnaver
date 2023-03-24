@@ -4,14 +4,18 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.first.maptest.accompaying.done1;
+import com.first.maptest.moretab.reserve2;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -37,6 +41,17 @@ public class Listframent extends Fragment {
                 container, false);
         recyclerView=rootView.findViewById(R.id.hospital);
         initdata();
+
+        /*Button rs = rootView.findViewById(R.id.rs);
+        rs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                reserve2 reserve2 = new reserve2();
+                fragmentTransaction.replace(R.id.mainframe, reserve2);
+                fragmentTransaction.commit();
+            }
+        });*/
 
         return rootView;
     }
