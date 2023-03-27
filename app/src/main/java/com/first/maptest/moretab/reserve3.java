@@ -30,9 +30,9 @@ public class reserve3 extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     String date;
-    String time, name, number, input;
+    String time, name, number, input, birthday;
     TextView tv_date, tv_time;
-    TextView tv_name1, tv_number1, tv_input1;
+    TextView tv_name1, tv_number1, tv_input1, tv_birthday;
     private DataSnapshot mDatabase;
 
     /*private TextView content;
@@ -66,6 +66,7 @@ public class reserve3 extends Fragment {
         tv_name1 = (TextView) rootView.findViewById(R.id.tv_name1);
         tv_number1 = (TextView) rootView.findViewById(R.id.tv_number1);
         tv_input1 = (TextView) rootView.findViewById(R.id.tv_input1);
+        tv_birthday = (TextView) rootView.findViewById(R.id.tv_birthday1);
 
 
         if(getArguments()!=null){
@@ -74,20 +75,22 @@ public class reserve3 extends Fragment {
             name = getArguments().getString("name");
             number = getArguments().getString("number");
             input = getArguments().getString("input");
+            birthday = getArguments().getString("birthday");
 
             tv_date.setText(date);
             tv_time.setText(time);
             tv_name1.setText(name);
             tv_number1.setText(number);
             tv_input1.setText(input);
+            tv_birthday.setText(birthday);
 
-            if(date.length()>0&&time.length()>0&&name.length()>0&&number.length()>0&&input.length()>0){
+            if(date.length()>0&&time.length()>0&&name.length()>0&&number.length()>0&&input.length()>0&&birthday.length()>0){
                 FirebaseUser reserve3 = FirebaseAuth.getInstance().getCurrentUser();
                 //user = 회원의 고유 id라고 생각하면됨 _ 파이어베이스에서 회원을 식별하기 위함.
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 //Firestore의 인스턴스 초기화
 
-                confirmdata confirmdata = new confirmdata(date, time, name, number, input);
+                confirmdata confirmdata = new confirmdata(date, time, name, number, input, birthday);
                 if(reserve3 != null){
                     db.collection("confirm").document(reserve3.getUid()).set(confirmdata)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {

@@ -29,7 +29,7 @@ public class day extends Fragment {
     RadioButton rdoCal, rdoTime;
     DatePicker dPicker;
     TimePicker tPicker;
-    String name,number,input;
+    String name,number,input,birthday;
 
 
     @Override
@@ -46,6 +46,7 @@ public class day extends Fragment {
             name = getArguments().getString("name");
             number = getArguments().getString("number");
             input = getArguments().getString("input");
+            birthday = getArguments().getString("birthday");
         }
 
         Button back = rootView.findViewById(R.id.back);
@@ -89,6 +90,7 @@ public class day extends Fragment {
                 bundle.putString("name",name);
                 bundle.putString("number",number);
                 bundle.putString("input",input);
+                bundle.putString("birthday",birthday);
                 reserve3.setArguments(bundle);
                 fragmentTransaction.replace(R.id.mainframe, reserve3);
                 fragmentTransaction.commit();

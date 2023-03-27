@@ -21,7 +21,8 @@ public class reserve2 extends Fragment {
     }
 
 
-    EditText edtname, edtnumber, edtinput;
+    EditText edtname, edtnumber, edtinput, edtbirthday;
+
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class reserve2 extends Fragment {
         reserve23.setOnClickListener(new View.OnClickListener() {
             private View dialogView;
 
+
             @Override
             public void onClick(View v) {
 
@@ -62,7 +64,7 @@ public class reserve2 extends Fragment {
                 edtname = rootView.findViewById(R.id.edtname);
                 edtnumber = rootView.findViewById(R.id.edtnumber);
                 edtinput = rootView.findViewById(R.id.edtinput);
-
+                edtbirthday = rootView.findViewById(R.id.edtbirthday);
                 /*
                 //연락처 입력시 하이픈(-) 자동입력
                 edtnumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
@@ -71,6 +73,8 @@ public class reserve2 extends Fragment {
                 String name = edtname.getText().toString();
                 String number = edtnumber.getText().toString();
                 String input = edtinput.getText().toString();
+                String birthday = edtbirthday.getText().toString();
+
                 /*String message = (name+number+input+"분으로 예약되었습니다.");
 
                 Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show(); */
@@ -81,6 +85,7 @@ public class reserve2 extends Fragment {
                 bundle.putString("name",name);
                 bundle.putString("number",number);
                 bundle.putString("input",input);
+                bundle.putString("birthday",birthday);
                 reserve23.setArguments(bundle);
                 fragmentTransaction.replace(R.id.mainframe, reserve23);
                 fragmentTransaction.commit();
@@ -122,6 +127,55 @@ public class reserve2 extends Fragment {
 
         });
 
+        /*
+        birthday.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if(birthday.isFocusable() && !s.toString().equals("")) {
+
+                    int textlength;
+                    try{
+                        textlength = birthday.getText().toString().length();
+                    }catch (NumberFormatException e){
+                        e.printStackTrace();
+                        return;
+                    }
+
+                    if (textlength == 4 && before != 1) {
+
+                        birthday.setText(et_spec_content_2.getText().toString()+".");
+                        birthday.setSelection(birthday.getText().length());
+
+                    }else if (textlength == 7&& before != 1){
+
+                        birthday.setText(et_spec_content_2.getText().toString()+".");
+                        birthday.setSelection(birthday.getText().length());
+
+                    }else if(textlength == 5 && !birthday.getText().toString().contains(".")){
+
+                        birthday.setText(birthday.getText().toString().substring(0,4)+"."+birthday.getText().toString().substring(4));
+                        birthday.setSelection(birthday.getText().length());
+
+                    }else if(textlength == 8 && !birthday.getText().toString().substring(7,8).equals(".")){
+
+                        birthday.setText(birthday.getText().toString().substring(0,7)+"."+birthday.getText().toString().substring(7));
+                        birthday.setSelection(birthday.getText().length());
+
+                    }
+                }
+
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+
+            }
+        }); */
 
         return rootView;
     }

@@ -7,13 +7,15 @@ public class confirmdata {
     private String name;
     private String number;
     private String input;
+    private String birthday;
 
-    public confirmdata(String date, String time, String name, String number, String input){
+    public confirmdata(String date, String time, String name, String number, String input, String birthday){
         this.date = date;
         this.time = time;
         this.name = name;
         this.number = number;
         this.input = input;
+        this.birthday = birthday;
     }
 
 
@@ -36,6 +38,10 @@ public class confirmdata {
     public String getInput() {return input;}
 
     public void setInput(String input) {this.input = input;}
+
+    public String getBirthday() {return birthday;}
+
+    public void setBirthday(String birthday) {this.birthday = birthday;}
 
 
 }
