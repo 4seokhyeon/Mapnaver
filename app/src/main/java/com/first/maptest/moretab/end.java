@@ -14,8 +14,8 @@ import com.first.maptest.R;
 public class end extends Fragment{
 
     String date;
-    String time, name ;
-    TextView tv_date1, tv_time1, tv_name2;
+    String time, name, hname;
+    TextView tv_date1, tv_time1, tv_name2,tv_hname2;
 
 
     public static end newInstance() {
@@ -35,16 +35,19 @@ public class end extends Fragment{
         tv_date1 = (TextView) rootView.findViewById(R.id.tv_date1);
         tv_time1 = (TextView) rootView.findViewById(R.id.tv_time1);
         tv_name2 = (TextView) rootView.findViewById(R.id.tv_name2);
+        tv_hname2 = (TextView) rootView.findViewById(R.id.tv_hname2);
 
 
         if(getArguments()!=null) {
             date = getArguments().getString("date");
             time = getArguments().getString("time");
             name = getArguments().getString("name");
+            hname = getArguments().getString("hname");
 
             tv_date1.setText(date);
             tv_time1.setText(time);
             tv_name2.setText(name);
+            tv_hname2.setText(hname);
         }
 
 

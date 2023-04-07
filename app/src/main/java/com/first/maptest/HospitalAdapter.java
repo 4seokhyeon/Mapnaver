@@ -1,10 +1,10 @@
 package com.first.maptest;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -73,14 +73,25 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
             this.tv_h_name=itemView.findViewById(R.id.tv_h_name);
             this.tv_h_type=itemView.findViewById(R.id.tv_h_type);
 
+
             Button rs = itemView.findViewById(R.id.rs);
             rs.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+
+                    tv_h_name = itemView.findViewById(R.id.tv_h_name);
+
+                    String hname = tv_h_name.getText().toString();
+
                     FragmentTransaction fragmentTransaction = ((MainActivity) context).getSupportFragmentManager().beginTransaction();
                     reserve2 reserve2 = new reserve2();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("hname",hname);
+                    reserve2.setArguments(bundle);
                     fragmentTransaction.replace(R.id.mainframe, reserve2);
                     fragmentTransaction.commit();
+
+
                 }
             });
         }

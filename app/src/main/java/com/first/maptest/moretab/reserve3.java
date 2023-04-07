@@ -30,9 +30,9 @@ public class reserve3 extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     String date;
-    String time, name, number, input, birthday;
+    String time, name, number, input, birthday,hname;
     TextView tv_date, tv_time;
-    TextView tv_name1, tv_number1, tv_input1, tv_birthday;
+    TextView tv_name1, tv_number1, tv_input1, tv_birthday,tv_hname;
     private DataSnapshot mDatabase;
 
     /*private TextView content;
@@ -67,6 +67,7 @@ public class reserve3 extends Fragment {
         tv_number1 = (TextView) rootView.findViewById(R.id.tv_number1);
         tv_input1 = (TextView) rootView.findViewById(R.id.tv_input1);
         tv_birthday = (TextView) rootView.findViewById(R.id.tv_birthday1);
+        tv_hname = (TextView) rootView.findViewById(R.id.tv_hname1);
 
 
         if(getArguments()!=null){
@@ -76,6 +77,7 @@ public class reserve3 extends Fragment {
             number = getArguments().getString("number");
             input = getArguments().getString("input");
             birthday = getArguments().getString("birthday");
+            hname = getArguments().getString("hname");
 
             tv_date.setText(date);
             tv_time.setText(time);
@@ -83,6 +85,7 @@ public class reserve3 extends Fragment {
             tv_number1.setText(number);
             tv_input1.setText(input);
             tv_birthday.setText(birthday);
+            tv_hname.setText(hname);
 
             if(date.length()>0&&time.length()>0&&name.length()>0&&number.length()>0&&input.length()>0&&birthday.length()>0){
                 FirebaseUser reserve3 = FirebaseAuth.getInstance().getCurrentUser();

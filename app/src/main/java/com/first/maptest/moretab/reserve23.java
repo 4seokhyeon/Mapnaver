@@ -14,7 +14,7 @@ import com.first.maptest.R;
 
 public class reserve23 extends Fragment {
 
-    String name,number,input,birthday;
+    String name,number,input,birthday,hname;
 
 
     public static reserve23 newInstance()
@@ -39,6 +39,7 @@ public class reserve23 extends Fragment {
             number = getArguments().getString("number");
             input = getArguments().getString("input");
             birthday = getArguments().getString("birthday");
+            hname = getArguments().getString("hname");
         }
 
 
@@ -64,6 +65,7 @@ public class reserve23 extends Fragment {
                 bundle.putString("number",number);
                 bundle.putString("input",input);
                 bundle.putString("birthday",birthday);
+                bundle.putString("hname",hname);
                 day.setArguments(bundle);
                 fragmentTransaction.replace(R.id.mainframe, day);
                 fragmentTransaction.commit();
