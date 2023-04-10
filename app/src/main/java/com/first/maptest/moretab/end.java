@@ -15,7 +15,7 @@ public class end extends Fragment{
 
     String date;
     String time, name, hname;
-    TextView tv_date1, tv_time1, tv_name2,tv_hname2;
+    TextView tv_date1, tv_time1, tv_name2,tv_hname2, tv_hname;
 
 
     public static end newInstance() {

@@ -50,6 +50,7 @@ public class reserve2 extends Fragment {
             tv_hname.setText(hname);
         }
 
+
         Button back1 = rootView.findViewById(R.id.back1);
         back1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,16 +60,12 @@ public class reserve2 extends Fragment {
                 fragmentTransaction.replace(R.id.mainframe, reserve);
                 fragmentTransaction.commit();
 
-
             }
         });
 
         //정보 입력 후 다음 페이지
         Button reserve23 = rootView.findViewById(R.id.reserve23);
         reserve23.setOnClickListener(new View.OnClickListener() {
-            private View dialogView;
-
-
             @Override
             public void onClick(View v) {
 
@@ -77,20 +74,18 @@ public class reserve2 extends Fragment {
                 edtnumber = rootView.findViewById(R.id.edtnumber);
                 edtinput = rootView.findViewById(R.id.edtinput);
                 edtbirthday = rootView.findViewById(R.id.edtbirthday);
-                tv_h_name = rootView.findViewById(R.id.tv_h_name);
+                /*tv_h_name = rootView.findViewById(R.id.tv_h_name); */
 
 
                 /*
                 //연락처 입력시 하이픈(-) 자동입력
                 edtnumber.addTextChangedListener(new PhoneNumberFormattingTextWatcher());
-                */
-
+*/
                 String name = edtname.getText().toString();
                 String number = edtnumber.getText().toString();
                 String input = edtinput.getText().toString();
                 String birthday = edtbirthday.getText().toString();
-                String hname = tv_h_name.getText().toString();
-
+                /*String hname = tv_h_name.getText().toString();
                 /*String message = (name+number+input+"분으로 예약되었습니다.");
 
                 Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show(); */
@@ -106,8 +101,6 @@ public class reserve2 extends Fragment {
                 reserve23.setArguments(bundle);
                 fragmentTransaction.replace(R.id.mainframe, reserve23);
                 fragmentTransaction.commit();
-
-
 
             }
 

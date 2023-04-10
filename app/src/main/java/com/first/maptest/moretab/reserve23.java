@@ -33,7 +33,6 @@ public class reserve23 extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.reserve23, container, false);
 
 
-
         if(getArguments()!=null){
             name = getArguments().getString("name");
             number = getArguments().getString("number");

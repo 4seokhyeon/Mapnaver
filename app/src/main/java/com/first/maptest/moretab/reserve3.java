@@ -137,6 +137,7 @@ public class reserve3 extends Fragment {
                 bundle.putString("date",date);
                 bundle.putString("time",time);
                 bundle.putString("name",name);
+                bundle.putString("hname",hname);
                 end.setArguments(bundle);
                 fragmentTransaction.replace(R.id.mainframe, end);
                 fragmentTransaction.commit();
