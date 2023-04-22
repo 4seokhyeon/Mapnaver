@@ -12,7 +12,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.R;
-import com.first.maptest.fragment.Fragment5;
+import com.first.maptest.fragment.Fragment4;
+//import com.first.maptest.fragment.Fragment5;
 
 //알림설정
 public class pop extends Fragment {
@@ -37,8 +38,8 @@ public class pop extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                Fragment5 fragment5 = new Fragment5();
-                fragmentTransaction.replace(R.id.mainframe, fragment5);
+                Fragment4 fragment4 = new Fragment4();
+                fragmentTransaction.replace(R.id.mainframe, fragment4);
                 fragmentTransaction.commit();
             }
         });

@@ -20,7 +20,7 @@ import com.first.maptest.fragment.Fragment1;
 import com.first.maptest.fragment.Fragment2;
 import com.first.maptest.fragment.Fragment3;
 import com.first.maptest.fragment.Fragment4;
-import com.first.maptest.fragment.Fragment5;
+//import com.first.maptest.fragment.Fragment5;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
     private Fragment2 fragment2;
     private Fragment3 fragment3;
     private Fragment4 fragment4;
-    private Fragment5 fragment5;
+    //private Fragment5 fragment5;
     private Listframent listframent;
     
 
@@ -121,9 +121,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.item_fragment4:
                         setFragment(3);
                         break;
-                    case R.id.item_fragment5:
+                    /*case R.id.item_fragment5:
                         setFragment(4);
-                        break;
+                        break;*/
                 }
                 return true;
             }
@@ -132,7 +132,7 @@ public class MainActivity extends AppCompatActivity {
         fragment2 = new Fragment2();
         fragment3 = new Fragment3();
         fragment4 = new Fragment4();
-        fragment5 = new Fragment5();
+        //fragment5 = new Fragment5();
         setFragment(0);
     }
 
@@ -189,10 +189,10 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.mainframe, fragment4);
                 ft.commit();
                 break;
-            case 4:
+           /* case 4:
                 ft.replace(R.id.mainframe, fragment5);
                 ft.commit();
-                break;
+                break;*/
         }
     }
 }
