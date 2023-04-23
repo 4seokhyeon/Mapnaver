@@ -14,11 +14,7 @@
         tools:layout_editor_absoluteX="0dp"
         android:layout_marginBottom="58dp">
 
-        <Button
-            android:id="@+id/LogOutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="로그아웃" />
+
     </FrameLayout>
 
     <FrameLayout

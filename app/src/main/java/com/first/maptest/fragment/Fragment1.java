@@ -134,7 +134,15 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
             Marker marker = new Marker();
             marker.setPosition(new LatLng(data.getWGS84_LAT(), data.getWGS84_LON()));
             marker.setMap(naverMap);
-            marker.setOnClickListener(this);
+            marker.setMap(naverMap);
+            marker.setOnClickListener(new Overlay.OnClickListener() {
+                @Override
+                public boolean onClick(@NonNull Overlay overlay) {
+                    // Handle marker click event here
+                    Toast.makeText(getContext(), "병원이 클릭 되었습니다.", Toast.LENGTH_SHORT).show();
+                    return true;
+                }
+            });
         }
 
         naverMap.setOnMapClickListener(new NaverMap.OnMapClickListener() {
@@ -145,7 +153,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
 
            MapView mapView1 = mapView;
 
-            /*public boolean onMarkerClick(@NonNull Marker marker, @NonNull MapView mapView) {
+            public boolean onMarkerClick(@NonNull Marker marker, @NonNull MapView mapView) {
                 // 마커의 위치를 기반으로 해당 병원 데이터 찾기
                 HospitalData hospitalData = null;
                 for (HospitalData data : dataArr) {
@@ -174,8 +182,16 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener, OnMa
                     alertDialog.show();
                 }
                 return true;
-            }*/
+            }
         });
+    }
+    public boolean onMarkerClick(@NonNull Overlay overlay) {
+        if (overlay instanceof Marker) {
+            Marker marker = (Marker) overlay;
+            // 마커가 클릭되었을 때 처리할 코드 작성
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        findViewById(R.id.LogOutButton).setOnClickListener(onClickListener);
+       // findViewById(R.id.LogOutButton).setOnClickListener(onClickListener);
 
         if(user==null){
             MystartActivity(LoginActivity.class);
