@@ -8,14 +8,16 @@ public class confirmdata {
     private String number;
     private String input;
     private String birthday;
+    private String hname;
 
-    public confirmdata(String date, String time, String name, String number, String input, String birthday){
+    public confirmdata(String date, String time, String name, String number, String input, String birthday, String hname){
         this.date = date;
         this.time = time;
         this.name = name;
         this.number = number;
         this.input = input;
         this.birthday = birthday;
+        this.hname = hname;
     }
 
 
@@ -42,6 +44,10 @@ public class confirmdata {
     public String getBirthday() {return birthday;}
 
     public void setBirthday(String birthday) {this.birthday = birthday;}
+
+    public String getHname() {return hname;}
+
+    public void setHname(String hname) {this.hname = hname;}
 
 
 }
