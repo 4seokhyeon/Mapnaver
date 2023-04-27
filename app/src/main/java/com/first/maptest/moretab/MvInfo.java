@@ -6,12 +6,14 @@ public class MvInfo {
 
     private String date;
     private String time;
-    private String address;
+    private String ad;
+    private String name;
 
-    public MvInfo(String date, String time, String address){
+    public MvInfo(String date, String time, String ad, String name){
         this.date = date;
         this.time = time;
-        this.address = address;
+        this.ad = ad;
+        this.name = name;
     }
 
     public String getDate() {return date;}
@@ -22,8 +24,12 @@ public class MvInfo {
 
     public void setTime(String time) {this.time = time;}
 
-    public String getAddress(){return address;}
+    public String getAd(){return ad;}
 
-    public void setAddress(String address) {this.address = address;}
+    public void setAd(String ad) {this.ad = ad;}
+
+    public String getName(){return name;}
+
+    public void setName(String name) {this.name = name;}
 
 }

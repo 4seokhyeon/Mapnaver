@@ -78,8 +78,6 @@ public class mv extends Fragment {
                 fragmentTransaction.replace(R.id.mainframe, rv);
                 fragmentTransaction.commit();
 
-                //mDatabase.child("users").child(userId).setValue(user);
-
                 String year = Integer.toString(dPicker.getYear());
                 String month = Integer.toString(1+dPicker.getMonth());
                 String day = Integer.toString(dPicker.getDayOfMonth());
@@ -102,36 +100,6 @@ public class mv extends Fragment {
                 rv.setArguments(bundle);
 
                 Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
-
-
-                /*if(date.length()>0&&time.length()>0){
-                    FirebaseUser mv = FirebaseAuth.getInstance().getCurrentUser();
-                    //user = 회원의 고유 id라고 생각하면됨 _ 파이어베이스에서 회원을 식별하기 위함.
-                    FirebaseFirestore db = FirebaseFirestore.getInstance();
-                    //Firestore의 인스턴스 초기화
-
-                    MvInfo mvinfo = new MvInfo(date, time);
-                    if(mv != null){
-                        db.collection("MV").document(mv.getUid()).set(mvinfo)
-                                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                    @Override
-                                    public void onSuccess(Void aVoid) {
-                                        //startToast("예약내역 전달에 성공했습니다.");
-                                        //finish();
-                                    }
-                                })
-                                .addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                       // startToast("예약내역 전달에 실패했습니다.");
-                                    }
-                                });
-                    }
-
-
-                }else{
-                    //startToast("예약 해주세요.");
-                }*/
             }
         });
 
