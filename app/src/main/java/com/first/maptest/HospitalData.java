@@ -1,53 +1,35 @@
 package com.first.maptest;
 
+import com.first.maptest.moretab.BodyClass;
+
+import org.simpleframework.xml.Element;
+import org.simpleframework.xml.Root;
+
+import io.grpc.okhttp.internal.framed.Header;
+
+@Root(name="response", strict = false)
 public class HospitalData {
-    public Double getWGS84_LON() {
-        return WGS84_LON;
+    @Element(name="header")
+    Header headerClass;
+    @Element(name="body")
+    BodyClass bodyClass ;
+
+
+    public Header getHeaderClass() {
+        return headerClass;
     }
 
-    public void setWGS84_LON(Double WGS84_LON) {
-        this.WGS84_LON = WGS84_LON;
+    public void setHeaderClass(Header headerClass) {
+        this.headerClass = headerClass;
     }
 
-    public Double getWGS84_LAT() {
-        return WGS84_LAT;
+    public BodyClass getBodyClass() {
+        return bodyClass;
     }
 
-    public void setWGS84_LAT(Double WGS84_LAT) {
-        this.WGS84_LAT = WGS84_LAT;
+    public void setBodyClass(BodyClass bodyClass) {
+        this.bodyClass = bodyClass;
     }
-
-    Double WGS84_LON;
-    Double WGS84_LAT;
-    String dutyAddr;
-    String dutyTel1;
-
-    public String getDutyAddr() {
-        return dutyAddr;
-    }
-
-    public void setDutyAddr(String dutyAddr) {
-        this.dutyAddr = dutyAddr;
-    }
-
-    public String getDutyTel1() {
-        return dutyTel1;
-    }
-
-    public void setDutyTel1(String dutyTel1) {
-        this.dutyTel1 = dutyTel1;
-    }
-
-    public String getDutyName() {
-        return dutyName;
-    }
-
-    public void setDutyName(String dutyName) {
-        this.dutyName = dutyName;
-    }
-
-    String dutyName;
 
 
 }
-
