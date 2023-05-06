@@ -30,7 +30,7 @@ public class reserve3 extends Fragment {
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
     String date;
-    String time, name, number, input, birthday,hname;
+    String time, name, number, input, birthday, hname;
     TextView tv_date, tv_time;
     TextView tv_name1, tv_number1, tv_input1, tv_birthday,tv_hname;
     private DataSnapshot mDatabase;
@@ -87,13 +87,13 @@ public class reserve3 extends Fragment {
             tv_birthday.setText(birthday);
             tv_hname.setText(hname);
 
-            if(date.length()>0&&time.length()>0&&name.length()>0&&number.length()>0&&input.length()>0&&birthday.length()>0){
+            if(date.length()>0&&time.length()>0&&name.length()>0&&number.length()>0&&input.length()>0&&birthday.length()>0&&hname.length()>0){
                 FirebaseUser reserve3 = FirebaseAuth.getInstance().getCurrentUser();
                 //user = 회원의 고유 id라고 생각하면됨 _ 파이어베이스에서 회원을 식별하기 위함.
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 //Firestore의 인스턴스 초기화
 
-                confirmdata confirmdata = new confirmdata(date, time, name, number, input, birthday);
+                confirmdata confirmdata = new confirmdata(date, time, name, number, input, birthday, hname);
                 if(reserve3 != null){
                     db.collection("confirm").document(reserve3.getUid()).set(confirmdata)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {

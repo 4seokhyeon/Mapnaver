@@ -4,12 +4,15 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.R;
+import com.first.maptest.fragment.Fragment1;
 
 public class end extends Fragment{
 
@@ -51,18 +54,18 @@ public class end extends Fragment{
         }
 
 
-        /*
+
         //완료버튼
-        Button back2 = rootView.findViewById(R.id.back2);
-        back2.setOnClickListener(new View.OnClickListener() {
+        Button button = rootView.findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                Fragment2 fragment2 = new Fragment2();
-                fragmentTransaction.replace(R.id.mainframe, fragment2);
+                Fragment1 fragment1 = new Fragment1();
+                fragmentTransaction.replace(R.id.mainframe, fragment1);
                 fragmentTransaction.commit();
             }
-        }); */
+        });
 
         return rootView;
     }

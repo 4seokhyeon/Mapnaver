@@ -126,16 +126,18 @@ public class hp extends Fragment {
                 String ps = str[r];
 
                 Bundle bundle = new Bundle();
+                bundle.putString("date",date);
+                bundle.putString("time",time);
                 bundle.putString("ps",ps);
                 rv2.setArguments(bundle);
 
-                if(date.length()>0&&time.length()>0&&gender.length()>0&&age.length()>0){
+                if(date.length()>0&&time.length()>0&&gender.length()>0&&age.length()>0&&ps.length()>0){
                     FirebaseUser hp = FirebaseAuth.getInstance().getCurrentUser();
                     //user = 회원의 고유 id라고 생각하면됨 _ 파이어베이스에서 회원을 식별하기 위함.
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     //Firestore의 인스턴스 초기화
 
-                    HpInfo hpinfo = new HpInfo(date, time, gender, age);
+                    HpInfo hpinfo = new HpInfo(date, time, gender, age, ps);
                     if(hp != null){
                         db.collection("Hp").document(hp.getUid()).set(hpinfo)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {

@@ -37,7 +37,7 @@ import io.grpc.internal.DnsNameResolver;
 public class rv2 extends Fragment {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String ps;
+    String date, time, ps;
     TextView nameTxt, ageTxt, bgTxt;
 
     public static rv2 newInstance()
@@ -61,6 +61,8 @@ public class rv2 extends Fragment {
         bgTxt = (TextView) rootView.findViewById(R.id.bgTxt);
 
         if(getArguments()!=null){
+            date = getArguments().getString("date");
+            time = getArguments().getString("time");
             ps = getArguments().getString("ps");
         }
 
@@ -95,9 +97,16 @@ public class rv2 extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                pp pp = new pp();
-                fragmentTransaction.replace(R.id.mainframe, pp);
+                hp2 hp2 = new hp2();
+
+                fragmentTransaction.replace(R.id.mainframe, hp2);
                 fragmentTransaction.commit();
+
+                Bundle bundle = new Bundle();
+                bundle.putString("date",date);
+                bundle.putString("time",time);
+                bundle.putString("ps", ps);
+                hp2.setArguments(bundle);
 
                 String matchedPerson = ps+"님과 매칭이 완료되었습니다.";
                 Toast.makeText(getActivity().getApplicationContext(), matchedPerson, Toast.LENGTH_SHORT).show();

@@ -5,12 +5,14 @@ public class HpInfo {
     private String time;
     private String gender;
     private String age;
+    private String ps;
 
-    public HpInfo(String date, String time, String gender, String age){
+    public HpInfo(String date, String time, String gender, String age, String ps){
         this.date = date;
         this.time = time;
         this.gender = gender;
         this.age = age;
+        this.ps = ps;
     }
 
     public String getDate() {return date;}
@@ -28,4 +30,8 @@ public class HpInfo {
     public String getAge() {return age;}
 
     public void setAge(String age) {this.age = age;}
+
+    public String getPs() {return ps;}
+
+    public void setPs(String ps) {this.ps = ps;}
 }
