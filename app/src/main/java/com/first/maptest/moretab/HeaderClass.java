@@ -4,7 +4,8 @@ import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
 @Root(name="header", strict=false)
-class Header {
+public
+class HeaderClass {
     @Element(name="resultMsg")
     String resultMsg;
     @Element(name="resultCode")

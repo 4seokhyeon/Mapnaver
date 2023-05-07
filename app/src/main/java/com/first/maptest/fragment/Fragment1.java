@@ -1,7 +1,6 @@
 package com.first.maptest.fragment;
 
 import android.Manifest;
-import android.content.Context;
 import android.graphics.PointF;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -42,7 +41,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
 
 
 //네이버 지도 프래그먼트 코드
@@ -55,7 +54,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
     private DatabaseReference databaseReference;
     private FirebaseFirestore db;
     public List<HospitalData> hospitals;
-    private final String ServiceKey="SPDSn%2FBJUGuyatbQ8AZUwNo1QheqcTgc2Ljmn7uE%2BuoVo3CfD1ceb57Lb%2FQE8Y3lhzGwq2%2F%2Becds93iK0kNTsg%3D%3D";
+    private final String ServiceKey="SPDSn/BJUGuyatbQ8AZUwNo1QheqcTgc2Ljmn7uE+uoVo3CfD1ceb57Lb/QE8Y3lhzGwq2/+ecds93iK0kNTsg==";
     //지도 객체 변수
     private Geocoder geocoder;
     private MapView mapView;
@@ -119,7 +118,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
         naverMap.setOnMapClickListener(this);
 
         LatLng mapCenter = naverMap.getCameraPosition().target;
-        fetchStoreSale(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "5000");
+        getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "500");
 
         //ui 셋팅
         UiSettings uiSettings = naverMap.getUiSettings();
@@ -140,24 +139,23 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
         }
     }
 
-    private void fetchStoreSale(String s,String WGS84_LON, String WGS84_LAT, String m) {
+    private void getHospBasisList(String s,String XPos, String YPos, String m) {
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://apis.data.go.kr/B551182/hospInfoServicev2/")
-                .addConverterFactory(GsonConverterFactory.create())
+                .addConverterFactory(SimpleXmlConverterFactory.create())
                 .client(new OkHttpClient())
+
                 .build();
 
 
         HospitalApi hospitalApi = retrofit.create(HospitalApi.class);
-        hospitalApi.getHsptlBassInfo(s,WGS84_LON, WGS84_LAT, m).enqueue(new Callback<HospitalData>() {
+        hospitalApi.getHsptlBassInfo(s,XPos, YPos, m).enqueue(new Callback<HospitalData>() {
             @Override
             public void onResponse(Call<HospitalData> call, Response<HospitalData> response) {
                 if (response.code() == 200) {
                     HospitalData result = response.body();
-                    Log.d("chek", String.valueOf(result));
-
                     updateMapMarkers(result);
-               }
+                }
             }
             @Override
             public void onFailure(Call<HospitalData> call, Throwable t) {
@@ -172,8 +170,8 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
             for (ItemClass item : result.getBodyClass().getItems()) {
                 Marker marker = new Marker();
                 marker.setTag(item);
-                marker.setPosition(new LatLng(Double.parseDouble(item.getWGS84_LON()),Double.parseDouble(item.getWGS84_LAT()) ));
-                Log.d("chek", item.getWGS84_LON());
+                marker.setPosition(new LatLng(Double.parseDouble(item.getYPos()),Double.parseDouble(item.getXPos())));
+                //Log.d("chek", item.getXPos());
                 marker.setAnchor(new PointF(0.5f, 1.0f));
                 marker.setMap(naverMap);
                 marker.setOnClickListener(this);
@@ -193,7 +191,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
 
     @Override
     public void onCameraChange(int i, boolean b) {
-        boolean animated = false;
+        boolean animated = b;
         isCameraAnimated = animated;
 
     }
@@ -202,16 +200,17 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
     public void onCameraIdle() {
         if (isCameraAnimated) {
             LatLng mapCenter = naverMap.getCameraPosition().target;
-            fetchStoreSale(ServiceKey,Double.toString(mapCenter.latitude), Double.toString(mapCenter.longitude), "5000");
+            //Log.d("chk",Double.toString(mapCenter.longitude)+" "+Double.toString(mapCenter.latitude));
+            getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "500");
         }
 
     }
 
     @Override
     public void onMapClick(@NonNull PointF pointF, @NonNull LatLng latLng) {
-        if (infoWindow.getMarker() != null) {
+        /*if (infoWindow.getMarker() != null) {
             infoWindow.close();
-        }
+        }*/
 
     }
 

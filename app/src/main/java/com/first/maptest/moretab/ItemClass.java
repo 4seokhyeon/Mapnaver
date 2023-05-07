@@ -11,10 +11,10 @@ public class ItemClass {
     String cmdcSdrCnt;
     @Element(name="pnursCnt")
     String pnursCnt;
-    @Element(name="WGS84_LON")
-    String WGS84_LON;
-    @Element(name="WGS84_LAT")
-    String WGS84_LAT;
+    @Element(name="XPos")
+    String XPos;
+    @Element(name="YPos")
+    String YPos;
     @Element(name="distance")
     String distance;
     @Element(name="detyGdrCnt")
@@ -37,15 +37,15 @@ public class ItemClass {
     String mdeptGdrCnt;
     @Element(name="mdeptIntnCnt")
     String mdeptIntnCnt;
-    @Element(name="telno")
+    @Element(name="telno",required = false)
     String telno;
-    @Element(name="hospUrl")
+    @Element(name="hospUrl",required = false)
     String hospUrl;
     @Element(name="estbDd")
     String estbDd;
     @Element(name="sgguCdNm")
     String sgguCdNm;
-    @Element(name="emdongNm")
+    @Element(name="emdongNm",required = false)
     String emdongNm;
     @Element(name="postNo")
     String postNo;
@@ -54,7 +54,7 @@ public class ItemClass {
     @Element(name="sidoCdNm")
     String sidoCdNm;
     @Element(name="sgguCd")
-    String sgguCd;
+    int sgguCd;
     @Element(name="ykiho")
     String ykiho;
     @Element(name="yadmNm")
@@ -64,7 +64,7 @@ public class ItemClass {
     @Element(name="clCdNm")
     String clCdNm;
     @Element(name="sidoCd")
-    String sidoCd;
+    int sidoCd;
     @Element(name="mdeptSdrCnt")
     String mdeptSdrCnt;
 
@@ -92,20 +92,20 @@ public class ItemClass {
         this.pnursCnt = pnursCnt;
     }
 
-    public String getWGS84_LON() {
-        return WGS84_LON;
+    public String getXPos() {
+        return XPos;
     }
 
-    public void setXPos(String WGS84_LON) {
-        this.WGS84_LON = WGS84_LON;
+    public void setXPos(String XPos) {
+        this.XPos = XPos;
     }
 
-    public String getWGS84_LAT() {
-        return WGS84_LAT;
+    public String getYPos() {
+        return YPos;
     }
 
-    public void setYPos(String WGS84_LAT) {
-        this.WGS84_LAT = WGS84_LAT;
+    public void setYPos(String YPos) {
+        this.YPos = YPos;
     }
 
     public String getDistance() {
@@ -220,13 +220,6 @@ public class ItemClass {
         this.estbDd = estbDd;
     }
 
-    public String getSgguCdNm() {
-        return sgguCdNm;
-    }
-
-    public void setSgguCdNm(String sgguCdNm) {
-        this.sgguCdNm = sgguCdNm;
-    }
 
     public String getEmdongNm() {
         return emdongNm;
@@ -250,22 +243,6 @@ public class ItemClass {
 
     public void setAddr(String addr) {
         this.addr = addr;
-    }
-
-    public String getSidoCdNm() {
-        return sidoCdNm;
-    }
-
-    public void setSidoCdNm(String sidoCdNm) {
-        this.sidoCdNm = sidoCdNm;
-    }
-
-    public String getSgguCd() {
-        return sgguCd;
-    }
-
-    public void setSgguCd(String sgguCd) {
-        this.sgguCd = sgguCd;
     }
 
     public String getYkiho() {
@@ -300,19 +277,43 @@ public class ItemClass {
         this.clCdNm = clCdNm;
     }
 
-    public String getSidoCd() {
-        return sidoCd;
-    }
-
-    public void setSidoCd(String sidoCd) {
-        this.sidoCd = sidoCd;
-    }
-
     public String getMdeptSdrCnt() {
         return mdeptSdrCnt;
     }
 
     public void setMdeptSdrCnt(String mdeptSdrCnt) {
         this.mdeptSdrCnt = mdeptSdrCnt;
+    }
+
+    public int getSgguCd() {
+        return sgguCd;
+    }
+
+    public void setSgguCd(int sgguCd) {
+        this.sgguCd = sgguCd;
+    }
+
+    public int getSidoCd() {
+        return sidoCd;
+    }
+
+    public void setSidoCd(int sidoCd) {
+        this.sidoCd = sidoCd;
+    }
+
+    public String getSgguCdNm() {
+        return sgguCdNm;
+    }
+
+    public void setSgguCdNm(String sgguCdNm) {
+        this.sgguCdNm = sgguCdNm;
+    }
+
+    public String getSidoCdNm() {
+        return sidoCdNm;
+    }
+
+    public void setSidoCdNm(String sidoCdNm) {
+        this.sidoCdNm = sidoCdNm;
     }
 }

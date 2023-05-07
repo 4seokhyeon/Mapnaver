@@ -1,25 +1,24 @@
 package com.first.maptest;
 
 import com.first.maptest.moretab.BodyClass;
+import com.first.maptest.moretab.HeaderClass;
 
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 
-import io.grpc.okhttp.internal.framed.Header;
-
 @Root(name="response", strict = false)
 public class HospitalData {
     @Element(name="header")
-    Header headerClass;
+    HeaderClass headerClass;
     @Element(name="body")
     BodyClass bodyClass ;
 
 
-    public Header getHeaderClass() {
+    public HeaderClass getHeaderClass() {
         return headerClass;
     }
 
-    public void setHeaderClass(Header headerClass) {
+    public void setHeaderClass(HeaderClass headerClass) {
         this.headerClass = headerClass;
     }
 

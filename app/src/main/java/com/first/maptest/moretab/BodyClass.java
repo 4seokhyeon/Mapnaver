@@ -12,11 +12,11 @@ class BodyClass {
     @ElementList(entry = "items")
     ArrayList<ItemClass> items ;
     @Element(name = "numOfRows")
-    String numOfRows;
+    int numOfRows;
     @Element(name = "pageNo")
-    String pageNo;
+    int pageNo;
     @Element(name = "totalCount")
-    String totalCount;
+    int totalCount;
 
     public ArrayList<ItemClass> getItems() {
         return items;
@@ -26,27 +26,27 @@ class BodyClass {
         this.items = items;
     }
 
-    public String getNumOfRows() {
+    public int getNumOfRows() {
         return numOfRows;
     }
 
-    public void setNumOfRows(String numOfRows) {
+    public void setNumOfRows(int numOfRows) {
         this.numOfRows = numOfRows;
     }
 
-    public String getPageNo() {
+    public int getPageNo() {
         return pageNo;
     }
 
-    public void setPageNo(String pageNo) {
+    public void setPageNo(int pageNo) {
         this.pageNo = pageNo;
     }
 
-    public String getTotalCount() {
+    public int getTotalCount() {
         return totalCount;
     }
 
-    public void setTotalCount(String totalCount) {
+    public void setTotalCount(int totalCount) {
         this.totalCount = totalCount;
     }
 }
