@@ -35,13 +35,16 @@ import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory;
+
 
 
 //네이버 지도 프래그먼트 코드
@@ -143,9 +146,12 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://apis.data.go.kr/B551182/hospInfoServicev2/")
                 .addConverterFactory(SimpleXmlConverterFactory.create())
-                .client(new OkHttpClient())
-
+                .client(new OkHttpClient.Builder()
+                        .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                        .build())
                 .build();
+
+
 
 
         HospitalApi hospitalApi = retrofit.create(HospitalApi.class);
@@ -159,7 +165,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
             }
             @Override
             public void onFailure(Call<HospitalData> call, Throwable t) {
-                Log.e("FetchStoreSale", "Request failed: " + t.getMessage());
+                Log.e("chek", "Request failed: " + t.getMessage());
             }
         });
     }
@@ -171,7 +177,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
                 Marker marker = new Marker();
                 marker.setTag(item);
                 marker.setPosition(new LatLng(Double.parseDouble(item.getYPos()),Double.parseDouble(item.getXPos())));
-                //Log.d("chek", item.getXPos());
+                Log.d("chek", item.getXPos());
                 marker.setAnchor(new PointF(0.5f, 1.0f));
                 marker.setMap(naverMap);
                 marker.setOnClickListener(this);
