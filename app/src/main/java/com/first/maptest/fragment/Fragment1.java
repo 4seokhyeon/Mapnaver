@@ -1,6 +1,8 @@
 package com.first.maptest.fragment;
 
 import android.Manifest;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.PointF;
 import android.location.Geocoder;
 import android.os.Bundle;
@@ -31,6 +33,7 @@ import com.naver.maps.map.UiSettings;
 import com.naver.maps.map.overlay.InfoWindow;
 import com.naver.maps.map.overlay.Marker;
 import com.naver.maps.map.overlay.Overlay;
+import com.naver.maps.map.overlay.OverlayImage;
 import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.ArrayList;
@@ -119,6 +122,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
         naverMap.addOnCameraChangeListener(this);
         naverMap.addOnCameraIdleListener(this);
         naverMap.setOnMapClickListener(this);
+        naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_TRANSIT, false);
 
         LatLng mapCenter = naverMap.getCameraPosition().target;
         getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "500");
@@ -152,8 +156,6 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
                 .build();
 
 
-
-
         HospitalApi hospitalApi = retrofit.create(HospitalApi.class);
         hospitalApi.getHsptlBassInfo(s,XPos, YPos, m).enqueue(new Callback<HospitalData>() {
             @Override
@@ -178,6 +180,13 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
                 marker.setTag(item);
                 marker.setPosition(new LatLng(Double.parseDouble(item.getYPos()),Double.parseDouble(item.getXPos())));
                 Log.d("chek", item.getXPos());
+                Bitmap markerIcon = BitmapFactory.decodeResource(getResources(), R.drawable.mark);//마커 크기 설정
+                int desiredWidth;
+                int width = desiredWidth=80; // 80으로 설정
+                int desiredHeight;
+                int height = desiredHeight=80; // 80으로 설정
+                Bitmap resizedMarkerIcon = Bitmap.createScaledBitmap(markerIcon, width, height, false);
+                marker.setIcon(OverlayImage.fromBitmap(resizedMarkerIcon));
                 marker.setAnchor(new PointF(0.5f, 1.0f));
                 marker.setMap(naverMap);
                 marker.setOnClickListener(this);
