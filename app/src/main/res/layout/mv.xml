@@ -31,18 +31,21 @@
         tools:ignore="MissingConstraints">
     </RadioGroup>
 
+
     <Button
         android:id="@+id/back"
         android:layout_width="102dp"
         android:layout_height="53dp"
-        android:layout_marginEnd="296dp"
+        android:background="#ffffff"
         android:text="@string/뒤로가기"
+        android:textColor="#73b494"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.051"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.026" />
-
 
     <TimePicker
         android:id="@+id/timePicker1"
@@ -50,6 +53,7 @@
         android:layout_height="311dp"
         android:layout_marginBottom="72dp"
         android:timePickerMode="spinner"
+        android:theme="@style/CustomTimePicker"
         app:layout_constraintBottom_toTopOf="@+id/rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.489"
@@ -62,6 +66,7 @@
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
         android:datePickerMode="calendar"
+        android:theme="@style/CustomDatePicker"
         app:layout_constraintBottom_toTopOf="@+id/rv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.538"

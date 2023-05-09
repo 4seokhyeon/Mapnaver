@@ -110,8 +110,18 @@ public class mv extends Fragment {
         tPicker = (TimePicker) rootView.findViewById(R.id.timePicker1);
 
         dPicker.setVisibility(View.VISIBLE);
-        rdoCal.setChecked(true);
         tPicker.setVisibility(View.INVISIBLE);
+        rdoCal.setChecked(true);
+
+        rdoCal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                tPicker.setVisibility(View.INVISIBLE);
+                dPicker.setVisibility(View.VISIBLE);
+                rdoTime.setChecked(false);
+                rdoCal.setChecked(true);
+            }
+        });
 
         rdoTime.setOnClickListener(new View.OnClickListener() {
             @Override

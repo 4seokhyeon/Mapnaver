@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/ic_launcher_background"
+        android:background="#CAD39B"
         android:orientation="horizontal"
         app:layout_constraintTop_toTopOf="parent">
 

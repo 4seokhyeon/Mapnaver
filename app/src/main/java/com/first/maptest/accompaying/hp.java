@@ -177,7 +177,8 @@ public class hp extends Fragment {
         dPicker = (DatePicker) rootView.findViewById(R.id.datePicker1);
         tPicker = (TimePicker) rootView.findViewById(R.id.timePicker1);
 
-        dPicker.setVisibility(View.INVISIBLE);
+        dPicker.setVisibility(View.VISIBLE);
+        rdoCal.setChecked(true);
         tPicker.setVisibility(View.INVISIBLE);
         gender.setVisibility(View.INVISIBLE);
         age.setVisibility(View.INVISIBLE);

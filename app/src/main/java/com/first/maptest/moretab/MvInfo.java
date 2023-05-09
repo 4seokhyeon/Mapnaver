@@ -7,13 +7,11 @@ public class MvInfo {
     private String date;
     private String time;
     private String ad;
-    private String name;
 
-    public MvInfo(String date, String time, String ad, String name){
+    public MvInfo(String date, String time, String ad){
         this.date = date;
         this.time = time;
         this.ad = ad;
-        this.name = name;
     }
 
     public String getDate() {return date;}
@@ -27,9 +25,5 @@ public class MvInfo {
     public String getAd(){return ad;}
 
     public void setAd(String ad) {this.ad = ad;}
-
-    public String getName(){return name;}
-
-    public void setName(String name) {this.name = name;}
 
 }

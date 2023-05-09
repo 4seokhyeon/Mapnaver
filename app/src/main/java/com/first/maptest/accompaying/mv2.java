@@ -33,8 +33,8 @@ public class mv2 extends Fragment {
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
 
-    String date, time, ad, name;
-    TextView tv_name, tv_date, tv_time, tv_ad;
+    String date, time, ad;
+    TextView tv_date, tv_time, tv_ad;
     private DataSnapshot mDatabase;
 
     public static mv2 newInstance()
@@ -57,26 +57,23 @@ public class mv2 extends Fragment {
         tv_date = (TextView) rootView.findViewById(R.id.tv_date);
         tv_time = (TextView) rootView.findViewById(R.id.tv_time);
         tv_ad = (TextView) rootView.findViewById(R.id.tv_ad);
-        //tv_name = (TextView) rootView.findViewById(R.id.tv_name);
 
         if(getArguments()!=null){
             date = getArguments().getString("date");
             time = getArguments().getString("time");
             ad = getArguments().getString("ad");
-            name = getArguments().getString("name");
 
             tv_date.setText(date);
             tv_time.setText(time);
             tv_ad.setText(ad);
-            //tv_name.setText(name);
 
-            if(date.length()>0&&time.length()>0&&ad.length()>0&&name.length()>0){
+            if(date.length()>0&&time.length()>0&&ad.length()>0){
                 FirebaseUser mv = FirebaseAuth.getInstance().getCurrentUser();
                 //user = 회원의 고유 id라고 생각하면됨 _ 파이어베이스에서 회원을 식별하기 위함.
                 FirebaseFirestore db = FirebaseFirestore.getInstance();
                 //Firestore의 인스턴스 초기화
 
-                MvInfo mvinfo = new MvInfo(date, time, ad, name);
+                MvInfo mvinfo = new MvInfo(date, time, ad);
                 if(mv != null){
                     db.collection("MV").document(mv.getUid()).set(mvinfo)
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -120,7 +117,6 @@ public class mv2 extends Fragment {
                 bundle.putString("date",date);
                 bundle.putString("time",time);
                 bundle.putString("ad",ad);
-                bundle.putString("name",name);
                 mv3.setArguments(bundle);
                 fragmentTransaction.replace(R.id.mainframe, mv3);
                 fragmentTransaction.commit();

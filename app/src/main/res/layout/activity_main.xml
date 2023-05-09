@@ -31,6 +31,7 @@
             app:labelVisibilityMode="unlabeled"
             app:layout_constraintBottom_toBottomOf="@+id/map"
             app:menu="@menu/menu"
+            app:itemIconTint="@drawable/menu_selector_color"
             tools:ignore="MissingConstraints" />
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

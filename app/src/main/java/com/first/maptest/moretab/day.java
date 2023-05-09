@@ -127,7 +127,8 @@ public class day extends Fragment {
         tvHour =  (TextView) rootView.findViewById(R.id.tvHour);
         tvMinute =  (TextView) rootView.findViewById(R.id.tvMinute); */
 
-        dPicker.setVisibility(View.INVISIBLE);
+        dPicker.setVisibility(View.VISIBLE);
+        rdoCal.setChecked(true);
         tPicker.setVisibility(View.INVISIBLE);
 
 

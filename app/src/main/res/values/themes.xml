@@ -6,7 +6,7 @@
 
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorPrimaryVariant">#73B494</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -22,6 +22,7 @@
         <item name="android:editTextStyle">@style/customEditTextFontStyle</item>
         <item name="android:radioButtonStyle">@style/customRadioButtonFontStyle</item>
         <item name="android:checkboxStyle">@style/customCheckboxFontStyle</item>
+
     </style>
     <!-- Custom font 적용 -->
     <style name="customTextViewFontStyle" parent="@android:style/Widget.DeviceDefault.TextView">
@@ -42,6 +43,13 @@
 
     <style name="customCheckboxFontStyle" parent="@android:style/Widget.DeviceDefault.CompoundButton.CheckBox">
         <item name="android:fontFamily">@font/font_res</item>
+    </style>
+
+    <style name="CustomTimePicker">
+        <item name="colorControlNormal">#AAC99C</item>
+    </style>
+    <style name="CustomDatePicker">
+        <item name="colorAccent">#AAC99C</item>
     </style>
 
 

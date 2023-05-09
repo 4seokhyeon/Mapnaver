@@ -16,8 +16,8 @@ import com.first.maptest.fragment.Fragment1;
 
 public class mv3 extends Fragment{
 
-    String date, time, ad, name;
-    TextView tv_date1, tv_time1, tv_name2, tv_ad;
+    String date, time, ad;
+    TextView tv_date1, tv_time1, tv_ad;
 
 
     public static mv3 newInstance() {
@@ -36,7 +36,6 @@ public class mv3 extends Fragment{
 
         tv_date1 = (TextView) rootView.findViewById(R.id.tv_date1);
         tv_time1 = (TextView) rootView.findViewById(R.id.tv_time1);
-        tv_name2 = (TextView) rootView.findViewById(R.id.tv_name2);
         tv_ad = (TextView) rootView.findViewById(R.id.tv_ad);
 
 
@@ -44,12 +43,10 @@ public class mv3 extends Fragment{
             date = getArguments().getString("date");
             time = getArguments().getString("time");
             ad = getArguments().getString("ad");
-            name = getArguments().getString("name");
 
             tv_date1.setText(date);
             tv_time1.setText(time);
             tv_ad.setText(ad);
-            tv_name2.setText(name);
         }
 
         //완료버튼
