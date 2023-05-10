@@ -51,6 +51,7 @@
     <style name="CustomDatePicker">
         <item name="colorAccent">#AAC99C</item>
     </style>
-
+    <dimen name="info_window_width">300dp</dimen>
+    <dimen name="info_window_height">150dp</dimen>
 
 </resources>

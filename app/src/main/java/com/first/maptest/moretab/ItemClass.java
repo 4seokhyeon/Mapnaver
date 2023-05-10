@@ -68,6 +68,10 @@ public class ItemClass {
     @Element(name="mdeptSdrCnt")
     String mdeptSdrCnt;
 
+    public String getAddr() {
+        return addr;
+    }
+
     public String getCmdcResdntCnt() {
         return cmdcResdntCnt;
     }
@@ -236,14 +240,8 @@ public class ItemClass {
     public void setPostNo(String postNo) {
         this.postNo = postNo;
     }
-
-    public String getAddr() {
-        return addr;
-    }
-
-    public void setAddr(String addr) {
-        this.addr = addr;
-    }
+    
+    public void setAddr(String addr) {this.addr = addr;}
 
     public String getYkiho() {
         return ykiho;

@@ -1,6 +1,7 @@
 package com.first.maptest.fragment;
 
 import android.Manifest;
+import android.content.ClipData;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
@@ -123,6 +124,19 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
         naverMap.addOnCameraIdleListener(this);
         naverMap.setOnMapClickListener(this);
         naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_TRANSIT, false);
+
+        infoWindow = new InfoWindow();
+        infoWindow.setAdapter(new InfoWindow.DefaultTextAdapter(getActivity()) {
+            @NonNull
+            @Override
+            public CharSequence getText(@NonNull InfoWindow infoWindow) {
+                Marker marker=infoWindow.getMarker();
+                ItemClass itemClass=(ItemClass) marker.getTag();
+                return itemClass.getYadmNm()+"\n"+itemClass.getAddr();
+            }
+        });
+
+
 
         LatLng mapCenter = naverMap.getCameraPosition().target;
         getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "500");
