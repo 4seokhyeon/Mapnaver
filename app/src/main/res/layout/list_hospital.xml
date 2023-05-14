@@ -49,6 +49,8 @@
                 android:id="@+id/rs"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@drawable/buttonshape"
+                android:backgroundTint="#CAD39B"
                 android:text="예약하기" />
 
         </LinearLayout>

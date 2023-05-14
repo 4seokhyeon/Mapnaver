@@ -12,6 +12,8 @@
         android:layout_margin="20dp"
         android:text="매칭하기"
         android:textSize="20sp"
+        android:backgroundTint="#AAC99C"
+        android:background="@drawable/buttonshape"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

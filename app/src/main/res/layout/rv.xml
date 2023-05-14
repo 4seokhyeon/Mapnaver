@@ -11,6 +11,8 @@
         android:layout_height="60dp"
         android:layout_margin="20dp"
         android:text="목적지 설정"
+        android:backgroundTint="#AAC99C"
+        android:background="@drawable/buttonshape"
         android:textSize="20sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"

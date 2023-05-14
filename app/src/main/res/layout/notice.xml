@@ -22,6 +22,8 @@
         android:layout_height="53dp"
         android:layout_marginEnd="244dp"
         android:text="뒤로가기"
+        android:backgroundTint="#CAD39B"
+        android:background="@drawable/buttonshape"
         android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -111,6 +111,9 @@
         android:id="@+id/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#AAC99C"
+        android:background="@drawable/buttonshape"
+        android:textSize="20dp"
         android:text="완료" />
 
 </LinearLayout>

@@ -19,9 +19,9 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="#ffffff"
-        android:textColor="#73b494"
-        android:text="병원목록" />
+        android:background="@drawable/buttonshape"
+        android:text="병원목록"
+        android:textColor="@color/black" />
 
 
 
