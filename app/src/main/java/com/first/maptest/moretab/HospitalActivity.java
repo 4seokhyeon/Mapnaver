@@ -25,66 +25,58 @@ public class HospitalActivity extends AppCompatActivity {
     private static final String TAG = HospitalActivity.class.getSimpleName();
     private RecyclerView hospitalListView;
 
-    @SuppressLint({"ResourceType", "MissingInflatedId"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital);
-        setTitle("판매처 목록");
+
 
         hospitalListView = findViewById(R.id.activity_hospital);
         hospitalListView.setLayoutManager(new LinearLayoutManager(this, RecyclerView.VERTICAL, false));
 
-        double longitude = getIntent().getDoubleExtra("longitude", 0);
+        double lat = getIntent().getDoubleExtra("longitude", 0);
         double latitude = getIntent().getDoubleExtra("latitude", 0);
-        Log.i("Activity", "경도=" + longitude + ", 위도=" + latitude);
+        Log.d("Activity", "경도=" + lat + ", 위도=" + latitude);
 
-        //fetchStoreSale(latitude, longitude, 5000);
+        //getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "500");
     }
 
-    /*private void fetchStoreSale(double lat, double lng, int m) {
+    /*private void getHospBasisList(String s,String XPos, String YPos, String m) {
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl("https://apis.data.go.kr")
-                .addConverterFactory(GsonConverterFactory.create())
+                .baseUrl("https://apis.data.go.kr/B551182/hospInfoServicev2/")
+                .addConverterFactory(SimpleXmlConverterFactory.create())
+                .client(new OkHttpClient.Builder()
+                        .addInterceptor(new HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+                        .build())
                 .build();
 
+
         HospitalApi hospitalApi = retrofit.create(HospitalApi.class);
-        Call<HospitalApi.HospitalResult> call = HospitalApi.getHospitals(xPos, yPos, m);
-        call.enqueue(new Callback<HospitalApi.HospitalResult>() {
+        hospitalApi.getHsptlBassInfo(s,XPos, YPos, m).enqueue(new Callback<HospitalData>() {
             @Override
-            public void onResponse(Call<HospitalApi.HospitalResult> call, Response<HospitalApi.HospitalResult> response) {
+            public void onResponse(Call<HospitalData> call, Response<HospitalData> response) {
                 if (response.code() == 200) {
-                    HospitalApi.HospitalResult result = response.body();
-                    updateList(result);
+                    HospitalData result = response.body();
+                    updateMapMarkers(result);
                 }
             }
-
             @Override
-            public void onFailure(Call<HospitalApi.HospitalResult> call, Throwable t) {
-                // Handle failure
+            public void onFailure(Call<HospitalData> call, Throwable t) {
+                Log.e("chek", "Request failed: " + t.getMessage());
             }
         });
     }
 
-    private void updateList(HospitalResult result) {
-        if (result != null && result.getHospitals() != null) {
-            Collections.sort(result.getHospitals());
-            HospitalAdapter1 adapter = new HospitalAdapter1(result.getHospitals());
-            hospitalListView.setAdapter(adapter);
-            adapter.notifyDataSetChanged();
-
-            // Clear existing markers on the map
-            Reference<Object> mMap = null;
-            mMap.clear();
-
-            // Add markers for each hospital to the map
-            for (HospitalData hospital : result.getHospitalData()) {
-                MarkerOptions markerOptions = new MarkerOptions()
-                        .position(new LatLng(hospital.getLatitude(), hospital.getLongitude()))
-                        .title(hospital.getName())
-                        .snippet(hospital.getAddress());
-                mMap.addMarker(markerOptions);
-            }
+   private void updateMapMarkers(HospitalData result) {
+        if (!isAdded()) {
+            // Fragment is not attached to the activity, return or handle the situation accordingly
+            return;
+        }
+        resetMarkerList();
+        if (result.getBodyClass().getItems() != null && result.getBodyClass().getItems().size() > 0) {
+         Collections.sort(result.hospitalDatas);
+         HospitalAdapter1 adapter = new HospitalAdapter1(result.hospitalDatas);
+            hospitalDataListView.setAdapter(adapter);
         }
 }*/
 }

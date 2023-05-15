@@ -62,7 +62,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
     private FirebaseFirestore db;
     public List<HospitalData> hospitals;
     private final String ServiceKey="SPDSn/BJUGuyatbQ8AZUwNo1QheqcTgc2Ljmn7uE+uoVo3CfD1ceb57Lb/QE8Y3lhzGwq2/+ecds93iK0kNTsg==";
-    //지도 객체 변수
+    //지도 객체 변수3
     private Geocoder geocoder;
     private MapView mapView;
     private static NaverMap naverMap;
@@ -132,7 +132,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
             public CharSequence getText(@NonNull InfoWindow infoWindow) {
                 Marker marker=infoWindow.getMarker();
                 ItemClass itemClass=(ItemClass) marker.getTag();
-                return itemClass.getYadmNm()+"\n"+itemClass.getAddr();
+                return itemClass.getYadmNm()+"\n"+itemClass.getAddr()+"\n"+itemClass.getHospUrl();
             }
         });
 
