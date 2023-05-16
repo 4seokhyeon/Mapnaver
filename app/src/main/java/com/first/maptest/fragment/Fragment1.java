@@ -142,15 +142,18 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
 
                 yadmNmTextView.setText("병원: " + itemClass.getYadmNm());
                 addrTextView.setText("주소: " + itemClass.getAddr());
-                hospUrlTextView.setText("URL: " + itemClass.getHospUrl());
+                String hospUrl = itemClass.getHospUrl();
+                if (hospUrl != null) {
+                    hospUrlTextView.setText("URL: " + hospUrl);
+                    hospUrlTextView.setVisibility(View.VISIBLE);
+                } else {
+                    hospUrlTextView.setVisibility(View.GONE);
+                }
 
 
                 return view;
             }
         });
-
-
-
 
         LatLng mapCenter = naverMap.getCameraPosition().target;
         getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "500");
@@ -255,9 +258,9 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
 
     @Override
     public void onMapClick(@NonNull PointF pointF, @NonNull LatLng latLng) {
-        /*if (infoWindow.getMarker() != null) {
+        if (infoWindow.getMarker() != null) {
             infoWindow.close();
-        }*/
+        }
 
     }
 
