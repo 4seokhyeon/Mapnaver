@@ -1,6 +1,7 @@
 package com.first.maptest.fragment;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.ClipData;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -12,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -26,6 +28,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.naver.maps.geometry.LatLng;
+import com.naver.maps.map.CameraUpdate;
 import com.naver.maps.map.LocationTrackingMode;
 import com.naver.maps.map.MapView;
 import com.naver.maps.map.NaverMap;
@@ -126,15 +129,26 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
         naverMap.setLayerGroupEnabled(NaverMap.LAYER_GROUP_TRANSIT, false);
 
         infoWindow = new InfoWindow();
-        infoWindow.setAdapter(new InfoWindow.DefaultTextAdapter(getActivity()) {
+        infoWindow.setAdapter(new InfoWindow.DefaultViewAdapter(getActivity()) {
             @NonNull
             @Override
-            public CharSequence getText(@NonNull InfoWindow infoWindow) {
+            protected View getContentView(@NonNull InfoWindow infoWindow) {
                 Marker marker=infoWindow.getMarker();
                 ItemClass itemClass=(ItemClass) marker.getTag();
-                return itemClass.getYadmNm()+"\n"+itemClass.getAddr()+"\n"+itemClass.getHospUrl();
+                View view=LayoutInflater.from(getContext()).inflate(R.layout.info_window, null);
+                TextView yadmNmTextView = view.findViewById(R.id.YadmNm);
+                TextView addrTextView = view.findViewById(R.id.Addr);
+                TextView hospUrlTextView = view.findViewById(R.id.HospUrl);
+
+                yadmNmTextView.setText("병원: " + itemClass.getYadmNm());
+                addrTextView.setText("주소: " + itemClass.getAddr());
+                hospUrlTextView.setText("URL: " + itemClass.getHospUrl());
+
+
+                return view;
             }
         });
+
 
 
 
@@ -255,6 +269,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
                 infoWindow.close();
             } else {
                 infoWindow.open(marker);
+                naverMap.moveCamera(CameraUpdate.scrollTo(marker.getPosition()));
             }
             return true;
         }
