@@ -5,28 +5,126 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="30sp"
-        android:visibility="visible"
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="344dp"
+        android:layout_height="154dp"
+        android:layout_marginBottom="32dp"
+        android:orientation="vertical"
+        android:background="@drawable/border"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:ignore="MissingConstraints"
+        >
 
-    <Button
-        android:id="@+id/reserve"
-        android:layout_width="300dp"
-        android:layout_height="60dp"
-        android:layout_margin="20dp"
-        android:text="예약하기"
-        android:textSize="20sp"
-        android:visibility="visible"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:text="이동지원 예약내역" />
+
+        <TextView
+            android:id="@+id/mv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:text="이름" />
+
+        <TextView
+            android:id="@+id/mv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:text="예약날짜" />
+
+        <TextView
+            android:id="@+id/mv_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:text="예약시간" />
+
+        <TextView
+            android:id="@+id/mv_ad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:text="목적지" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout5"
+        android:layout_width="344dp"
+        android:layout_height="154dp"
+        android:layout_marginBottom="56dp"
+        android:orientation="vertical"
+        android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        tools:ignore="MissingConstraints">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="20dp"
+            android:text="병원동행 예약내역" />
+
+        <TextView
+            android:id="@+id/hp_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:text="이름" />
+
+        <TextView
+            android:id="@+id/hp_ps"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:text="매니저" />
+
+        <TextView
+            android:id="@+id/hp_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:textColor="@color/black"
+            android:text="예약날짜" />
+
+        <TextView
+            android:id="@+id/hp_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:layout_marginLeft="10dp"
+            android:text="예약시간" />
+
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
