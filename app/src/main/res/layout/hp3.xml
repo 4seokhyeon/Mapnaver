@@ -25,6 +25,8 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="10dp"
             android:text="예약자"
             android:textColor="@color/black"
             android:textSize="20dp"
@@ -33,6 +35,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="님,"
             android:textColor="@color/black"
             android:textSize="20dp"
@@ -48,6 +51,7 @@
             android:id="@+id/tv_ps"
             android:layout_width="115dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="5dp"
             android:layout_weight="1"
             android:text="매니저"
             android:textAlignment="center"
@@ -66,6 +70,8 @@
             android:id="@+id/tv_date1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
             android:text="날짜"
             android:textColor="@color/black"
             android:textSize="20dp"
@@ -112,6 +118,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#AAC99C"
         android:background="@drawable/buttonshape"
+        android:textSize="20dp"
         android:text="완료" />
 
 </LinearLayout>

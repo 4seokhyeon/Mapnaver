@@ -98,7 +98,7 @@ public class hp extends Fragment {
                 String minute = Integer.toString(tPicker.getCurrentMinute());
                 String message = (year + "년 " + month + "월 " + day + "일 " + hour + "시 " + minute + "분으로 예약되었습니다.");
 
-                String gender = null;
+                /*String gender = null;
                 if (male.isChecked()) {
                     gender = male.getText().toString();
                 } else if (female.isChecked()) {
@@ -119,11 +119,48 @@ public class hp extends Fragment {
                 String date = (year+"년 "+month+"월 "+day+"일");
                 String time = (hour+" : "+minute);
 
-                String[] str = {"사석현","이상엽","최현지","박한나","아무개"};
+                String[] str = {"사석현","이상엽","최현지","박한나","아무개","홍길동"};
 
                 Random rd = new Random();
                 int r = rd.nextInt(str.length);
-                String ps = str[r];
+                String ps = str[r];*/
+
+                String[] str = {"사석현","이상엽","최현지","박한나","아무개","홍길동"};
+                String ps = null;
+                String gender = null;
+                String age = null;
+
+                if(male.isChecked() && age1.isChecked()){
+                    gender = male.getText().toString();
+                    age = age1.getText().toString();
+                    ps = str[1];
+                }else if(male.isChecked() && age2.isChecked()){
+                    gender = male.getText().toString();
+                    age = age2.getText().toString();
+                    ps = str[0];
+                }else if(male.isChecked() && age3.isChecked()){
+                    gender = male.getText().toString();
+                    age = age3.getText().toString();
+                    ps = str[5];
+                }else if(female.isChecked() && age1.isChecked()){
+                    gender = female.getText().toString();
+                    age = age1.getText().toString();
+                    ps = str[3];
+                }else if(female.isChecked() && age2.isChecked()){
+                    gender = female.getText().toString();
+                    age = age2.getText().toString();
+                    ps = str[2];
+                }
+                else if(female.isChecked() && age3.isChecked()){
+                    gender = female.getText().toString();
+                    age = age3.getText().toString();
+                    ps = str[4];
+                }
+
+                Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
+
+                String date = (year+"년 "+month+"월 "+day+"일");
+                String time = (hour+" : "+minute);
 
                 Bundle bundle = new Bundle();
                 bundle.putString("date",date);

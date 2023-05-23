@@ -56,7 +56,7 @@ public class hp3 extends Fragment{
 
             tv_date1.setText(date);
             tv_time1.setText(time);
-            tv_ps.setText(ps);
+            tv_ps.setText("매니저: "+ps);
         }
 
         db.collection("Users")
