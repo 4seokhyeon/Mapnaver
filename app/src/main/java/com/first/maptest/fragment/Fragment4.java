@@ -48,6 +48,7 @@ public class Fragment4 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_4, container, false);
+        Button logoutButton = rootView.findViewById(R.id.LogOutButton);
 
         nameTxt = (TextView) rootView.findViewById(R.id.nameTxt);
         birthTxt = (TextView) rootView.findViewById(R.id.birthTxt);
@@ -75,7 +76,7 @@ public class Fragment4 extends Fragment {
                     }
                 });
 
-        /*Button my = rootView.findViewById(R.id.my);
+        Button my = rootView.findViewById(R.id.LogOutButton);
         my.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,7 +86,7 @@ public class Fragment4 extends Fragment {
                 fragmentTransaction.commit();
             }
 
-        });*/
+        });
 
 
         Button review = rootView.findViewById(R.id.review);
@@ -133,14 +134,7 @@ public class Fragment4 extends Fragment {
         });
 
 
-        /*Button LogOutButton = rootView.findViewById(R.id.LogOutButton);
-        LogOutButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FirebaseAuth.getInstance().signOut();
-            }
-        });*/
-        
+
 
 
         return rootView;

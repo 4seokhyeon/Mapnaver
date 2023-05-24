@@ -7,6 +7,15 @@
     android:orientation="vertical"
     >
 
+    <Button
+        android:id="@+id/back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="back"
+        android:text="뒤로가기"
+        android:background="@drawable/buttonshape"
+        android:backgroundTint="#CAD39B"/>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/hospital"
         android:layout_width="match_parent"

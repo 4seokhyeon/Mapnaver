@@ -64,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
     private Fragment2 fragment2;
     private Fragment3 fragment3;
     private Fragment4 fragment4;
-    //private Fragment5 fragment5;
     private Listframent listframent;
     
 
@@ -121,9 +120,6 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.item_fragment4:
                         setFragment(3);
                         break;
-                    /*case R.id.item_fragment5:
-                        setFragment(4);
-                        break;*/
                 }
                 return true;
             }
@@ -189,10 +185,7 @@ public class MainActivity extends AppCompatActivity {
                 ft.replace(R.id.mainframe, fragment4);
                 ft.commit();
                 break;
-           /* case 4:
-                ft.replace(R.id.mainframe, fragment5);
-                ft.commit();
-                break;*/
+
         }
     }
 }

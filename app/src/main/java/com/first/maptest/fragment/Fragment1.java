@@ -3,6 +3,7 @@ package com.first.maptest.fragment;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.ClipData;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PointF;
@@ -14,16 +15,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.first.maptest.Hospital;
 import com.first.maptest.HospitalData;
+//import com.first.maptest.Listframent;
 import com.first.maptest.Listframent;
 import com.first.maptest.R;
 import com.first.maptest.moretab.HospitalApi;
 import com.first.maptest.moretab.ItemClass;
+import com.first.maptest.ondata;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -64,14 +69,16 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
     private DatabaseReference databaseReference;
     private FirebaseFirestore db;
     public List<HospitalData> hospitals;
+    ondata od;
     private final String ServiceKey="SPDSn/BJUGuyatbQ8AZUwNo1QheqcTgc2Ljmn7uE+uoVo3CfD1ceb57Lb/QE8Y3lhzGwq2/+ecds93iK0kNTsg==";
     //지도 객체 변수3
     private Geocoder geocoder;
     private MapView mapView;
-    private static NaverMap naverMap;
+    public static NaverMap naverMap;
     private FusedLocationSource locationSource;
     private InfoWindow infoWindow;
     private List<Marker> markerList = new ArrayList<Marker>();
+    private ArrayList<Hospital> hospital=new ArrayList<>();
     private static final String[] PERMISSIONS = {
             Manifest.permission.ACCESS_FINE_LOCATION,
             Manifest.permission.ACCESS_COARSE_LOCATION
@@ -106,10 +113,16 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
         listButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                Listframent listframent = new Listframent();
-                fragmentTransaction.replace(R.id.mainframe, listframent);
-                fragmentTransaction.commit();
+                if(!hospital.isEmpty()) {
+
+                    Intent intent= new Intent(v.getContext(),Listframent.class);
+                    intent.putExtra("hospital",hospital);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                    v.getContext().startActivity(intent);
+                }
+                else {
+                    Toast.makeText(getActivity(),"로딩중",Toast.LENGTH_LONG).show();
+                }
             }
         });
         return rootView;
@@ -193,6 +206,14 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
             public void onResponse(Call<HospitalData> call, Response<HospitalData> response) {
                 if (response.code() == 200) {
                     HospitalData result = response.body();
+                    hospital.clear();
+                    for (ItemClass item : result.getBodyClass().getItems()){
+                        Hospital hos=new Hospital(item.getAddr(),item.getYadmNm(),item.getHospUrl());
+                        hospital.add(hos);
+                    }
+
+
+
                     updateMapMarkers(result);
                 }
             }
@@ -202,6 +223,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
             }
         });
     }
+
 
     private void updateMapMarkers(HospitalData result) {
         if (!isAdded()) {

@@ -1,6 +1,12 @@
 package com.first.maptest;
+
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import androidx.annotation.NonNull;
+
 //파이어베이스 클래스임 상엽 클래스
-public class Hospital {
+public class Hospital implements Parcelable {
     //private String profile;
     private String addr;   //병원 주소
     private String h_name;
@@ -21,6 +27,24 @@ public class Hospital {
     public void setProfile(String profile) {
         this.profile = profile;
     }*/
+
+    protected Hospital(Parcel in) {
+        addr = in.readString();
+        h_name = in.readString();
+        h_type = in.readString();
+    }
+
+    public static final Creator<Hospital> CREATOR = new Creator<Hospital>() {
+        @Override
+        public Hospital createFromParcel(Parcel in) {
+            return new Hospital(in);
+        }
+
+        @Override
+        public Hospital[] newArray(int size) {
+            return new Hospital[size];
+        }
+    };
 
     public String getAddr() {
         return addr;
@@ -44,5 +68,17 @@ public class Hospital {
 
     public void setH_type(String h_type) {
         this.h_type = h_type;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(@NonNull Parcel dest, int flags) {
+        dest.writeString(addr);
+        dest.writeString(h_name);
+        dest.writeString(h_type);
     }
 }
