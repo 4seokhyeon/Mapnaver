@@ -18,7 +18,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment1;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -26,6 +30,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class hp3 extends Fragment{
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    String Uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    DocumentReference docuser = db.collection("Users").document(Uid);
 
     String date, time, ps;
     TextView tv_date1, tv_time1, tv_ps, tv_name;
@@ -59,7 +65,7 @@ public class hp3 extends Fragment{
             tv_ps.setText("매니저: "+ps);
         }
 
-        db.collection("Users")
+        /*db.collection("Users")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -74,7 +80,16 @@ public class hp3 extends Fragment{
                             Log.d(TAG,"Error getting documents: ", task.getException());
                         }
                     }
-                });
+                });*/
+
+        docuser.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                String name = documentSnapshot.getString("name");
+
+                tv_name.setText(name);
+            }
+        });
 
         //완료버튼
         Button button = rootView.findViewById(R.id.button);

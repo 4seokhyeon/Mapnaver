@@ -28,6 +28,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -38,6 +40,8 @@ public class hp2 extends Fragment {
     private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
     private DatabaseReference databaseReference = firebaseDatabase.getReference();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    String Uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    DocumentReference docuser = db.collection("Users").document(Uid);
 
     String date, time, ps;
     TextView tv_date, tv_time, tv_ps, tv_name;
@@ -74,7 +78,7 @@ public class hp2 extends Fragment {
             tv_ps.setText(ps);
         }
 
-        db.collection("Users")
+        /*db.collection("Users")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -89,7 +93,16 @@ public class hp2 extends Fragment {
                             Log.d(TAG,"Error getting documents: ", task.getException());
                         }
                     }
-                });
+                });*/
+
+        docuser.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                String name = documentSnapshot.getString("name");
+
+                tv_name.setText(name);
+            }
+        });
 
         Button back1 = rootView.findViewById(R.id.back1);
         back1.setOnClickListener(new View.OnClickListener() {

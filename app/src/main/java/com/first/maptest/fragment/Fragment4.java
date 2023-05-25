@@ -22,8 +22,11 @@ import com.first.maptest.moretab.notice;
 import com.first.maptest.moretab.pop;
 import com.first.maptest.moretab.review;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -32,6 +35,8 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class Fragment4 extends Fragment {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    String Uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+    DocumentReference docRef = db.collection("Users").document(Uid);
     TextView nameTxt, birthTxt, pbTxt;
 
     public static Fragment4 newInstance() {
@@ -54,7 +59,22 @@ public class Fragment4 extends Fragment {
         birthTxt = (TextView) rootView.findViewById(R.id.birthTxt);
         pbTxt = (TextView) rootView.findViewById(R.id.pbTxt);
 
-        db.collection("Users")
+        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                //City city = documentSnapshot.toObject(City.class);
+                String name = documentSnapshot.getString("name");
+                String birth = documentSnapshot.getString("birthday");
+                String pb = documentSnapshot.getString("p_num");
+
+                nameTxt.setText(name);
+                birthTxt.setText(birth);
+                pbTxt.setText(pb);
+            }
+        });
+
+
+        /* db.collection("Users")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -74,7 +94,7 @@ public class Fragment4 extends Fragment {
                             Log.d(TAG,"Error getting documents: ", task.getException());
                         }
                     }
-                });
+                });*/
 
         Button my = rootView.findViewById(R.id.LogOutButton);
         my.setOnClickListener(new View.OnClickListener() {

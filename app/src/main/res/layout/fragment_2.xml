@@ -9,12 +9,14 @@
         android:id="@+id/linearLayout6"
         android:layout_width="344dp"
         android:layout_height="154dp"
+        android:layout_marginBottom="52dp"
         android:orientation="vertical"
+        android:background="@drawable/border"
+        app:layout_constraintBottom_toTopOf="@+id/linearLayout4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.522"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteY="79dp">
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
@@ -66,67 +68,68 @@
         android:id="@+id/linearLayout4"
         android:layout_width="344dp"
         android:layout_height="154dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="56dp"
         android:orientation="vertical"
+        android:background="@drawable/border"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.523"
+        app:layout_constraintHorizontal_bias="0.492"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints"
-        >
+        tools:ignore="MissingConstraints">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="이동지원 예약내역"
             android:textColor="@color/black"
-            android:textSize="20dp"
-            android:text="이동지원 예약내역" />
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/mv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
-            android:text="이름" />
+            android:layout_marginBottom="10dp"
+            android:text="이름"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/mv_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
-            android:text="예약날짜" />
+            android:layout_marginBottom="10dp"
+            android:text="예약날짜"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/mv_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
-            android:text="예약시간" />
+            android:layout_marginBottom="10dp"
+            android:text="예약시간"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/mv_ad"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_marginLeft="10dp"
-            android:text="목적지" />
+            android:text="목적지"
+            android:textColor="@color/black" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout5"
         android:layout_width="344dp"
         android:layout_height="154dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginBottom="44dp"
         android:orientation="vertical"
+        android:background="@drawable/border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
@@ -136,47 +139,47 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:textColor="@color/black"
-            android:layout_marginTop="10dp"
             android:layout_marginLeft="10dp"
-            android:textSize="20dp"
-            android:text="병원동행 예약내역" />
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:text="병원동행 예약내역"
+            android:textColor="@color/black"
+            android:textSize="20dp" />
 
         <TextView
             android:id="@+id/hp_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
-            android:text="이름" />
+            android:layout_marginBottom="10dp"
+            android:text="이름"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/hp_ps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
-            android:text="매니저" />
+            android:layout_marginBottom="10dp"
+            android:text="매니저"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/hp_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
             android:layout_marginLeft="10dp"
-            android:textColor="@color/black"
-            android:text="예약날짜" />
+            android:layout_marginBottom="10dp"
+            android:text="예약날짜"
+            android:textColor="@color/black" />
 
         <TextView
             android:id="@+id/hp_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/black"
             android:layout_marginLeft="10dp"
-            android:text="예약시간" />
+            android:text="예약시간"
+            android:textColor="@color/black" />
 
 
     </LinearLayout>

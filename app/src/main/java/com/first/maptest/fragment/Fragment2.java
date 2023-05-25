@@ -64,13 +64,13 @@ public class Fragment2 extends Fragment {
         docuser.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                //City city = documentSnapshot.toObject(City.class);
                 String name = documentSnapshot.getString("name");
 
-                mv_name.setText(name);
-                hp_name.setText(name);
+                mv_name.setText("이름: "+name);
+                hp_name.setText("이름: "+name);
             }
         });
+
         /* db.collection("Users")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
@@ -125,7 +125,6 @@ public class Fragment2 extends Fragment {
         dochp.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                //City city = documentSnapshot.toObject(City.class);
                 String ps = documentSnapshot.getString("ps");
                 String date = documentSnapshot.getString("date");
                 String time = documentSnapshot.getString("time");
@@ -163,7 +162,7 @@ public class Fragment2 extends Fragment {
                 String date = documentSnapshot.getString("date");
                 String time = documentSnapshot.getString("time");
                 String hname = documentSnapshot.getString("hname");
-                tv_name1.setText(name);
+                tv_name1.setText("이름: "+name);
                 tv_date.setText("예약날짜: "+date);
                 tv_time.setText("예약시간: "+time);
                 tv_hname.setText("예약한 병원: "+hname);
