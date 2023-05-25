@@ -32,7 +32,7 @@ public class HospitalActivity extends AppCompatActivity {
     private static final String TAG = HospitalActivity.class.getSimpleName();
     private RecyclerView hospitalListView;
 
-    @Override
+    /*@Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_hospital);
@@ -84,9 +84,9 @@ public class HospitalActivity extends AppCompatActivity {
             HospitalAdapter adapter = new HospitalAdapter(result.hospitalDatas);
             hospitalListView.setAdapter(adapter);
 
-        }*/
+        }
 
 
-    }
+    }*/
 }
 

@@ -57,7 +57,7 @@ public class reserve2 extends Fragment {
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 reserve reserve = new reserve();
-                fragmentTransaction.replace(R.id.mainframe, reserve);
+                fragmentTransaction.replace(R.id.subFrame, reserve);
                 fragmentTransaction.commit();
 
             }
@@ -99,7 +99,7 @@ public class reserve2 extends Fragment {
                 bundle.putString("birthday",birthday);
                 bundle.putString("hname",hname);
                 reserve23.setArguments(bundle);
-                fragmentTransaction.replace(R.id.mainframe, reserve23);
+                fragmentTransaction.replace(R.id.subFrame, reserve23);
                 fragmentTransaction.commit();
 
             }

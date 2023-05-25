@@ -15,12 +15,9 @@
         android:text="뒤로가기"
         android:background="@drawable/buttonshape"
         android:backgroundTint="#CAD39B"/>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/hospital"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-
-
+    <FrameLayout
+        android:id="@+id/subFrame"
+        android:layout_width="375dp"
+        android:layout_height="580dp"/>
 
 </LinearLayout>

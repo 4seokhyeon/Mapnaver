@@ -48,7 +48,7 @@ public class reserve23 extends Fragment {
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 reserve2 reserve2 = new reserve2();
-                fragmentTransaction.replace(R.id.mainframe, reserve2);
+                fragmentTransaction.replace(R.id.subFrame, reserve2);
                 fragmentTransaction.commit();
             }
         });
@@ -66,7 +66,7 @@ public class reserve23 extends Fragment {
                 bundle.putString("birthday",birthday);
                 bundle.putString("hname",hname);
                 day.setArguments(bundle);
-                fragmentTransaction.replace(R.id.mainframe, day);
+                fragmentTransaction.replace(R.id.subFrame, day);
                 fragmentTransaction.commit();
             }
         });

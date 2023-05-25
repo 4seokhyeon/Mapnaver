@@ -121,7 +121,7 @@ public class reserve3 extends Fragment {
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 day day = new day();
-                fragmentTransaction.replace(R.id.mainframe, day);
+                fragmentTransaction.replace(R.id.subFrame, day);
                 fragmentTransaction.commit();
             }
         });
@@ -139,7 +139,7 @@ public class reserve3 extends Fragment {
                 bundle.putString("name",name);
                 bundle.putString("hname",hname);
                 end.setArguments(bundle);
-                fragmentTransaction.replace(R.id.mainframe, end);
+                fragmentTransaction.replace(R.id.subFrame, end);
                 fragmentTransaction.commit();
 
             }

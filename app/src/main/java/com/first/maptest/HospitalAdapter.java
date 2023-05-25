@@ -90,20 +90,13 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
 
                     String hname = tv_h_name.getText().toString();
 
-                    try {
-                        FragmentTransaction fragmentTransaction = ((MainActivity)context).getSupportFragmentManager().beginTransaction();
-                        reserve2 reserve2 = new reserve2();
-                        Bundle bundle = new Bundle();
-                        bundle.putString("hname", hname);
-                        reserve2.setArguments(bundle);
-                        fragmentTransaction.replace(R.id.mainframe, reserve2);
-                        fragmentTransaction.commit();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-
-
+                    FragmentTransaction fragmentTransaction = ((Listframent) context).getSupportFragmentManager().beginTransaction();
+                    reserve2 reserve2 = new reserve2();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("hname", hname);
+                    reserve2.setArguments(bundle);
+                    fragmentTransaction.replace(R.id.subFrame, reserve2);
+                    fragmentTransaction.commit();
                 }
             });
         }

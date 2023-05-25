@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.first.maptest.moretab.ListFragmentMain;
 import com.first.maptest.moretab.reserve2;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -42,8 +43,17 @@ public class Listframent extends AppCompatActivity implements ondata{
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.hopitalview);
-        recyclerView=findViewById(R.id.hospital);
-        initdata();
+        arrayList=new ArrayList<>();
+        arrayList=getIntent().getParcelableArrayListExtra("hospital");
+
+        FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
+        ListFragmentMain listFragmentMain = new ListFragmentMain();
+        Bundle bundle = new Bundle();
+        bundle.putParcelableArrayList("hospital1",arrayList);
+        listFragmentMain.setArguments(bundle);
+        fragmentTransaction.replace(R.id.subFrame, listFragmentMain);
+        fragmentTransaction.commit();
+
 
     }
     public void back(View view){
@@ -52,17 +62,12 @@ public class Listframent extends AppCompatActivity implements ondata{
     }
 
 
-    private void initdata(){
+    /*private void initdata(){
         arrayList=new ArrayList<>();
         arrayList=getIntent().getParcelableArrayListExtra("hospital");
-        fragmentManager=getSupportFragmentManager();
 
-        adapter=new HospitalAdapter(arrayList,this);
-        layoutManager=new LinearLayoutManager(this);
-        recyclerView.setLayoutManager(layoutManager);
-        recyclerView.setAdapter(adapter);
 
-    }
+    }*/
 
     @Override
     public void sendlist(ArrayList<Hospital> arrayList) {
