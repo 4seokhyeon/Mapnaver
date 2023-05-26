@@ -106,7 +106,7 @@ public class reserve2 extends Fragment {
 
         });
 
-
+//캄;ㅅ
 
         return rootView;
     }
