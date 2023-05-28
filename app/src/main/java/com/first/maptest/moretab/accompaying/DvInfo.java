@@ -1,4 +1,4 @@
-package com.first.maptest.accompaying;
+package com.first.maptest.moretab.accompaying;
 
 public class DvInfo {
 

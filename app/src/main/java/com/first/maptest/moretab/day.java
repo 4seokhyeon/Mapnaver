@@ -16,14 +16,15 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.R;
+import com.first.maptest.moretab.accompaying.mv;
 
 
 public class day extends Fragment {
 
     public static Object dayContext;
 
-    public static com.first.maptest.accompaying.mv newInstance() {
-        return new com.first.maptest.accompaying.mv();
+    public static mv newInstance() {
+        return new mv();
     }
 
     RadioButton rdoCal, rdoTime;
@@ -94,7 +95,7 @@ public class day extends Fragment {
                 fragmentTransaction.replace(R.id.subFrame, reserve3); // Replace "container" with the ID of the container where you want to show the reserve3 fragment
                 fragmentTransaction.addToBackStack(null); // Add the transaction to the back stack (optional)
                 fragmentTransaction.commit();
-
+//
 
               /*  String date = (year+"년 "+month+"월 "+day+"일");
                 String time = (hour+" : "+minute);

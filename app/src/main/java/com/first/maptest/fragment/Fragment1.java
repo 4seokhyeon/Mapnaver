@@ -2,7 +2,6 @@ package com.first.maptest.fragment;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -19,14 +18,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.Hospital;
 import com.first.maptest.HospitalData;
 //import com.first.maptest.Listframent;
 import com.first.maptest.Listframent;
 import com.first.maptest.R;
-import com.first.maptest.accompaying.mv;
 import com.first.maptest.moretab.HospitalApi;
 import com.first.maptest.moretab.ItemClass;
 import com.first.maptest.ondata;
@@ -48,7 +45,6 @@ import com.naver.maps.map.util.FusedLocationSource;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -173,7 +169,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
         });
 
         LatLng mapCenter = naverMap.getCameraPosition().target;
-        getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "500");
+        getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "800");
 
         //ui 셋팅
         UiSettings uiSettings = naverMap.getUiSettings();
@@ -277,7 +273,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
         if (isCameraAnimated) {
             LatLng mapCenter = naverMap.getCameraPosition().target;
             //Log.d("chk",Double.toString(mapCenter.longitude)+" "+Double.toString(mapCenter.latitude));
-            getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "500");
+            getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "800");
         }
 
     }

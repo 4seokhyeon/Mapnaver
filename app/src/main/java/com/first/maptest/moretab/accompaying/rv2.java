@@ -1,4 +1,4 @@
-package com.first.maptest.accompaying;
+package com.first.maptest.moretab.accompaying;
 
 import static android.content.ContentValues.TAG;
 
@@ -16,22 +16,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.first.maptest.MainActivity;
 import com.first.maptest.R;
-import com.first.maptest.fragment.Fragment3;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.Random;
-
-import io.grpc.internal.DnsNameResolver;
 
 //병원동행 예약내역
 public class rv2 extends Fragment {

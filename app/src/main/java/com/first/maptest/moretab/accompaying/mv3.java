@@ -1,55 +1,35 @@
-package com.first.maptest.accompaying;
-
-import static android.content.ContentValues.TAG;
+package com.first.maptest.moretab.accompaying;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.R;
-import com.first.maptest.moretab.confirmdata;
-import com.first.maptest.moretab.day;
-import com.first.maptest.moretab.end;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
+import com.first.maptest.fragment.Fragment1;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
+public class mv3 extends Fragment{
 
-public class hp2 extends Fragment {
-
-    private FirebaseDatabase firebaseDatabase = FirebaseDatabase.getInstance();
-    private DatabaseReference databaseReference = firebaseDatabase.getReference();
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     String Uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     DocumentReference docuser = db.collection("Users").document(Uid);
 
-    String date, time, ps;
-    TextView tv_date, tv_time, tv_ps, tv_name;
-    private DataSnapshot mDatabase;
+    String date, time, ad, name;
+    TextView tv_date1, tv_time1, tv_ad, tv_name;
 
-    public static hp2 newInstance()
-    {
-        return new hp2();
+    public static mv3 newInstance() {
+        return new mv3();
     }
 
     @Override
@@ -60,22 +40,22 @@ public class hp2 extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.hp2, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.mv3, container, false);
 
-
-        tv_date = (TextView) rootView.findViewById(R.id.tv_date);
-        tv_time = (TextView) rootView.findViewById(R.id.tv_time);
-        tv_ps = (TextView) rootView.findViewById(R.id.tv_ps);
+        tv_date1 = (TextView) rootView.findViewById(R.id.tv_date1);
+        tv_time1 = (TextView) rootView.findViewById(R.id.tv_time1);
+        tv_ad = (TextView) rootView.findViewById(R.id.tv_ad);
         tv_name = (TextView) rootView.findViewById(R.id.tv_name);
 
-        if(getArguments()!=null){
+
+        if(getArguments()!=null) {
             date = getArguments().getString("date");
             time = getArguments().getString("time");
-            ps = getArguments().getString("ps");
+            ad = getArguments().getString("ad");
 
-            tv_date.setText(date);
-            tv_time.setText(time);
-            tv_ps.setText(ps);
+            tv_date1.setText(date);
+            tv_time1.setText(time);
+            tv_ad.setText(ad);
         }
 
         /*db.collection("Users")
@@ -104,37 +84,18 @@ public class hp2 extends Fragment {
             }
         });
 
-        Button back1 = rootView.findViewById(R.id.back1);
-        back1.setOnClickListener(new View.OnClickListener() {
+        //완료버튼
+        Button button = rootView.findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                rv2 rv2 = new rv2();
-                fragmentTransaction.replace(R.id.mainframe, rv2);
+                Fragment1 fragment1 = new Fragment1();
+                fragmentTransaction.replace(R.id.mainframe, fragment1);
                 fragmentTransaction.commit();
-            }
-        });
-
-
-        Button end = rootView.findViewById(R.id.end);
-        end.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                hp3 hp3 = new hp3();
-                Bundle bundle = new Bundle();
-                bundle.putString("date",date);
-                bundle.putString("time",time);
-                bundle.putString("ps",ps);
-                hp3.setArguments(bundle);
-                fragmentTransaction.replace(R.id.mainframe, hp3);
-                fragmentTransaction.commit();
-
             }
         });
 
         return rootView;
     }
-
 }
-
