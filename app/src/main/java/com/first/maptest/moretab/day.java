@@ -56,7 +56,7 @@ public class day extends Fragment {
             public void onClick(View v) {
                 FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 reserve23 reserve23 = new reserve23();
-                fragmentTransaction.replace(R.id.mainframe, reserve23);
+                fragmentTransaction.replace(R.id.subFrame, reserve23);
                 fragmentTransaction.commit();
             }
         });
@@ -67,9 +67,6 @@ public class day extends Fragment {
             @SuppressLint("SetTextI18n")
             @Override
             public void onClick(View view) {
-
-
-                //mDatabase.child("users").child(userId).setValue(user);
 
                 String year = Integer.toString(dPicker.getYear());
                 String month = Integer.toString(1+dPicker.getMonth());
@@ -83,7 +80,7 @@ public class day extends Fragment {
 
                 Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
 
-                FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
+                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
                 reserve3 reserve3 = new reserve3();
                 Bundle bundle = new Bundle();
                 bundle.putString("date",date);
@@ -94,7 +91,8 @@ public class day extends Fragment {
                 bundle.putString("birthday",birthday);
                 bundle.putString("hname",hname);
                 reserve3.setArguments(bundle);
-                fragmentTransaction.replace(R.id.Reservation, reserve3);
+                fragmentTransaction.replace(R.id.subFrame, reserve3); // Replace "container" with the ID of the container where you want to show the reserve3 fragment
+                fragmentTransaction.addToBackStack(null); // Add the transaction to the back stack (optional)
                 fragmentTransaction.commit();
 
 

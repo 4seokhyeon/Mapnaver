@@ -2,22 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingVertical="8dp"
-    android:paddingHorizontal="16dp"
     android:orientation="vertical"
     >
 
-    <Button
-        android:id="@+id/back"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="back"
-        android:text="뒤로가기"
-        android:background="@drawable/buttonshape"
-        android:backgroundTint="#CAD39B"/>
     <FrameLayout
         android:id="@+id/subFrame"
-        android:layout_width="375dp"
-        android:layout_height="580dp"/>
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 </LinearLayout>

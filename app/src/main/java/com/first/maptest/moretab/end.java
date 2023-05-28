@@ -1,5 +1,6 @@
 package com.first.maptest.moretab;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.first.maptest.MainActivity;
 import com.first.maptest.R;
 import com.first.maptest.fragment.Fragment1;
 
@@ -60,17 +62,14 @@ public class end extends Fragment{
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                Fragment1 fragment1 = new Fragment1();
-                fragmentTransaction.replace(R.id.mainframe, fragment1);
-                fragmentTransaction.commit();
+                Intent intent=new Intent(v.getContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 
         return rootView;
     }
 }
-
 
 
 

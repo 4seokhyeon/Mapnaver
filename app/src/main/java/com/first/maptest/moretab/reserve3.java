@@ -133,11 +133,12 @@ public class reserve3 extends Fragment {
         });
 
 
-        Button end = rootView.findViewById(R.id.end);
+        Button end = rootView.findViewById(R.id.end1);
         end.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.popBackStack();
                 end end = new end();
                 Bundle bundle = new Bundle();
                 bundle.putString("date",date);
@@ -145,9 +146,10 @@ public class reserve3 extends Fragment {
                 bundle.putString("name",name);
                 bundle.putString("hname",hname);
                 end.setArguments(bundle);
-                fragmentTransaction.replace(R.id.Reservation, end);
-                fragmentTransaction.commit();
-
+                reserve23 reserve23 = new reserve23();
+                fragmentManager.beginTransaction()
+                        .replace(R.id.subFrame,end) // Replace "mainframe" with the ID of the container where you want to show the reserve23 fragment
+                        .commit();
             }
         });
 

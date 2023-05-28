@@ -25,7 +25,7 @@
 
 
     <Button
-        android:id="@+id/end"
+        android:id="@+id/end1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="46dp"
@@ -182,7 +182,7 @@
         app:layout_constraintTop_toTopOf="@+id/textView10" />
 
     <FrameLayout
-        android:id="@+id/Reservation"
+        android:id="@+id/Reservation2"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
