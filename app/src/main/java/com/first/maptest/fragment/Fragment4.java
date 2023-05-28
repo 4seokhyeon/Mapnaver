@@ -2,6 +2,7 @@ package com.first.maptest.fragment;
 
 import static android.content.ContentValues.TAG;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.first.maptest.LoginActivity;
 import com.first.maptest.R;
 import com.first.maptest.moretab.customer;
 import com.first.maptest.moretab.my;
@@ -32,37 +34,29 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 //즐겨찾기 및 리뷰, 캘린더
-public class Fragment4 extends Fragment {
+public class Fragment4 extends Fragment{
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String Uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-    DocumentReference docRef = db.collection("Users").document(Uid);
-    TextView nameTxt, birthTxt, pbTxt;
+    private TextView nameTxt, birthTxt, pbTxt;
 
     public static Fragment4 newInstance() {
         return new Fragment4();
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_4, container, false);
-        Button logoutButton = rootView.findViewById(R.id.LogOutButton);
 
-        nameTxt = (TextView) rootView.findViewById(R.id.nameTxt);
-        birthTxt = (TextView) rootView.findViewById(R.id.birthTxt);
-        pbTxt = (TextView) rootView.findViewById(R.id.pbTxt);
+        nameTxt = rootView.findViewById(R.id.nameTxt);
+        birthTxt = rootView.findViewById(R.id.birthTxt);
+        pbTxt = rootView.findViewById(R.id.pbTxt);
+
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DocumentReference docRef = db.collection("Users").document(uid);
 
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                //City city = documentSnapshot.toObject(City.class);
                 String name = documentSnapshot.getString("name");
                 String birth = documentSnapshot.getString("birthday");
                 String pb = documentSnapshot.getString("p_num");
@@ -72,42 +66,6 @@ public class Fragment4 extends Fragment {
                 pbTxt.setText(pb);
             }
         });
-
-
-        /* db.collection("Users")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for(QueryDocumentSnapshot document : task.getResult()){
-                                String name = document.getString("name");
-                                String birth = document.getString("birthday");
-                                String pb = document.getString("p_num");
-
-
-                                nameTxt.setText(name);
-                                birthTxt.setText(birth);
-                                pbTxt.setText(pb);
-                            }
-                        }else{
-                            Log.d(TAG,"Error getting documents: ", task.getException());
-                        }
-                    }
-                });*/
-
-        Button my = rootView.findViewById(R.id.LogOutButton);
-        my.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                com.first.maptest.moretab.my my = new my();
-                fragmentTransaction.replace(R.id.mainframe, my);
-                fragmentTransaction.commit();
-            }
-
-        });
-
 
         Button review = rootView.findViewById(R.id.review);
         review.setOnClickListener(new View.OnClickListener() {
@@ -153,9 +111,16 @@ public class Fragment4 extends Fragment {
             }
         });
 
-
-
-
+        Button logoutButton = rootView.findViewById(R.id.LogOutButton);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth.getInstance().signOut();
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+                startActivity(intent);
+            }
+        });
 
         return rootView;
     }

@@ -83,7 +83,7 @@ public class day extends Fragment {
 
                 Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
 
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
                 reserve3 reserve3 = new reserve3();
                 Bundle bundle = new Bundle();
                 bundle.putString("date",date);
@@ -94,7 +94,7 @@ public class day extends Fragment {
                 bundle.putString("birthday",birthday);
                 bundle.putString("hname",hname);
                 reserve3.setArguments(bundle);
-                fragmentTransaction.replace(R.id.mainframe, reserve3);
+                fragmentTransaction.replace(R.id.Reservation, reserve3);
                 fragmentTransaction.commit();
 
 

@@ -11,11 +11,15 @@ public class Hospital implements Parcelable {
     private String addr;   //병원 주소
     private String h_name;
     private String h_type;
+    private String h_tell;
 
-    public Hospital(String addr, String h_name, String h_type) {
+
+
+    public Hospital(String addr, String h_name, String h_type, String h_tell) {
         this.addr = addr;
         this.h_name = h_name;
         this.h_type = h_type;
+        this.h_tell= h_tell;
     }
 
     public Hospital(){}
@@ -32,6 +36,7 @@ public class Hospital implements Parcelable {
         addr = in.readString();
         h_name = in.readString();
         h_type = in.readString();
+        h_tell=in.readString();
     }
 
     public static final Creator<Hospital> CREATOR = new Creator<Hospital>() {
@@ -62,6 +67,13 @@ public class Hospital implements Parcelable {
         this.h_name = h_name;
     }
 
+    public String getH_tell() {
+        return h_tell;
+    }
+
+    public void setH_tell(String h_tell) {
+        this.h_tell = h_tell;
+    }
     public String getH_type() {
         return h_type;
     }
@@ -80,5 +92,6 @@ public class Hospital implements Parcelable {
         dest.writeString(addr);
         dest.writeString(h_name);
         dest.writeString(h_type);
+        dest.writeString(h_tell);
     }
 }

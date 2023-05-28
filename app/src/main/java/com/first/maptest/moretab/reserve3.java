@@ -10,6 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.first.maptest.R;
@@ -119,10 +120,15 @@ public class reserve3 extends Fragment {
         back1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
+                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                fragmentManager.beginTransaction()
+                        .remove(reserve3.this) // 현재 프래그먼트 제거
+                        .commit();
+
                 day day = new day();
-                fragmentTransaction.replace(R.id.subFrame, day);
-                fragmentTransaction.commit();
+                fragmentManager.beginTransaction()
+                        .add(R.id.subFrame, day) // 새로운 프래그먼트 추가
+                        .commit();
             }
         });
 
@@ -139,7 +145,7 @@ public class reserve3 extends Fragment {
                 bundle.putString("name",name);
                 bundle.putString("hname",hname);
                 end.setArguments(bundle);
-                fragmentTransaction.replace(R.id.subFrame, end);
+                fragmentTransaction.replace(R.id.Reservation, end);
                 fragmentTransaction.commit();
 
             }

@@ -153,9 +153,12 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
                 TextView yadmNmTextView = view.findViewById(R.id.YadmNm);
                 TextView addrTextView = view.findViewById(R.id.Addr);
                 TextView hospUrlTextView = view.findViewById(R.id.HospUrl);
+                @SuppressLint({"MissingInflatedId", "LocalSuppress"}) TextView TelnoTextView = view.findViewById(R.id.Telno);
 
                 yadmNmTextView.setText("병원: " + itemClass.getYadmNm());
                 addrTextView.setText("주소: " + itemClass.getAddr());
+                TelnoTextView.setText("전화번호: " + itemClass.getTelno());
+
                 String hospUrl = itemClass.getHospUrl();
                 if (hospUrl != null) {
                     hospUrlTextView.setText("URL: " + hospUrl);
@@ -209,7 +212,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
                     HospitalData result = response.body();
                     hospital.clear();
                     for (ItemClass item : result.getBodyClass().getItems()){
-                        Hospital hos=new Hospital(item.getAddr(),item.getYadmNm(),item.getHospUrl());
+                        Hospital hos=new Hospital(item.getAddr(),item.getYadmNm(),item.getTelno(),item.getHospUrl());
                         hospital.add(hos);
                     }
 
