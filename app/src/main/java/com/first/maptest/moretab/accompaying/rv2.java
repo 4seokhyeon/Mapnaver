@@ -27,7 +27,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 public class rv2 extends Fragment {
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
-    String date, time, ps;
+    String date, time, Mname;
     TextView nameTxt, ageTxt, bgTxt;
 
     public static rv2 newInstance()
@@ -53,11 +53,11 @@ public class rv2 extends Fragment {
         if(getArguments()!=null){
             date = getArguments().getString("date");
             time = getArguments().getString("time");
-            ps = getArguments().getString("ps");
+            Mname = getArguments().getString("Mname");
         }
 
         db.collection("MN")
-                .whereEqualTo("name",ps)
+                .whereEqualTo("name",Mname)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -95,10 +95,10 @@ public class rv2 extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("date",date);
                 bundle.putString("time",time);
-                bundle.putString("ps", ps);
+                bundle.putString("Mname", Mname);
                 hp2.setArguments(bundle);
 
-                String matchedPerson = ps+"님과 매칭이 완료되었습니다.";
+                String matchedPerson = Mname+"님과 매칭이 완료되었습니다.";
                 Toast.makeText(getActivity().getApplicationContext(), matchedPerson, Toast.LENGTH_SHORT).show();
             }
         });

@@ -80,10 +80,10 @@ public class Fragment2 extends Fragment {
             dochp.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                 @Override
                 public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    String ps = documentSnapshot.getString("ps");
+                    String Mname = documentSnapshot.getString("mname");
                     String date = documentSnapshot.getString("date");
                     String time = documentSnapshot.getString("time");
-                    hp_ps.setText("매니저: " + ps);
+                    hp_ps.setText("매니저: " + Mname);
                     hp_date.setText("예약날짜: " + date);
                     hp_time.setText("예약시간: " + time);
                 }

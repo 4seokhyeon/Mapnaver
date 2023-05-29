@@ -25,7 +25,7 @@ public class hp3 extends Fragment{
     String Uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     DocumentReference docuser = db.collection("Users").document(Uid);
 
-    String date, time, ps;
+    String date, time, Mname;
     TextView tv_date1, tv_time1, tv_ps, tv_name;
 
     public static hp3 newInstance() {
@@ -50,11 +50,11 @@ public class hp3 extends Fragment{
         if(getArguments()!=null) {
             date = getArguments().getString("date");
             time = getArguments().getString("time");
-            ps = getArguments().getString("ps");
+            Mname = getArguments().getString("Mname");
 
             tv_date1.setText(date);
             tv_time1.setText(time);
-            tv_ps.setText("매니저: "+ps);
+            tv_ps.setText("매니저: "+Mname);
         }
 
         /*db.collection("Users")

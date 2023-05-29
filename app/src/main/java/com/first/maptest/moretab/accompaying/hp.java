@@ -108,35 +108,35 @@ public class hp extends Fragment {
                 String ps = str[r];*/
 
                 String[] str = {"사석현","이상엽","최현지","박한나","아무개","홍길동"};
-                String ps = null;
+                String Mname = null;
                 String gender = null;
                 String age = null;
 
                 if(male.isChecked() && age1.isChecked()){
                     gender = male.getText().toString();
                     age = age1.getText().toString();
-                    ps = str[1];
+                    Mname = str[1];
                 }else if(male.isChecked() && age2.isChecked()){
                     gender = male.getText().toString();
                     age = age2.getText().toString();
-                    ps = str[0];
+                    Mname = str[0];
                 }else if(male.isChecked() && age3.isChecked()){
                     gender = male.getText().toString();
                     age = age3.getText().toString();
-                    ps = str[5];
+                    Mname = str[5];
                 }else if(female.isChecked() && age1.isChecked()){
                     gender = female.getText().toString();
                     age = age1.getText().toString();
-                    ps = str[3];
+                    Mname = str[3];
                 }else if(female.isChecked() && age2.isChecked()){
                     gender = female.getText().toString();
                     age = age2.getText().toString();
-                    ps = str[2];
+                    Mname = str[2];
                 }
                 else if(female.isChecked() && age3.isChecked()){
                     gender = female.getText().toString();
                     age = age3.getText().toString();
-                    ps = str[4];
+                    Mname = str[4];
                 }
 
                 Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
@@ -147,16 +147,16 @@ public class hp extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("date",date);
                 bundle.putString("time",time);
-                bundle.putString("ps",ps);
+                bundle.putString("Mname",Mname);
                 rv2.setArguments(bundle);
 
-                if(date.length()>0&&time.length()>0&&gender.length()>0&&age.length()>0&&ps.length()>0){
+                if(date.length()>0&&time.length()>0&&gender.length()>0&&age.length()>0&&Mname.length()>0){
                     FirebaseUser hp = FirebaseAuth.getInstance().getCurrentUser();
                     //user = 회원의 고유 id라고 생각하면됨 _ 파이어베이스에서 회원을 식별하기 위함.
                     FirebaseFirestore db = FirebaseFirestore.getInstance();
                     //Firestore의 인스턴스 초기화
 
-                    HpInfo hpinfo = new HpInfo(date, time, gender, age, ps);
+                    HpInfo hpinfo = new HpInfo(date, time, gender, age, Mname);
                     if(hp != null){
                         db.collection("Hp").document(hp.getUid()).set(hpinfo)
                                 .addOnSuccessListener(new OnSuccessListener<Void>() {

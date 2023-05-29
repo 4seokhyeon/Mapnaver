@@ -30,7 +30,7 @@ public class hp2 extends Fragment {
     String Uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     DocumentReference docuser = db.collection("Users").document(Uid);
 
-    String date, time, ps;
+    String date, time, Mname;
     TextView tv_date, tv_time, tv_ps, tv_name;
     private DataSnapshot mDatabase;
 
@@ -58,11 +58,11 @@ public class hp2 extends Fragment {
         if(getArguments()!=null){
             date = getArguments().getString("date");
             time = getArguments().getString("time");
-            ps = getArguments().getString("ps");
+            Mname = getArguments().getString("Mname");
 
             tv_date.setText(date);
             tv_time.setText(time);
-            tv_ps.setText(ps);
+            tv_ps.setText(Mname);
         }
 
         /*db.collection("Users")
@@ -112,7 +112,7 @@ public class hp2 extends Fragment {
                 Bundle bundle = new Bundle();
                 bundle.putString("date",date);
                 bundle.putString("time",time);
-                bundle.putString("ps",ps);
+                bundle.putString("Mname",Mname);
                 hp3.setArguments(bundle);
                 fragmentTransaction.replace(R.id.mainframe, hp3);
                 fragmentTransaction.commit();
