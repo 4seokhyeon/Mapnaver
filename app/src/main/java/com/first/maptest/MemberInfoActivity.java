@@ -81,4 +81,4 @@ public class MemberInfoActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
 
     }
-}
+}//

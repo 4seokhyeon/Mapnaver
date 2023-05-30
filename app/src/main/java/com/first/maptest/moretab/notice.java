@@ -46,4 +46,4 @@ public class notice extends Fragment {
 
         return rootView;
     }
-}
+}//

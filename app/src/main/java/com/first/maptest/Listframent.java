@@ -73,4 +73,4 @@ public class Listframent extends AppCompatActivity implements ondata{
     public void sendlist(ArrayList<Hospital> arrayList) {
         this.arrayList=arrayList;
     }
-}
+}//

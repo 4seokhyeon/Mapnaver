@@ -47,7 +47,7 @@ public class confirmdata {
 
     public String getHname() {return hname;}
 
-    public void setHname(String hname) {this.hname = hname;}
+    public void setHname(String hname) {this.hname = hname;}//
 
 
 }

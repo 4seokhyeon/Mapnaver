@@ -8,4 +8,4 @@ import java.util.List;
 
 public class HospitalResult {
     public List<HospitalData> hospitalDatas;
-}
+}//

@@ -95,4 +95,4 @@ public class SignUpActivity extends AppCompatActivity {
         //뒤로가기 버튼을 눌렀을 경우 로그인창이나 회원가입 창이 안뜨고 바로 꺼지도록함.
         startActivity(intent);
     }
-}
+}//

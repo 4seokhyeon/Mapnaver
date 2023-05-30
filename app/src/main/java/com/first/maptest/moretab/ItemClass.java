@@ -314,4 +314,4 @@ public class ItemClass {
     public void setSidoCdNm(String sidoCdNm) {
         this.sidoCdNm = sidoCdNm;
     }
-}
+}//

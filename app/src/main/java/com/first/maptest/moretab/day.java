@@ -97,18 +97,6 @@ public class day extends Fragment {
                 fragmentTransaction.commit();
 //
 
-              /*  String date = (year+"년 "+month+"월 "+day+"일");
-                String time = (hour+" : "+minute);
-
-
-                Bundle bundle = new Bundle();
-                bundle.putString("date",date);
-                bundle.putString("time",time);
-                reserve3.setArguments(bundle);
-
-                fragmentTransaction.replace(R.id.mainframe,reserve3);
-                fragmentTransaction.commit(); */
-
 
                 Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
             }
@@ -120,11 +108,7 @@ public class day extends Fragment {
         dPicker = (DatePicker) rootView.findViewById(R.id.datePicker1);
         tPicker = (TimePicker) rootView.findViewById(R.id.timePicker1);
 
-        /*tvYear = (TextView) rootView.findViewById(R.id.tvYear);
-        tvMonth = (TextView) rootView.findViewById(R.id.tvMonth);
-        tvDay = (TextView) rootView.findViewById(R.id.tvDay);
-        tvHour =  (TextView) rootView.findViewById(R.id.tvHour);
-        tvMinute =  (TextView) rootView.findViewById(R.id.tvMinute); */
+
 
         dPicker.setVisibility(View.VISIBLE);
         rdoCal.setChecked(true);
@@ -153,4 +137,4 @@ public class day extends Fragment {
 
         return rootView;
     }
-}
+}//

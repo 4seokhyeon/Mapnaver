@@ -26,4 +26,4 @@ public class MvInfo {
 
     public void setAd(String ad) {this.ad = ad;}
 
-}
+}//

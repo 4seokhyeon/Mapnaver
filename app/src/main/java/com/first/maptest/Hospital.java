@@ -94,4 +94,4 @@ public class Hospital implements Parcelable {
         dest.writeString(h_type);
         dest.writeString(h_tell);
     }
-}
+}//

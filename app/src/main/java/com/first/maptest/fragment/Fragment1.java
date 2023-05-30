@@ -284,7 +284,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
             infoWindow.close();
         }
 
-    }
+    }//
 
     @Override
     public boolean onClick(@NonNull Overlay overlay) {

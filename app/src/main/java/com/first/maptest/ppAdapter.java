@@ -47,4 +47,4 @@ public class ppAdapter extends RecyclerView.Adapter<ppAdapter.ViewHolder> {
     public int getItemCount() {
         return ppdataSet.size();
     }
-}
+}//

@@ -43,17 +43,7 @@ public class reserve extends Fragment {
             }
         });
 
-        /*Button reserve2 = rootView.findViewById(R.id.reserve2);
-        reserve2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                com.first.maptest.moretab.reserve2 reserve2 = new reserve2();
-                fragmentTransaction.replace(R.id.mainframe, reserve2);
-                fragmentTransaction.commit();
-            }
-        });*/
 
         return rootView;
     }
-}
+}//

@@ -25,5 +25,5 @@ class HeaderClass {
 
     public void setResultCode(String resultCode) {
         this.resultCode = resultCode;
-    }
+    }//
 }

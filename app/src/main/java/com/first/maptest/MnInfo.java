@@ -23,4 +23,4 @@ public class MnInfo {
     public String getBg() {return bg;}
 
     public void setBg(String bg) {this.bg = bg;}
-}
+}//

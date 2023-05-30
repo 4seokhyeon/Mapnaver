@@ -48,6 +48,6 @@ class BodyClass {
 
     public void setTotalCount(int totalCount) {
         this.totalCount = totalCount;
-    }
+    }//
 }
 

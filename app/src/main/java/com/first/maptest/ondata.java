@@ -6,3 +6,4 @@ public interface ondata {
     void sendlist(ArrayList<Hospital>arrayList);
 
 }
+//

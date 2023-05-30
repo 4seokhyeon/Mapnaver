@@ -57,4 +57,4 @@ public class Fragment3 extends Fragment {
 
         return rootView;
     }
-}
+}//

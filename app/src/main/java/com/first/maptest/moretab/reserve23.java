@@ -74,6 +74,6 @@ public class reserve23 extends Fragment {
         return rootView;
     }
 
-//
+
 }
 

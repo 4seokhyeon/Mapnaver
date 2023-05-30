@@ -99,6 +99,6 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
             });
         }
     }
-}
+}//
 
 
