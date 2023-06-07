@@ -80,14 +80,15 @@
 
     <TimePicker
         android:id="@+id/timePicker1"
-        android:layout_width="338dp"
-        android:layout_height="237dp"
-        android:theme="@style/CustomTimePicker"
-        android:timePickerMode="spinner"
+        android:layout_width="362dp"
+        android:layout_height="428dp"
+        android:layout_marginTop="132dp"
         android:numbersInnerTextColor="@color/black"
         android:numbersTextColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/rv2"
+        android:theme="@style/CustomDatePicker"
+        android:timePickerMode="clock"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />

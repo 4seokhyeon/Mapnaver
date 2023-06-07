@@ -10,9 +10,9 @@
         android:layout_width="300dp"
         android:layout_height="60dp"
         android:layout_margin="20dp"
-        android:text="예약하기"
         android:background="@drawable/buttonshape"
         android:backgroundTint="#CAD39B"
+        android:text="예약하기"
         android:textSize="20sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -52,14 +52,14 @@
 
     <TimePicker
         android:id="@+id/timePicker1"
-        android:layout_width="364dp"
-        android:layout_height="311dp"
-        android:layout_marginBottom="72dp"
-        android:timePickerMode="spinner"
-        android:theme="@style/CustomTimePicker"
-        app:layout_constraintBottom_toTopOf="@+id/rv"
+        android:layout_width="376dp"
+        android:layout_height="407dp"
+        android:layout_marginBottom="88dp"
+        android:theme="@style/CustomDatePicker"
+        android:timePickerMode="clock"
+        app:layout_constraintBottom_toBottomOf="@+id/rv"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintHorizontal_bias="0.485"
         app:layout_constraintStart_toStartOf="parent" />
 
     <DatePicker

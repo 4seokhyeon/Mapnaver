@@ -185,7 +185,7 @@ public class hp extends Fragment {
 
         dPicker = (DatePicker) rootView.findViewById(R.id.datePicker1);
         tPicker = (TimePicker) rootView.findViewById(R.id.timePicker1);
-        //tPicker.setBackgroundColor(Color.parseColor("#CAD39B"));
+        //tPicker.setBackgroundColor(Color.parseColor("#AAC99C"));
 
         dPicker.setVisibility(View.VISIBLE);
         rdoCal.setChecked(true);
