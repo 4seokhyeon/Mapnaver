@@ -85,6 +85,7 @@
         android:theme="@style/CustomTimePicker"
         android:timePickerMode="spinner"
         android:numbersInnerTextColor="@color/black"
+        android:numbersTextColor="@color/black"
         app:layout_constraintBottom_toTopOf="@+id/rv2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
