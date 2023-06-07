@@ -1,13 +1,19 @@
 package com.first.maptest.moretab.accompaying;
 
+import android.annotation.SuppressLint;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
+import android.widget.NumberPicker;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -25,6 +31,17 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.FirebaseFirestore;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
+
+import java.lang.reflect.Field;
 
 //병원동행
 public class hp extends Fragment {
@@ -62,6 +79,10 @@ public class hp extends Fragment {
                 fragmentTransaction.commit();
             }
         });
+
+
+
+
 
         //예약버튼
         Button r2 = rootView.findViewById(R.id.rv2);
@@ -243,4 +264,5 @@ public class hp extends Fragment {
 
         return rootView;
     }
-}
+
+    }
