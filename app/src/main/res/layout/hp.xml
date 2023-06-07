@@ -106,6 +106,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="13sp"
             android:text="20대 중반~30대 초반"></RadioButton>
 
         <RadioButton
@@ -113,6 +114,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="13sp"
             android:text="30대 중반~40대 초반"></RadioButton>
 
         <RadioButton
@@ -120,6 +122,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="13sp"
             android:text="40대 중반~50대 초반"></RadioButton>
 
     </RadioGroup>
