@@ -123,17 +123,6 @@ public class mv2 extends Fragment {
             //startToast("회원정보를 입력해주세요.");
         }
 
-        Button back1 = rootView.findViewById(R.id.back1);
-        back1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
-                rv rv = new rv();
-                fragmentTransaction.replace(R.id.mainframe, rv);
-                fragmentTransaction.commit();
-            }
-        });
-
 
         Button end = rootView.findViewById(R.id.end);
         end.setOnClickListener(new View.OnClickListener() {

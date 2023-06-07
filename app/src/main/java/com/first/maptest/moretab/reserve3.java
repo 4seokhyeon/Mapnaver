@@ -116,23 +116,6 @@ public class reserve3 extends Fragment {
             }
         }
 
-        Button back1 = rootView.findViewById(R.id.back1);
-        back1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-                fragmentManager.beginTransaction()
-                        .remove(reserve3.this) // 현재 프래그먼트 제거
-                        .commit();
-
-                day day = new day();
-                fragmentManager.beginTransaction()
-                        .add(R.id.subFrame, day) // 새로운 프래그먼트 추가
-                        .commit();
-            }
-        });
-
-
         Button end = rootView.findViewById(R.id.end1);
         end.setOnClickListener(new View.OnClickListener() {
             @Override
