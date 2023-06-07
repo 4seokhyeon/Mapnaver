@@ -80,10 +80,6 @@ public class hp extends Fragment {
             }
         });
 
-
-
-
-
         //예약버튼
         Button r2 = rootView.findViewById(R.id.rv2);
         r2.setOnClickListener(new View.OnClickListener() {
@@ -100,33 +96,6 @@ public class hp extends Fragment {
                 String hour = Integer.toString(tPicker.getCurrentHour());
                 String minute = Integer.toString(tPicker.getCurrentMinute());
                 String message = (year + "년 " + month + "월 " + day + "일 " + hour + "시 " + minute + "분으로 예약되었습니다.");
-
-                /*String gender = null;
-                if (male.isChecked()) {
-                    gender = male.getText().toString();
-                } else if (female.isChecked()) {
-                    gender = female.getText().toString();
-                }
-
-                String age = null;
-                if(age1.isChecked()){
-                    age = age1.getText().toString();
-                } else if(age2.isChecked()){
-                    age = age2.getText().toString();
-                } else if(age3.isChecked()){
-                    age = age3.getText().toString();
-                }
-
-                Toast.makeText(getActivity().getApplicationContext(),message, Toast.LENGTH_SHORT).show();
-
-                String date = (year+"년 "+month+"월 "+day+"일");
-                String time = (hour+" : "+minute);
-
-                String[] str = {"사석현","이상엽","최현지","박한나","아무개","홍길동"};
-
-                Random rd = new Random();
-                int r = rd.nextInt(str.length);
-                String ps = str[r];*/
 
                 String[] str = {"사석현","이상엽","최현지","박한나","아무개","홍길동"};
                 String Mname = null;
