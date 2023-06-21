@@ -57,8 +57,7 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
         if (hospitalList != null) {
             return hospitalList.size();
         }
-        //삼항 연산자
-        //return (arrayList !=null ? arrayList.size() :0);
+
         return 0;
     }
 
@@ -67,11 +66,6 @@ public class HospitalAdapter extends RecyclerView.Adapter<HospitalAdapter.Hospit
         TextView tv_addr;
         TextView tv_h_name;
         TextView tv_h_type;
-        /*LinearLayout listH;
-        //ImageView iv_profile; 나중에 병원 이미지 넣고 할 예정
-        TextView tv_addr;
-        TextView tv_h_name;
-        TextView tv_h_type;*/
 
         public HospitalViewHolder(@NonNull View itemView) {
             super(itemView);

@@ -26,15 +26,10 @@ public class reserve2 extends Fragment {
     String hname;
     TextView tv_h_name, tv_hname;
 
-
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
-
-
     //뒤로
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,7 +54,6 @@ public class reserve2 extends Fragment {
                 reserve reserve = new reserve();
                 fragmentTransaction.replace(R.id.subFrame, reserve);
                 fragmentTransaction.commit();
-
             }
         });
 

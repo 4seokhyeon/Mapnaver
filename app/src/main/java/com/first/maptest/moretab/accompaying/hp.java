@@ -42,6 +42,13 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 import java.lang.reflect.Field;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.RemoteMessage;
+
+import java.util.Calendar;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 //병원동행
 public class hp extends Fragment {
@@ -209,6 +216,7 @@ public class hp extends Fragment {
         rdoTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                tPicker.setVisibility(View.VISIBLE);
                 dPicker.setVisibility(View.INVISIBLE);
                 tPicker.setVisibility(View.VISIBLE);
                 gender.setVisibility(View.INVISIBLE);
@@ -224,6 +232,7 @@ public class hp extends Fragment {
             public void onClick(View v) {
                 dPicker.setVisibility(View.INVISIBLE);
                 tPicker.setVisibility(View.INVISIBLE);
+                dPicker.setVisibility(View.INVISIBLE);
                 gender.setVisibility(View.VISIBLE);
                 age.setVisibility(View.VISIBLE);
                 rdoCal.setChecked(false);
@@ -235,4 +244,48 @@ public class hp extends Fragment {
         return rootView;
     }
 
+    private void scheduleNotification(String date, String time, String message) {
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, dPicker.getYear());
+        cal.set(Calendar.MONTH, dPicker.getMonth());
+        cal.set(Calendar.DAY_OF_MONTH, dPicker.getDayOfMonth());
+        cal.set(Calendar.HOUR_OF_DAY, tPicker.getCurrentHour());
+        cal.set(Calendar.MINUTE, tPicker.getCurrentMinute());
+        cal.set(Calendar.SECOND, 0);
+
+        String notificationId = UUID.randomUUID().toString();
+
+        Map<String, Object> notificationData = new HashMap<>();
+        notificationData.put("date", date);
+        notificationData.put("time", time);
+        notificationData.put("message", message);
+
+        db.collection("Notifications")
+                .document(notificationId)
+                .set(notificationData)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Notification data saved successfully
+                        // Schedule the notification using your preferred method
+                        // (e.g., AlarmManager, JobScheduler, WorkManager)
+
+                        // In this example, we'll assume you have a custom FCM topic for notifications
+                        String topic = "notification_topic";
+
+                        Map<String, String> data = new HashMap<>();
+                        data.put("notificationId", notificationId);
+
+                        FirebaseMessaging.getInstance().send(new RemoteMessage.Builder(topic)
+                                .setData(data)
+                                .build());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        // Failed to save notification data
+                    }
+                });
     }
+}

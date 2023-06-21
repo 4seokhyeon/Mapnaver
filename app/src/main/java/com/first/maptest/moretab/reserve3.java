@@ -36,15 +36,6 @@ public class reserve3 extends Fragment {
     TextView tv_name1, tv_number1, tv_input1, tv_birthday,tv_hname;
     private DataSnapshot mDatabase;
 
-    /*private TextView content;
-    private EditText input;
-    private Button next;
-
-    DatebaseReference mRootRef = FirebaseDatebase.getIn
-
-     */
-
-
     public static reserve3 newInstance()
     {
         return new reserve3();
@@ -54,8 +45,6 @@ public class reserve3 extends Fragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -69,7 +58,6 @@ public class reserve3 extends Fragment {
         tv_input1 = (TextView) rootView.findViewById(R.id.tv_input1);
         tv_birthday = (TextView) rootView.findViewById(R.id.tv_birthday1);
         tv_hname = (TextView) rootView.findViewById(R.id.tv_hname1);
-
 
         if(getArguments()!=null){
             date = getArguments().getString("date");

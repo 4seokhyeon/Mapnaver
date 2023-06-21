@@ -169,7 +169,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
         });
 
         LatLng mapCenter = naverMap.getCameraPosition().target;
-        getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "800");
+        getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "5000");
 
         //ui 셋팅
         UiSettings uiSettings = naverMap.getUiSettings();
@@ -273,7 +273,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
         if (isCameraAnimated) {
             LatLng mapCenter = naverMap.getCameraPosition().target;
             //Log.d("chk",Double.toString(mapCenter.longitude)+" "+Double.toString(mapCenter.latitude));
-            getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "800");
+            getHospBasisList(ServiceKey,Double.toString(mapCenter.longitude), Double.toString(mapCenter.latitude), "5000");
         }
 
     }

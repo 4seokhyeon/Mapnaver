@@ -57,7 +57,8 @@
             android:id="@+id/CheckButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="등록" />
+            android:text="등록"
+            android:background="@color/d"/>
 
     </LinearLayout>
 </LinearLayout>

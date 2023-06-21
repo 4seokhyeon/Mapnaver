@@ -76,11 +76,6 @@ public class mv extends Fragment {
                 String date = (year+"년 "+month+"월 "+day+"일");
                 String time = (hour+" : "+minute);
 
-                /*String[] str = {"사석현","이상엽","최현지","박한나","아무개"};
-
-                Random rd = new Random();
-                int r = rd.nextInt(str.length);
-                String ps = str[r];*/
 
                 Bundle bundle = new Bundle();
                 bundle.putString("date",date);

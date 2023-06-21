@@ -70,22 +70,6 @@ public class mv2 extends Fragment {
             tv_ad.setText(ad);
         }
 
-        /*db.collection("Users")
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                        if(task.isSuccessful()){
-                            for(QueryDocumentSnapshot document : task.getResult()){
-                                Log.d(TAG, document.getId() + "=>" + document.getString("name"));
-                                String name = document.getString("name");
-                                tv_name.setText(name);
-                            }
-                        }else{
-                            Log.d(TAG,"Error getting documents: ", task.getException());
-                        }
-                    }
-                });*/
 
         docuser.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override

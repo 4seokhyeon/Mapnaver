@@ -53,7 +53,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="회원가입"
-            app:rippleColor="@color/purple_200" />
+            app:rippleColor="@color/purple_200"
+            android:background="@color/d"/>
 
     </LinearLayout>
 </LinearLayout>

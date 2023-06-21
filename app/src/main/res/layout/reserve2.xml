@@ -42,35 +42,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+
     <TextView
         android:id="@+id/agetag"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="39dp"
+        android:layout_marginTop="36dp"
         android:text="연락처"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="@+id/nametag"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/nametag"
         app:layout_constraintTop_toBottomOf="@+id/nametag"
         tools:ignore="MissingConstraints" />
-
 
     <EditText
         android:id="@+id/edtname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/nametag"
-        android:layout_marginEnd="102dp"
         android:layout_marginBottom="-10dp"
         android:ems="10"
         android:hint="홍길동"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/nametag"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/nametag"
+        app:layout_constraintTop_toTopOf="@+id/nametag"
+        app:layout_constraintVertical_bias="1.0"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -78,7 +79,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBaseline="@+id/agetag"
-        android:layout_marginEnd="110dp"
         android:layout_marginBottom="-10dp"
         android:digits="0123456789-"
         android:ems="10"
@@ -87,9 +87,9 @@
         android:maxLength="13"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="@+id/agetag"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/agetag" />
+        app:layout_constraintStart_toEndOf="@+id/agetag"
+        app:layout_constraintTop_toTopOf="@+id/agetag"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/reserve23"
@@ -133,11 +133,12 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="36dp"
         android:text="생년월일"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="@+id/agetag"
-        app:layout_constraintHorizontal_bias="0.789"
+        app:layout_constraintHorizontal_bias="0.571"
         app:layout_constraintStart_toStartOf="@+id/agetag"
         app:layout_constraintTop_toBottomOf="@+id/agetag" />
 

@@ -16,6 +16,6 @@ public interface HospitalApi {
                                         @Query("yPos") String lat,
                                         @Query("radius") String radius);
 
-}//
+}
 
 

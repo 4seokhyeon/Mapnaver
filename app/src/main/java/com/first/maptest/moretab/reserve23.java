@@ -41,7 +41,6 @@ public class reserve23 extends Fragment {
             hname = getArguments().getString("hname");
         }
 
-
         Button back2 = rootView.findViewById(R.id.back2);
         back2.setOnClickListener(new View.OnClickListener() {
             @Override

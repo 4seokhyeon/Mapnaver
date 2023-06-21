@@ -61,14 +61,6 @@ public class Listframent extends AppCompatActivity implements ondata{
         startActivity(intent);
     }
 
-
-    /*private void initdata(){
-        arrayList=new ArrayList<>();
-        arrayList=getIntent().getParcelableArrayListExtra("hospital");
-
-
-    }*/
-
     @Override
     public void sendlist(ArrayList<Hospital> arrayList) {
         this.arrayList=arrayList;
