@@ -67,7 +67,7 @@ public class Fragment1 extends Fragment implements Overlay.OnClickListener,
     private FirebaseFirestore db;
     public List<HospitalData> hospitals;
     ondata od;
-    private final String ServiceKey="SPDSn/BJUGuyatbQ8AZUwNo1QheqcTgc2Ljmn7uE+uoVo3CfD1ceb57Lb/QE8Y3lhzGwq2/+ecds93iK0kNTsg==";
+    private final String ServiceKey="공공데이터 인증키";
     //지도 객체 변수3
     private Geocoder geocoder;
     private MapView mapView;
