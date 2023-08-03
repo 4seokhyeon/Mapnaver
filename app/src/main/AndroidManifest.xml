@@ -54,7 +54,7 @@
         </activity>
         <meta-data
             android:name="com.naver.maps.map.CLIENT_ID"
-            android:value="g9b2voixpr" />
+            android:value="네이버 지도 인증키" />
     </application>
 
 </manifest>
